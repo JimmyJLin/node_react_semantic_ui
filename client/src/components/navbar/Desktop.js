@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { Menu, Responsive, Container, Button, Segment, Visibility } from 'semantic-ui-react';
-
-const getWidth = () => {
-  const isSSR = typeof window === 'undefined'
-  return isSSR ? Responsive.onlyTablet.minWidth : window.innerWidth
-}
+import getWidth from '../../middlewares/getWidth';
+import LandingHeading from '../LandingHeading';
 
 class Desktop extends Component {
   state = {}
@@ -13,7 +10,6 @@ class Desktop extends Component {
   showFixedMenu = () => this.setState({ fixed: true })
 
   render() {
-    const { children } = this.props
     const { fixed } = this.state
     return(
       <Responsive getWidth={getWidth} minWidth={Responsive.onlyTablet.minWidth}>
@@ -52,10 +48,9 @@ class Desktop extends Component {
                 </Menu.Item>
               </Container>
             </Menu>
+            <LandingHeading />
           </Segment>
         </Visibility>
-
-        {children}
       </Responsive>
     )
   }

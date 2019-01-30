@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { Menu, Responsive, Container, Button, Segment, Sidebar, Icon } from 'semantic-ui-react';
-
-const getWidth = () => {
-  const isSSR = typeof window === 'undefined'
-  return isSSR ? Responsive.onlyTablet.minWidth : window.innerWidth
-}
+import getWidth from '../../middlewares/getWidth';
+import LandingHeading from '../LandingHeading';
 
 class Mobile extends Component {
   state = {}
@@ -14,7 +11,6 @@ class Mobile extends Component {
   handleToggle = () => this.setState({ sidebarOpened: true })
 
   render() {
-    const { children } = this.props
     const { sidebarOpened } = this.state
 
     return(
@@ -63,9 +59,8 @@ class Mobile extends Component {
                 </Menu.Item>
               </Menu>
             </Container>
+            <LandingHeading />
           </Segment>
-
-          {children}
         </Sidebar.Pusher>
       </Responsive>
     )
