@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import { Menu, Responsive, Container, Button, Segment, Sidebar, Icon } from 'semantic-ui-react';
 import getWidth from '../../middlewares/getWidth';
 import LandingHeading from '../LandingHeading';
 
 class Mobile extends Component {
-  state = {}
+  state = {activeItem: ''}
+
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   handleSidebarHide = () => this.setState({ sidebarOpened: false })
 
   handleToggle = () => this.setState({ sidebarOpened: true })
 
   render() {
-    const { sidebarOpened } = this.state
+    const { sidebarOpened, activeItem } = this.state
 
     return(
       <Responsive
@@ -27,14 +31,64 @@ class Mobile extends Component {
           vertical
           visible={sidebarOpened}
         >
-          <Menu.Item as='a' active>
+          <Menu.Item
+            name="home"
+            active={activeItem === 'home'}
+            as={Link}
+            to='/'
+          >
             Home
           </Menu.Item>
-          <Menu.Item as='a'>Work</Menu.Item>
-          <Menu.Item as='a'>Company</Menu.Item>
-          <Menu.Item as='a'>Careers</Menu.Item>
-          <Menu.Item as='a'>Log in</Menu.Item>
-          <Menu.Item as='a'>Sign Up</Menu.Item>
+
+          <Menu.Item
+            name='work'
+            active={activeItem === 'work'}
+            as={Link}
+            to='/work'
+            onClick={this.handleItemClick}
+          >
+            Work
+          </Menu.Item>
+
+          <Menu.Item
+            name='company'
+            active={activeItem === 'company'}
+            as={Link}
+            to='/company'
+            onClick={this.handleItemClick}
+          >
+            Company
+          </Menu.Item>
+
+          <Menu.Item
+            name='careers'
+            active={activeItem === 'careers'}
+            as={Link}
+            to='/careers'
+            onClick={this.handleItemClick}
+          >
+            Careers
+          </Menu.Item>
+
+          <Menu.Item
+            name='login'
+            active={activeItem === 'login'}
+            as={Link}
+            to='/login'
+            onClick={this.handleItemClick}
+          >
+            Careers
+          </Menu.Item>
+
+          <Menu.Item
+            name='logout'
+            active={activeItem === 'logout'}
+            as={Link}
+            to='/logout'
+            onClick={this.handleItemClick}
+          >
+            Careers
+          </Menu.Item>
         </Sidebar>
 
         <Sidebar.Pusher dimmed={sidebarOpened}>

@@ -6,7 +6,7 @@ import getWidth from '../../middlewares/getWidth';
 import LandingHeading from '../LandingHeading';
 
 class Desktop extends Component {
-  state = {}
+  state = {activeItem: ''}
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
@@ -73,7 +73,7 @@ class Desktop extends Component {
                   onClick={this.handleItemClick}
                 >
                   Careers
-                  </Menu.Item>
+                </Menu.Item>
 
                 <Menu.Item position='right'>
                   <Button
