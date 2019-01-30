@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import Mobile from './navbar/Mobile';
-import Desktop from './navbar/Desktop';
+import Mobile from './Mobile';
+import Desktop from './Desktop';
 
 class Header extends Component {
 
