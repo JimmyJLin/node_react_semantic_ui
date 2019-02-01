@@ -1,5 +1,7 @@
 import _ from 'lodash'
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import { Container, Header, Visibility, Menu, Dropdown, Image } from 'semantic-ui-react';
 
 const menuStyle = {
@@ -9,6 +11,7 @@ const menuStyle = {
   marginBottom: '1em',
   marginTop: '4em',
   transition: 'box-shadow 0.5s ease, padding 0.5s ease',
+  backgroundColor: 'transparent'
 }
 
 const fixedMenuStyle = {
@@ -54,36 +57,27 @@ class StickyBar extends Component {
         >
           <Menu
             borderless
+            fluid widths={4}
             fixed={menuFixed ? 'top' : undefined}
             style={menuFixed ? fixedMenuStyle : menuStyle}
           >
-            <Container text>
               <Menu.Item>
-                <Image size='mini' src='/images/logo.png' />
+                <Image as={Link} to="/" size='mini' src='/images/logo.png' />
               </Menu.Item>
-              <Menu.Item as='a'>Blog</Menu.Item>
-              <Menu.Item as='a'>Articles</Menu.Item>
 
-              <Menu.Item>
-                <Dropdown text='Dropdown' pointing className='link item'>
+                <Dropdown item text='Services'>
                   <Dropdown.Menu>
                     <Dropdown.Item>List Item</Dropdown.Item>
                     <Dropdown.Item>List Item</Dropdown.Item>
                     <Dropdown.Divider />
                     <Dropdown.Header>Header Item</Dropdown.Header>
-                    <Dropdown.Item>
-                      <i className='dropdown icon' />
-                      <span className='text'>Submenu</span>
-                      <Dropdown.Menu>
-                        <Dropdown.Item>List Item</Dropdown.Item>
-                        <Dropdown.Item>List Item</Dropdown.Item>
-                      </Dropdown.Menu>
-                    </Dropdown.Item>
                     <Dropdown.Item>List Item</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
-              </Menu.Item>
-            </Container>
+
+              <Menu.Item as={Link} to="/contact">Contact</Menu.Item>
+              <Menu.Item as={Link} to="/book">Book</Menu.Item>
+
           </Menu>
         </Visibility>
 

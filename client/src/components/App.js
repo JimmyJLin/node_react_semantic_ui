@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 // import Header from './navbar/Header';
-import StickyBar from './navbar/StickyBar';
 import Footer from './Footer';
+import HeaderImgWithText from './body/HeaderImgWithText';
 import Landing from './Landing';
 const Services = () => <h2>Services</h2>
 const Book = () => <h2>Book</h2>
@@ -13,10 +13,10 @@ const Contact = () => <h2>Contact</h2>
 class App extends Component {
   render() {
     return (
-      <div className="container">
+      <div>
         <BrowserRouter>
           <div>
-            <StickyBar />
+            <HeaderImgWithText />
             <Route exact path="/" component={Landing} />
             <Route path="/services" component={Services} />
             <Route path="/book" component={Book} />
