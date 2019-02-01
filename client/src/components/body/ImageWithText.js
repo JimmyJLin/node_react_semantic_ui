@@ -29,7 +29,7 @@ class ImageWithText extends Component {
               <Container textAlign='justified' style={{padding: '20px 0px'}}>
                 <p>{details}</p>
               </Container>
-              <Button style={{margin: '25px 0px'}} basic color='teal'>
+              <Button style={{margin: '25px 0px', borderRadius: '30px'}} basic color='teal'>
                 {button}
               </Button>
             </Grid.Column>
