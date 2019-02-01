@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Fade from 'react-reveal/Fade';
 import { Link } from 'react-router-dom';
 import { Container, Header, Button, Grid, Image, Icon, Accordion } from 'semantic-ui-react';
 
@@ -34,8 +35,7 @@ const accordionContents = [
 ]
 
 class Collections extends Component {
-
-  state = { activeIndex: '' }
+  state = { activeIndex: '', animation: 'fade down', duration: 500, visible: true }
 
   handleClick = (e, titleProps) => {
     const { index } = titleProps
@@ -46,7 +46,7 @@ class Collections extends Component {
   }
 
   render() {
-    const { activeIndex } = this.state
+    const { activeIndex, animation, duration } = this.state
 
     const menuItems = accordionContents.map((e) => {
       const {id, title, price, details, url} = e;
@@ -82,7 +82,9 @@ class Collections extends Component {
         <Grid stackable as={Container} divided='vertically' style={{verticalAlign: 'middle'}}>
           <Grid.Row columns={2}>
             <Grid.Column verticalAlign='middle'>
-              <Image src='images/square-image.png' fluid/>
+              <Fade top>
+                <Image src='images/square-image.png' fluid/>
+              </Fade>
             </Grid.Column>
 
             <Grid.Column>
