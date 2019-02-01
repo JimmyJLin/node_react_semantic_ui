@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Button, Segment, Grid, Header, Image, Divider } from 'semantic-ui-react';
 
 import ImageWithText from './body/ImageWithText';
+import Collections from './body/Collections';
 
 class Landing extends Component {
   render() {
@@ -40,6 +41,9 @@ class Landing extends Component {
         </Segment>
 
         <ImageWithText />
+
+        <Collections />
+
 
         <Segment style={{ padding: '0em' }} vertical>
           <Grid celled='internally' columns='equal' stackable>
