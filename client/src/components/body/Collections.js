@@ -46,13 +46,13 @@ class Collections extends Component {
   }
 
   render() {
-    const { activeIndex, animation, duration } = this.state
+    const { activeIndex } = this.state
 
     const menuItems = accordionContents.map((e) => {
       const {id, title, price, details, url} = e;
 
       return (
-        <div key={id} verticalAlign="center">
+        <div key={id}>
           <Accordion.Title active={activeIndex === id} index={id} onClick={this.handleClick} style={{fontSize: '1.25em'}}>
             <Icon name='dropdown'/>
             {title}
@@ -77,7 +77,7 @@ class Collections extends Component {
     return (
       <div style={{margin: "50px 0px"}}>
         <Grid>
-          <Grid.Column horizontalAlign='right'>
+          <Grid.Column>
             <Header as='h5' textAlign='right' style={{padding: '10px 0px'}}>
             Beauty Spa
             </Header>
