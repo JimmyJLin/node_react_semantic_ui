@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import Fade from 'react-reveal/Fade';
 import { Link } from 'react-router-dom';
-import { Container, Divider, Header, Button, Grid, Image } from 'semantic-ui-react';
+import { Container, Divider, Header, Button, Grid } from 'semantic-ui-react';
 
 const contents = {
   title: 'Left Aligned Title',
@@ -17,8 +18,12 @@ class ImageWithText extends Component {
     const { title, header, details, button, imgUrl, bttUrl} = contents;
 
     return(
-      <div>
-        <Grid stackable as={Container} divided='vertically' style={{verticalAlign: 'middle'}}>
+      <div style={{
+        backgroundImage: `linear-gradient(to right, #fff, #fff, transparent), url(${imgUrl})`,
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat'
+      }}>
+        <Grid stackable as={Container} divided='vertically' style={{verticalAlign: 'middle', height: '600px'}}>
           <Grid.Row columns={2}>
             <Grid.Column verticalAlign='middle'>
               <Header as='h5' textAlign='left' style={{padding: '10px 0px'}}>
@@ -31,12 +36,13 @@ class ImageWithText extends Component {
               <Container textAlign='justified' style={{padding: '20px 0px'}}>
                 <p>{details}</p>
               </Container>
-              <Button as={Link} to={bttUrl} style={{margin: '25px 0px', borderRadius: '30px'}} basic color='teal'>
+              <Fade left duration={1500}>
+                <Button as={Link} to={bttUrl} style={{margin: '25px 0px', borderRadius: '30px', fontSize: '1.3em', letterSpacing: '2px'}} basic color='teal'>
                 {button}
-              </Button>
+                </Button>
+              </Fade>
             </Grid.Column>
             <Grid.Column>
-              <Image src={imgUrl} fluid/>
             </Grid.Column>
           </Grid.Row>
         </Grid>

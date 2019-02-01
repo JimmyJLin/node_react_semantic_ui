@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Fade from 'react-reveal/Fade';
 import { Link } from 'react-router-dom';
-import { Container, Header, Button, Grid, Image, Icon, Accordion } from 'semantic-ui-react';
+import { Container, Header, Button, Grid, Image, Icon, Accordion, Divider } from 'semantic-ui-react';
 
 const accordionContents = [
   {
@@ -62,7 +62,7 @@ class Collections extends Component {
             <p>{details}</p>
             <Grid>
               <Grid.Column textAlign="center">
-                <Button as={Link} to={url} style={{margin: '25px 0px', borderRadius: '30px'}} basic>
+                <Button as={Link} to={url} style={{margin: '25px 0px', borderRadius: '30px', fontSize: '1.3em', letterSpacing: '2px'}} basic>
                   <Icon name='user' />
                   BOOK NOW
                 </Button>
@@ -76,23 +76,29 @@ class Collections extends Component {
 
     return (
       <div style={{margin: "50px 0px"}}>
+        <Grid>
+          <Grid.Column horizontalAlign='right'>
+            <Header as='h5' textAlign='right' style={{padding: '10px 0px'}}>
+            Beauty Spa
+            </Header>
+            <Divider floated='right' style={{width: '100px', position: 'absolute', right: '10px'}} />
+          </Grid.Column>
+        </Grid>
         <Header as='h1' textAlign='right' style={{marginBottom: '40px'}}>
           Menu Title
         </Header>
         <Grid stackable as={Container} divided='vertically' style={{verticalAlign: 'middle'}}>
           <Grid.Row columns={2}>
             <Grid.Column verticalAlign='middle'>
-              <Fade top>
+              <Fade top duration={1500}>
                 <Image src='images/square-image.png' fluid/>
               </Fade>
             </Grid.Column>
 
             <Grid.Column>
-
               <Accordion fluid styled>
                 {menuItems}
               </Accordion>
-
             </Grid.Column>
           </Grid.Row>
         </Grid>
