@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 
 import { Menu, Responsive, Container, Button, Segment, Sidebar, Icon } from 'semantic-ui-react';
 import getWidth from '../../middlewares/getWidth';
-import LandingHeading from '../LandingHeading';
+import LandingHeading from './LandingHeading';
 
 class Mobile extends Component {
-  state = {activeItem: ''}
+  state = {activeItem: '', visible: false}
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
+  handleMenuClick = () => this.setState({ visible: true })
 
   handleSidebarHide = () => this.setState({ sidebarOpened: false })
 
@@ -77,7 +79,7 @@ class Mobile extends Component {
             to='/login'
             onClick={this.handleItemClick}
           >
-            Careers
+            Login
           </Menu.Item>
 
           <Menu.Item
@@ -87,7 +89,7 @@ class Mobile extends Component {
             to='/logout'
             onClick={this.handleItemClick}
           >
-            Careers
+            Logout
           </Menu.Item>
         </Sidebar>
 

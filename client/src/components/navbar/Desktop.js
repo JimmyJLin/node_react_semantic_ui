@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Menu, Responsive, Container, Button, Segment, Visibility } from 'semantic-ui-react';
 
 import getWidth from '../../middlewares/getWidth';
-import LandingHeading from '../LandingHeading';
+import LandingHeading from './LandingHeading';
 
 class Desktop extends Component {
   state = {activeItem: ''}

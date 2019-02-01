@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-import Header from './navbar/Header';
+// import Header from './navbar/Header';
+import StickyBar from './navbar/StickyBar';
 import Footer from './Footer';
 import Landing from './Landing';
 const Services = () => <h2>Services</h2>
@@ -15,7 +16,7 @@ class App extends Component {
       <div className="container">
         <BrowserRouter>
           <div>
-            <Header />
+            <StickyBar />
             <Route exact path="/" component={Landing} />
             <Route path="/services" component={Services} />
             <Route path="/book" component={Book} />
