@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { Container, Button, Segment, Grid, Header, Image, Divider } from 'semantic-ui-react';
 
+import ImageWithText from './body/ImageWithText';
+
 class Landing extends Component {
   render() {
     return (
       <Container>
+
         <Segment style={{ padding: '8em 0em' }} vertical>
           <Grid container stackable verticalAlign='middle'>
             <Grid.Row>
@@ -35,6 +38,9 @@ class Landing extends Component {
             </Grid.Row>
           </Grid>
         </Segment>
+
+        <ImageWithText />
+
         <Segment style={{ padding: '0em' }} vertical>
           <Grid celled='internally' columns='equal' stackable>
             <Grid.Row textAlign='center'>
@@ -56,6 +62,7 @@ class Landing extends Component {
             </Grid.Row>
           </Grid>
         </Segment>
+
         <Segment style={{ padding: '8em 0em' }} vertical>
           <Container text>
             <Header as='h3' style={{ fontSize: '2em' }}>
@@ -90,6 +97,7 @@ class Landing extends Component {
             </Button>
           </Container>
         </Segment>
+
       </Container>
     )
   }
