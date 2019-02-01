@@ -94,7 +94,7 @@ class StickyBar extends Component {
     const { menuFixed, } = this.state
 
     return(
-      <div>
+      <div as={Container}>
         <Container text style={{ marginTop: '2em' }}>
           <Header as='h1'>Sticky Example</Header>
           <p>
@@ -120,7 +120,7 @@ class StickyBar extends Component {
               <Menu.Item as='a'>Blog</Menu.Item>
               <Menu.Item as='a'>Articles</Menu.Item>
 
-              <Menu.Menu position='right'>
+              <Menu.Item>
                 <Dropdown text='Dropdown' pointing className='link item'>
                   <Dropdown.Menu>
                     <Dropdown.Item>List Item</Dropdown.Item>
@@ -138,7 +138,7 @@ class StickyBar extends Component {
                     <Dropdown.Item>List Item</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
-              </Menu.Menu>
+              </Menu.Item>
             </Container>
           </Menu>
         </Visibility>
