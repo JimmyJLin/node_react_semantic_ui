@@ -9,6 +9,11 @@ class HeaderImgWithText extends Component {
     const pathName = window.location.pathname;
 
     switch(pathName) {
+      case '/book':
+        return {
+          title: 'Book',
+          bgUrl: 'blue'
+        }
       case '/promotion':
         return {
           title: 'Promotions',
@@ -29,11 +34,16 @@ class HeaderImgWithText extends Component {
           title: 'Microblading',
           bgUrl: 'pink'
         }
-        case '/services/collin':
-          return {
-            title: 'GM Collin',
-            bgUrl: 'red'
-          }
+      case '/services/collin':
+        return {
+          title: 'GM Collin',
+          bgUrl: 'red'
+        }
+      case '/':
+        return {
+          title: 'Welcome',
+          bgUrl: 'light grey'
+        }
       default:
         return {
           title: 'Welcome',
@@ -44,7 +54,7 @@ class HeaderImgWithText extends Component {
 
   render() {
     const { title, bgUrl } = this.renderTitle();
-
+    console.log('titleInfo', this.renderTitle())
     return (
       <div style={{marginTop: '-32px', backgroundColor: bgUrl, height: '600px'}}>
 

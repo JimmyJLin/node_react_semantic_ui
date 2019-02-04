@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-
-import Mobile from './Mobile';
-import Desktop from './Desktop';
+import StickyBar from './navbar/StickyBar';
 
 class Header extends Component {
 
@@ -9,8 +7,7 @@ class Header extends Component {
 
     return(
       <div>
-        <Mobile />
-        <Desktop />
+        <StickyBar />
       </div>
     );
   }

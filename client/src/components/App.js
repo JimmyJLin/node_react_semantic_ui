@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-// import Header from './navbar/Header';
+import Header from './Header';
 import Footer from './Footer';
-import HeaderImgWithText from './body/HeaderImgWithText';
 import Landing from './Landing';
 import Skincare from './services/Skincare';
 import Treatments from './services/Treatments';
@@ -20,7 +19,7 @@ class App extends Component {
       <div>
         <BrowserRouter>
           <div>
-            <HeaderImgWithText />
+            <Header />
             <Route exact path="/" component={Landing} />
             <Route path="/services/Skincare" component={Skincare} />
             <Route path="/services/Treatments" component={Treatments} />
