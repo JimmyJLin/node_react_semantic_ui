@@ -12,19 +12,19 @@ class Contact extends Component {
               <List horizontal relaxed='very'>
                 <List.Item as='a' href="mailto:liweibeauty88@gmail.com?subject=Mail%20From%20Our%20Website">
                   <List.Content>
-                    <List.Icon name='mail' color='black' size='huge'/>
+                    <List.Icon name='mail' color='black' size='big'/>
                     <List.Header style={{paddingTop: '15px'}}>Email Us</List.Header>
                   </List.Content>
                 </List.Item>
                 <List.Item style={{padding: '0px 50px'}} as='a' href="sms:917-639-3900">
                   <List.Content>
-                    <List.Icon name='talk' color='blue' size='huge'/>
+                    <List.Icon name='talk' color='blue' size='big'/>
                     <List.Header style={{paddingTop: '15px'}}>Text Us</List.Header>
                   </List.Content>
                 </List.Item>
                 <List.Item as='a' href="tel:917-639-3900">
                   <List.Content>
-                    <List.Icon name='phone' color='green' size='huge'/>
+                    <List.Icon name='phone' color='green' size='big'/>
                     <List.Header style={{paddingTop: '15px'}}>Call Us</List.Header>
                   </List.Content>
                 </List.Item>
