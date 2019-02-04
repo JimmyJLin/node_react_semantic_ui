@@ -14,6 +14,11 @@ class HeaderImgWithText extends Component {
           title: 'Welcome',
           bgUrl: 'light grey'
         }
+      case '/promotion':
+        return {
+          title: 'Promotions',
+          bgUrl: 'pink'
+        }
       case '/services/skincare':
         return {
           title: 'Skincare',
