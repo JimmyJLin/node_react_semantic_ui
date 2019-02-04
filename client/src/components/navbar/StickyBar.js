@@ -2,7 +2,7 @@ import _ from 'lodash'
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Container, Header, Visibility, Menu, Dropdown, Image } from 'semantic-ui-react';
+import { Container, Header, Visibility, Menu, Dropdown, Image, Icon } from 'semantic-ui-react';
 
 const menuStyle = {
   border: 'none',
@@ -74,8 +74,14 @@ class StickyBar extends Component {
                   </Dropdown.Menu>
                 </Dropdown>
 
-              <Menu.Item as={Link} to="/contact">Contact</Menu.Item>
-              <Menu.Item as={Link} to="/book">Book</Menu.Item>
+              <Menu.Item as={Link} to="/promotion">
+                <Icon name='star'/>
+                Promotion
+              </Menu.Item>
+              <Menu.Item as={Link} to="/book">
+                <Icon name='address book'/>
+                Appointment
+              </Menu.Item>
 
           </Menu>
         </Visibility>
