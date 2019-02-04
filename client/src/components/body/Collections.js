@@ -91,7 +91,7 @@ class Collections extends Component {
           <Grid.Row columns={2}>
             <Grid.Column verticalAlign='middle'>
               <Fade top duration={1500}>
-                <Image src='images/square-image.png' fluid/>
+                <Image src='/images/square-image.png' fluid/>
               </Fade>
             </Grid.Column>
 
