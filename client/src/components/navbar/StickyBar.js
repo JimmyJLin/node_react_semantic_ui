@@ -15,7 +15,6 @@ const menuStyle = {
 }
 
 const fixedMenuStyle = {
-  top: '30px',
   backgroundColor: '#fff',
   border: '1px solid #ddd',
   boxShadow: '0px 3px 5px rgba(0, 0, 0, 0.2)',
@@ -69,9 +68,9 @@ class StickyBar extends Component {
                 <Dropdown item text='Services'>
                   <Dropdown.Menu>
                     <Dropdown.Item as={Link} to="/services/skincare">Skin Care</Dropdown.Item>
-                    <Dropdown.Item as={Link} to="/services/body_treatment">Body Treatments</Dropdown.Item>
+                    <Dropdown.Item as={Link} to="/services/treatments">Body Treatments</Dropdown.Item>
                     <Dropdown.Item as={Link} to="/services/microblading">Microblading</Dropdown.Item>
-                    <Dropdown.Item as={Link} to="/services/gm_collin">GM Collin Facials</Dropdown.Item>
+                    <Dropdown.Item as={Link} to="/services/collin">GM Collin Facials</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
 
