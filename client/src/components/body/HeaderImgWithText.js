@@ -9,11 +9,6 @@ class HeaderImgWithText extends Component {
     const pathName = window.location.pathname;
 
     switch(pathName) {
-      case '':
-        return {
-          title: 'Welcome',
-          bgUrl: 'light grey'
-        }
       case '/promotion':
         return {
           title: 'Promotions',
@@ -41,8 +36,8 @@ class HeaderImgWithText extends Component {
           }
       default:
         return {
-          title: 'Others',
-          bgUrl: 'grey'
+          title: 'Welcome',
+          bgUrl: 'light grey'
         };
     }
   }
