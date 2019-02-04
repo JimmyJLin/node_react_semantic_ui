@@ -15,7 +15,6 @@ const menuStyle = {
 }
 
 const fixedMenuStyle = {
-  top: '30px',
   backgroundColor: '#fff',
   border: '1px solid #ddd',
   boxShadow: '0px 3px 5px rgba(0, 0, 0, 0.2)',
