@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Fade from 'react-reveal/Fade';
 import { Link } from 'react-router-dom';
-import { Container, Divider, Header, Button, Grid } from 'semantic-ui-react';
+import { Container, Divider, Header, Button, Grid, Image } from 'semantic-ui-react';
 
 const contents = {
   title: 'Left Aligned Title',
@@ -12,18 +12,13 @@ const contents = {
   button: 'SEE DETAILS'
 }
 
-class ImageWithText extends Component {
+class DoubleImageWithText extends Component {
 
   render() {
-    const { title, header, details, button, imgUrl, bttUrl} = contents;
+    const { title, header, details, button, bttUrl} = contents;
 
     return(
-      <div style={{
-        backgroundImage: `linear-gradient(to right, #fff, #fff, transparent), url(${imgUrl})`,
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-        margin: "50px 0px"
-      }}>
+      <div style={{margin: "50px 0px"}}>
         <Grid stackable as={Container} divided='vertically' style={{verticalAlign: 'middle'}}>
           <Grid.Row columns={2}>
             <Grid.Column verticalAlign='middle'>
@@ -43,7 +38,10 @@ class ImageWithText extends Component {
                 </Button>
               </Fade>
             </Grid.Column>
-            <Grid.Column>
+            <Grid.Column verticalAlign='middle'>
+                <Image src='images/square-image.png' size='medium' centered/>
+                <br/>
+                <Image src='images/square-image.png' size='medium' centered/>
             </Grid.Column>
           </Grid.Row>
         </Grid>
@@ -52,4 +50,4 @@ class ImageWithText extends Component {
   }
 }
 
-export default ImageWithText;
+export default DoubleImageWithText;

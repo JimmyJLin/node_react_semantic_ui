@@ -6,7 +6,7 @@ import StickyBar from '../navbar/StickyBar';
 class HeaderImgWithText extends Component {
   render() {
     return (
-      <div style={{marginTop: '-32px', height: '600px', backgroundColor: 'teal'}}>
+      <div style={{marginTop: '-32px', backgroundColor: 'teal', height: '600px'}}>
 
         <StickyBar />
 

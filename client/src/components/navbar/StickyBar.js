@@ -62,16 +62,15 @@ class StickyBar extends Component {
             style={menuFixed ? fixedMenuStyle : menuStyle}
           >
               <Menu.Item>
-                <Image as={Link} to="/" size='mini' src='/images/logo.png' />
+                <Image as={Link} to="/" size='tiny' src='/images/liweilogo.png' />
               </Menu.Item>
 
                 <Dropdown item text='Services'>
                   <Dropdown.Menu>
-                    <Dropdown.Item>List Item</Dropdown.Item>
-                    <Dropdown.Item>List Item</Dropdown.Item>
-                    <Dropdown.Divider />
-                    <Dropdown.Header>Header Item</Dropdown.Header>
-                    <Dropdown.Item>List Item</Dropdown.Item>
+                    <Dropdown.Item as={Link} to="/services/skincare">Skin Care</Dropdown.Item>
+                    <Dropdown.Item as={Link} to="/services/body_treatment">Body Treatments</Dropdown.Item>
+                    <Dropdown.Item as={Link} to="/services/microblading">Microblading</Dropdown.Item>
+                    <Dropdown.Item as={Link} to="/services/gm_collin">GM Collin Facials</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
 

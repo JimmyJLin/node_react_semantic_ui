@@ -75,7 +75,7 @@ class Collections extends Component {
 
 
     return (
-      <div style={{margin: "50px 0px"}}>
+      <Container style={{margin: "50px 0px"}}>
         <Grid>
           <Grid.Column>
             <Header as='h5' textAlign='right' style={{padding: '10px 0px'}}>
@@ -102,7 +102,7 @@ class Collections extends Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-      </div>
+      </Container>
     )
   }
 }
