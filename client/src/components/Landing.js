@@ -5,7 +5,7 @@ import DoubleImageWithText from './body/DoubleImageWithText';
 import Collections from './body/Collections';
 import Testimonial from './body/Testimonial';
 import PhotoGallery from './body/PhotoGallery';
-import Gmap from './body/Gmap';
+import Contact from './body/Contact';
 
 
 class Landing extends Component {
@@ -23,7 +23,7 @@ class Landing extends Component {
 
         <PhotoGallery />
 
-        <Gmap />
+        <Contact />
 
       </div>
     )
