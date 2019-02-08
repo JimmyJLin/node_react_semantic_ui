@@ -6,13 +6,15 @@ import Collections from './body/Collections';
 import Testimonial from './body/Testimonial';
 import PhotoGallery from './body/PhotoGallery';
 import Contact from './body/Contact';
-// import ImgSlides from './body/ImgSlides';
+import ImgSlides from './body/ImgSlides';
 
 
 class Landing extends Component {
   render() {
     return (
       <div>
+
+        <ImgSlides />
 
         <DoubleImageWithText />
 
