@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
+import ScrollToTop from './ScrollToTop';
+
 import Header from './Header';
 import Footer from './Footer';
 import Landing from './Landing';
@@ -19,15 +21,17 @@ class App extends Component {
       <div>
         <BrowserRouter>
           <div>
-            <Header />
-            <Route exact path="/" component={Landing} />
-            <Route path="/services/Skincare" component={Skincare} />
-            <Route path="/services/Treatments" component={Treatments} />
-            <Route path="/services/Microblading" component={Microblading} />
-            <Route path="/services/Collin" component={Collin} />
-            <Route path="/book" component={Book} />
-            <Route path="/contact" component={Contact} />
-            <Footer />
+            <ScrollToTop>
+              <Header />
+              <Route exact path="/" component={Landing} />
+              <Route path="/services/Skincare" component={Skincare} />
+              <Route path="/services/Treatments" component={Treatments} />
+              <Route path="/services/Microblading" component={Microblading} />
+              <Route path="/services/Collin" component={Collin} />
+              <Route path="/book" component={Book} />
+              <Route path="/contact" component={Contact} />
+              <Footer />
+            </ScrollToTop>
           </div>
         </BrowserRouter>
       </div>
