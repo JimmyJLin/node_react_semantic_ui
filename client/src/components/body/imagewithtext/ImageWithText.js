@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Fade from 'react-reveal/Fade';
 import { Link } from 'react-router-dom';
-import { Container, Divider, Header, Button, Grid, Image } from 'semantic-ui-react';
+import { Container, Divider, Header, Button, Grid } from 'semantic-ui-react';
+
+import './_imagewithtext.scss';
 
 const contents = {
   title: 'Left Aligned Title',
@@ -12,36 +14,38 @@ const contents = {
   button: 'SEE DETAILS'
 }
 
-class DoubleImageWithText extends Component {
+class ImageWithText extends Component {
 
   render() {
-    const { title, header, details, button, bttUrl} = contents;
+    const { title, header, details, button, imgUrl, bttUrl} = contents;
 
     return(
-      <div style={{margin: "50px 0px"}}>
-        <Grid stackable as={Container} divided='vertically' style={{verticalAlign: 'middle'}}>
+      <div id="imagewithtext" style={{
+        backgroundImage: `linear-gradient(to right, #fff, #fff, transparent), url(${imgUrl})`,
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        margin: "50px 0px"
+      }}>
+        <Grid id="grid" stackable as={Container} divided='vertically' >
           <Grid.Row columns={2}>
             <Grid.Column verticalAlign='middle'>
-              <Header as='h5' textAlign='left' style={{padding: '10px 0px'}}>
+              <Header className="header" as='h5' textAlign='left'>
                 {title}
               </Header>
-              <Divider style={{width: '100px'}} />
-              <Header style={{padding: '10px 0px', fontStyle: 'italic'}} as='h2'>
+              <Divider id="divider"/>
+              <Header className="header italic" as='h2'>
                 {header}
               </Header>
-              <Container textAlign='justified' style={{padding: '20px 0px'}}>
+              <Container id="container" textAlign='justified'>
                 <p>{details}</p>
               </Container>
               <Fade left duration={1500}>
-                <Button as={Link} to={bttUrl} style={{margin: '25px 0px', borderRadius: '30px', fontSize: '1.3em', letterSpacing: '2px'}} basic color='teal'>
+                <Button className="mainButton" as={Link} to={bttUrl} basic color='teal'>
                 {button}
                 </Button>
               </Fade>
             </Grid.Column>
-            <Grid.Column verticalAlign='middle'>
-                <Image src='images/square-image.png' size='medium' centered/>
-                <br/>
-                <Image src='images/square-image.png' size='medium' centered/>
+            <Grid.Column>
             </Grid.Column>
           </Grid.Row>
         </Grid>
@@ -50,4 +54,4 @@ class DoubleImageWithText extends Component {
   }
 }
 
-export default DoubleImageWithText;
+export default ImageWithText;

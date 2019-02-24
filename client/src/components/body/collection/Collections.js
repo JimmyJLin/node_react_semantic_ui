@@ -3,6 +3,8 @@ import Fade from 'react-reveal/Fade';
 import { Link } from 'react-router-dom';
 import { Container, Header, Button, Grid, Image, Icon, Accordion, Divider } from 'semantic-ui-react';
 
+import './_collection.scss';
+
 const accordionContents = [
   {
   id: '0',
@@ -75,19 +77,19 @@ class Collections extends Component {
 
 
     return (
-      <Container style={{margin: "50px 0px"}}>
+      <Container id="collection">
         <Grid>
           <Grid.Column>
-            <Header as='h5' textAlign='right' style={{padding: '10px 0px'}}>
+            <Header className="menuName" as='h5' textAlign='right'>
             Beauty Spa
             </Header>
-            <Divider floated='right' style={{width: '100px', position: 'absolute', right: '10px'}} />
+            <Divider id="divider" floated='right'/>
           </Grid.Column>
         </Grid>
-        <Header as='h1' textAlign='right' style={{marginBottom: '40px'}}>
+        <Header id="menuTitle" as='h1' textAlign='right'>
           Menu Title
         </Header>
-        <Grid stackable as={Container} divided='vertically' style={{verticalAlign: 'middle'}}>
+        <Grid id="grid" stackable as={Container} divided='vertically'>
           <Grid.Row columns={2}>
             <Grid.Column verticalAlign='middle'>
               <Fade top duration={1500}>

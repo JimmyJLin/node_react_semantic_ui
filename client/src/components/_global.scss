@@ -1,0 +1,70 @@
+// Colors
+$main-background-color: #e9e8e847;
+$main-font: 'Lato', sans-serif;
+$main-font-color: #4D566D;
+$main-header-font: 'Prata', serif;
+$main-header-color: #FF5B49;
+
+
+
+// Global Settings
+body {
+  background-color: $main-background-color;
+
+  font-family: $main-font;
+  font-weight: 300;
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: $main-header-font;
+    color: $main-header-color;
+  }
+  .mainButton{
+    margin: 25px 0px !important;
+    border-radius: 30px !important;
+    font-size: 1.3em !important;
+    letter-spacing: 2px !important;
+  }
+
+  .ui.header{
+    color: $main-header-color;
+  }
+
+}
+
+
+// mixing & @medias
+@mixin small() {
+  @media only screen and (min-width: 320px) and (max-width: 374px) {
+    @content;
+  }
+};
+
+@mixin medium() {
+  @media only screen and (min-width: 375px) and (max-width: 413px) {
+    @content;
+  }
+}
+
+@mixin large() {
+  @media only screen and (min-width: 414px) and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin ipad() {
+  @media only screen and (min-width: 768px) and (max-width: 1023px) {
+    @content;
+  }
+}
+
+@mixin ipad-pro() {
+  @media only screen and (min-width: 1024px)  and (max-width: 1366px){
+    @content;
+  }
+}
+
+@mixin desktop() {
+  @media only screen and (min-width: 1367px){
+    @content;
+  }
+}

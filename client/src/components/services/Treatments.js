@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import ImageWithText from '../body/ImageWithText';
-import Collections from '../body/Collections';
-import Contact from '../body/Contact';
-import SubTitle from '../body/SubTitle';
+import ImageWithText from '../body/imagewithtext/ImageWithText';
+import Collections from '../body/collection/Collections';
+import Contact from '../body/contact/Contact';
+import SubTitle from '../body/subtitle/SubTitle';
 
 class Treatments extends Component {
   render() {

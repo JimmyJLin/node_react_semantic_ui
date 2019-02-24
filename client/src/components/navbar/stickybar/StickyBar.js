@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 import { Container, Header, Visibility, Menu, Dropdown, Image } from 'semantic-ui-react';
 
+import './_stickybar.scss';
+
 const menuStyle = {
   border: 'none',
   borderRadius: 0,
@@ -41,8 +43,8 @@ class StickyBar extends Component {
     const { menuFixed, } = this.state
 
     return(
-      <Container>
-        <Container text style={{ marginTop: '2em' }}>
+      <Container id="stickybar">
+        <Container id="sticky_top" text>
           <Header as='h1'>Sticky Example</Header>
           <p>
             This example shows how to use lazy loaded images, a sticky menu, and a simple text

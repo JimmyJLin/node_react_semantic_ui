@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { Container, Button } from 'semantic-ui-react';
 import Fade from 'react-reveal/Fade';
 
 import Slider from 'react-animated-slider';
 import 'react-animated-slider/build/horizontal.css';
+
+import './_imgslides.scss';
 
 class ImgSlides extends Component {
 
@@ -31,7 +32,7 @@ class ImgSlides extends Component {
     ]
 
     return (
-      <Slider autoplay={3000}>
+      <Slider id="imgslider" autoplay={3000}>
       	{content.map((item, index) => (
       		<div
       			key={index}

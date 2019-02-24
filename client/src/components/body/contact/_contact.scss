@@ -1,0 +1,23 @@
+#contact{
+  padding: 50px 0px;
+  height: 400px;
+  background-color: #8080802b;
+
+  #grid{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  #header{
+    margin-bottom: 50px;
+  }
+
+  #listHeader{
+    padding-top: 15px;
+  }
+
+  #listItem{
+    padding: 0px 50px;
+  }
+}

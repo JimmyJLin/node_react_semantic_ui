@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import StickyBar from './navbar/StickyBar';
+import StickyBar from './stickybar/StickyBar';
 
 class Header extends Component {
 

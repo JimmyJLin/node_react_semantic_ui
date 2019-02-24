@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-import ScrollToTop from './ScrollToTop';
+// import SASS
+import './App.scss';
 
-import Header from './Header';
-import Footer from './Footer';
-import Landing from './Landing';
+// import Components
+import ScrollToTop from './ScrollToTop';
+import Header from './navbar/Header';
+import Footer from './footer/Footer';
+import Landing from './landing/Landing';
 import Skincare from './services/Skincare';
 import Treatments from './services/Treatments';
 import Microblading from './services/Microblading';
