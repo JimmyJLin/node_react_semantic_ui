@@ -11,7 +11,7 @@ const menuStyle = {
   borderRadius: 0,
   boxShadow: 'none',
   marginBottom: '1em',
-  marginTop: '4em',
+  marginTop: '2em',
   transition: 'box-shadow 0.5s ease, padding 0.5s ease',
   backgroundColor: 'transparent'
 }
@@ -45,10 +45,9 @@ class StickyBar extends Component {
     return(
       <Container id="stickybar">
         <Container id="sticky_top" text>
-          <Header as='h1'>Sticky Example</Header>
+          <Header as='h1'>Freer Shipping</Header>
           <p>
-            This example shows how to use lazy loaded images, a sticky menu, and a simple text
-            container
+            on orders over $35 / Subscribe to our newsletter for 15% OFF
           </p>
         </Container>
 

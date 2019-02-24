@@ -5,7 +5,7 @@ import './_shops.scss'
 class Men extends Component {
   render() {
     return (
-      <div id="shops">
+      <div id="men">
         <h1>Men</h1>
       </div>
     )

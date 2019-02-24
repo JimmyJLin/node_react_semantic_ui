@@ -5,7 +5,7 @@ import './_shops.scss'
 class Bags_Accessories extends Component {
   render() {
     return (
-      <div id="shops">
+      <div id="bags">
         <h1>Bags_Accessories</h1>
       </div>
     )
