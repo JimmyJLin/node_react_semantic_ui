@@ -2,7 +2,7 @@ import _ from 'lodash'
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Container, Header, Visibility, Menu, Dropdown, Image } from 'semantic-ui-react';
+import { Container, Header, Visibility, Menu, Dropdown, Image, Icon, Label } from 'semantic-ui-react';
 
 import './_stickybar.scss';
 
@@ -59,30 +59,29 @@ class StickyBar extends Component {
         >
           <Menu
             borderless
-            fluid widths={4}
+            fluid widths={3}
             fixed={menuFixed ? 'top' : undefined}
             style={menuFixed ? fixedMenuStyle : menuStyle}
           >
-              <Menu.Item>
-                <Image as={Link} to="/" size='tiny' src='/images/liweilogo.png' />
-              </Menu.Item>
+            <Dropdown id="menuTitle" item text='Shop'>
+              <Dropdown.Menu>
+                <Dropdown.Item as={Link} to="/shops/women">Women</Dropdown.Item>
+                <Dropdown.Item as={Link} to="/shops/men">Men</Dropdown.Item>
+                <Dropdown.Item as={Link} to="/shops/jewelry">Jewelry</Dropdown.Item>
+                <Dropdown.Item as={Link} to="/shops/bags_accessories">Bags & Accessories</Dropdown.Item>
+                <Dropdown.Item as={Link} to="/shops/socks">Socks</Dropdown.Item>
+                <Dropdown.Item as={Link} to="/shops/sales">Sales</Dropdown.Item>
 
-                <Dropdown item text='Services'>
-                  <Dropdown.Menu>
-                    <Dropdown.Item as={Link} to="/services/skincare">Skin Care</Dropdown.Item>
-                    <Dropdown.Item as={Link} to="/services/treatments">Body Treatments</Dropdown.Item>
-                    <Dropdown.Item as={Link} to="/services/microblading">Microblading</Dropdown.Item>
-                    <Dropdown.Item as={Link} to="/services/collin">GM Collin Facials</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
+              </Dropdown.Menu>
+            </Dropdown>
 
-              <Menu.Item as={Link} to="/promotion">
-                Promotion
-              </Menu.Item>
-              <Menu.Item as={Link} to="/book">
-                Book
-              </Menu.Item>
+            <Menu.Item>
+              <Image as={Link} to="/" size='medium' src='/images/logo/logo_color.png' />
+            </Menu.Item>
 
+            <Menu.Item id="menuTitle" as={Link} to="/checkout/shopping_cart">
+              <Icon name="shop" size='large' /> <Label color='teal'>1</Label>
+            </Menu.Item>
           </Menu>
         </Visibility>
 

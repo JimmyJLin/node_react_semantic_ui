@@ -4,19 +4,21 @@ import { BrowserRouter, Route } from 'react-router-dom';
 // import SASS
 import './App.scss';
 
-// import Components
+// main Components
 import ScrollToTop from './ScrollToTop';
 import Header from './navbar/Header';
 import Footer from './footer/Footer';
 import Landing from './landing/Landing';
-import Skincare from './services/Skincare';
-import Treatments from './services/Treatments';
-import Microblading from './services/Microblading';
-import Collin from './services/Collin';
 
-const Book = () => <h2>Book</h2>
-const Promotion = () => <h2>Promotion</h2>
+// Shops components
+import Women from './shops/Women';
+import Men from './shops/Men';
+import Jewelry from './shops/Jewelry';
+import Bags_Accessories from './shops/Bags_Accessories';
+import Socks from './shops/Socks';
+import Sales from './shops/Sales';
 
+import Cart from './checkout/Cart';
 
 class App extends Component {
   render() {
@@ -27,12 +29,14 @@ class App extends Component {
             <ScrollToTop>
               <Header />
               <Route exact path="/" component={Landing} />
-              <Route path="/services/Skincare" component={Skincare} />
-              <Route path="/services/Treatments" component={Treatments} />
-              <Route path="/services/Microblading" component={Microblading} />
-              <Route path="/services/Collin" component={Collin} />
-              <Route path="/book" component={Book} />
-              <Route path="/promotion" component={Promotion} />
+              <Route path="/shops/women" component={Women} />
+              <Route path="/shops/men" component={Men} />
+              <Route path="/shops/jewelry" component={Jewelry} />
+              <Route path="/shops/bags_accessories" component={Bags_Accessories} />
+              <Route path="/shops/socks" component={Socks} />
+              <Route path="/shops/sales" component={Sales} />
+              <Route path="/checkout/shopping_cart" component={Cart} />
+
               <Footer />
             </ScrollToTop>
           </div>
