@@ -6,7 +6,7 @@ import './App.scss';
 
 // main Components
 import ScrollToTop from './ScrollToTop';
-import Header from './navbar/Header';
+import Header from './navbar/header/Header';
 import Footer from './footer/Footer';
 import Landing from './landing/Landing';
 
