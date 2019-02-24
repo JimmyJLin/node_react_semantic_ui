@@ -12,7 +12,7 @@ import Microblading from './services/Microblading';
 import Collin from './services/Collin';
 
 const Book = () => <h2>Book</h2>
-const Contact = () => <h2>Contact</h2>
+const Promotion = () => <h2>Promotion</h2>
 
 
 class App extends Component {
@@ -29,7 +29,7 @@ class App extends Component {
               <Route path="/services/Microblading" component={Microblading} />
               <Route path="/services/Collin" component={Collin} />
               <Route path="/book" component={Book} />
-              <Route path="/contact" component={Contact} />
+              <Route path="/promotion" component={Promotion} />
               <Footer />
             </ScrollToTop>
           </div>
