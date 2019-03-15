@@ -82,7 +82,7 @@ class DesktopNavbar extends Component {
               <Grid.Row className="desktopMenu">
                 <Menu.Item/>
                 <Menu.Item
-                  name='New'
+                  name='New Arrivals'
                   active={activeItem === 'New'}
                   onClick={this.handleItemClick}
                   as={Link} to="/shops/new"

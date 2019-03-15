@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Visibility, Menu, Image, Icon, Label, Sidebar, Segment, Header } from 'semantic-ui-react';
+import { Container, Visibility, Menu, Image, Icon, Label, Dropdown } from 'semantic-ui-react';
 
 import './_mobileNavbar.scss';
 
@@ -22,20 +22,15 @@ const fixedMenuStyle = {
 
 class MobileNavbar extends Component {
   state = {
-    menuFixed: false,
-    visible: false
+    menuFixed: false
   }
-
-  handleHideClick = () => this.setState({ visible: false })
-  handleShowClick = () => this.setState({ visible: true })
-  handleSidebarHide = () => this.setState({ visible: false })
 
   stickTopMenu = () => this.setState({ menuFixed: true })
   unStickTopMenu = () => this.setState({ menuFixed: false })
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   render() {
-    const { menuFixed, visible } = this.state
+    const { menuFixed } = this.state
 
     return (
       <Container id="mobile">
@@ -50,9 +45,19 @@ class MobileNavbar extends Component {
             fixed={menuFixed ? 'top' : undefined}
             style={menuFixed ? fixedMenuStyle : menuStyle}
           >
-            <Menu.Item>
-              <Icon name="bars" size="large" onClick={this.handleShowClick}></Icon>
-            </Menu.Item>
+            <Dropdown id="menuTitle" item text='Shop'>
+              <Dropdown.Menu>
+                <Dropdown.Item as={Link} to="/shops/new">New Arrivals</Dropdown.Item>
+                <Dropdown.Item as={Link} to="/shops/puff_stuff">Puff Stuff</Dropdown.Item>
+                <Dropdown.Item as={Link} to="/shops/women">Women</Dropdown.Item>
+                <Dropdown.Item as={Link} to="/shops/men">Men</Dropdown.Item>
+                <Dropdown.Item as={Link} to="/shops/jewelry">Jewelry</Dropdown.Item>
+                <Dropdown.Item as={Link} to="/shops/bags_accessories">Bags & Accessories</Dropdown.Item>
+                <Dropdown.Item as={Link} to="/shops/socks">Socks</Dropdown.Item>
+                <Dropdown.Item as={Link} to="/shops/sales">Sales</Dropdown.Item>
+
+              </Dropdown.Menu>
+            </Dropdown>
             <Menu.Item>
               <Image as={Link} to="/" size='medium' src='/images/logo/logo_color.png' />
             </Menu.Item>
@@ -61,40 +66,7 @@ class MobileNavbar extends Component {
               <Label color='teal' floating>1</Label>
             </Menu.Item>
           </Menu>
-
-          <Sidebar.Pushable as={Segment}>
-            <Sidebar
-              as={Menu}
-              animation='overlay'
-              icon='labeled'
-              inverted
-              onHide={this.handleSidebarHide}
-              vertical
-              visible={visible}
-              width='thin'
-            >
-              <Menu.Item as='a'>
-                <Icon name='home' />
-                Home
-              </Menu.Item>
-              <Menu.Item as='a'>
-                <Icon name='gamepad' />
-                Games
-              </Menu.Item>
-              <Menu.Item as='a'>
-                <Icon name='camera' />
-                Channels
-              </Menu.Item>
-            </Sidebar>
-
-            <Sidebar.Pusher>
-            </Sidebar.Pusher>
-          </Sidebar.Pushable>
-
         </Visibility>
-
-
-
       </Container>
     )
   }
