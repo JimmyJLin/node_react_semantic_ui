@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Container } from 'semantic-ui-react';
 
 import './_landing.scss'
 
@@ -14,7 +15,7 @@ import ImgSlides from '../body/imgslider/ImgSlides';
 class Landing extends Component {
   render() {
     return (
-      <div id="landing">
+      <Container id="landing">
 
         <ImgSlides />
 
@@ -30,7 +31,7 @@ class Landing extends Component {
 
         <Contact />
 
-      </div>
+      </Container>
     )
   }
 }

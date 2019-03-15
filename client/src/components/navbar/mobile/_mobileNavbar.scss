@@ -1,0 +1,56 @@
+#mobile {
+  #sticky_top{
+    margin-top: 2em;
+  }
+
+  #logo_block{
+    padding-bottom: 0px;
+  }
+
+  .ui.floating.label{
+    top: 2.7em;
+    left: 140px;
+  }
+
+}
+
+
+// mixing & @medias
+$oldMobile: "(max-width: 320px)";
+$mobile: "(min-width: 321px) and (max-width: 767px)";
+$tablet: "(min-width: 768px) and (max-width: 1023px)";
+$desktop: "(min-width: 1024px)";
+
+@media #{$oldMobile} {
+  #mobile {
+    .ui.floating.label{
+      top: 0.8em;
+      left: 70px;
+    }
+  }
+}
+
+@media #{$mobile} {
+  #mobile {
+    .ui.floating.label{
+      top: 0.8em;
+      left: 83px;
+    }
+  }
+}
+
+@media #{$tablet} {
+  #mobile {
+    .ui.floating.label{
+      top: 2.7em;
+      left: 140px;
+    }
+  }
+}
+
+@media #{$desktop} {
+  .ui.floating.label{
+    top: 2.7em;
+    left: 140px;
+  }
+}
