@@ -17,6 +17,8 @@ import Jewelry from './shops/Jewelry';
 import Bags_Accessories from './shops/Bags_Accessories';
 import Socks from './shops/Socks';
 import Sales from './shops/Sales';
+import New from './shops/New';
+import PuffStuff from './shops/PuffStuff';
 
 // Checkout components
 import Cart from './checkout/Cart';
@@ -45,6 +47,8 @@ class App extends Component {
               <Route path="/shops/bags_accessories" component={Bags_Accessories} />
               <Route path="/shops/socks" component={Socks} />
               <Route path="/shops/sales" component={Sales} />
+              <Route path="/shops/new" component={New} />
+              <Route path="/shops/puff_stuff" component={PuffStuff} />
 
               {/* Checkout Routes */}
               <Route path="/checkout/shopping_cart" component={Cart} />

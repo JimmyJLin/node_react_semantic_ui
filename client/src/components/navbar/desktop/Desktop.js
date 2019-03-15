@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, Responsive, Container, Button, Segment, Visibility } from 'semantic-ui-react';
 
-import getWidth from '../../middlewares/getWidth';
-import LandingHeading from './LandingHeading';
+import getWidth from '../../../middlewares/getWidth';
+// import LandingHeading from './LandingHeading';
 
 class Desktop extends Component {
   state = {activeItem: ''}
@@ -102,7 +102,8 @@ class Desktop extends Component {
                 </Menu.Item>
               </Container>
             </Menu>
-            <LandingHeading />
+
+
           </Segment>
         </Visibility>
       </Responsive>

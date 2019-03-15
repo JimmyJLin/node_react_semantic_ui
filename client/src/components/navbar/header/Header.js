@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import StickyBar from '../stickybar/StickyBar';
+import DesktopNavbar from '../desktop/DesktopNavbar';
 
 import './_header.scss'
 
@@ -9,7 +10,7 @@ class Header extends Component {
 
     return(
       <div id="Header">
-        <StickyBar />
+        <DesktopNavbar />
       </div>
     );
   }

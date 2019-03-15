@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Menu, Responsive, Container, Button, Segment, Sidebar, Icon } from 'semantic-ui-react';
-import getWidth from '../../middlewares/getWidth';
-import LandingHeading from './LandingHeading';
+import getWidth from '../../../middlewares/getWidth';
+// import LandingHeading from './LandingHeading';
 
 class Mobile extends Component {
   state = {activeItem: '', visible: false}
@@ -115,7 +115,8 @@ class Mobile extends Component {
                 </Menu.Item>
               </Menu>
             </Container>
-            <LandingHeading />
+
+            
           </Segment>
         </Sidebar.Pusher>
       </Responsive>
