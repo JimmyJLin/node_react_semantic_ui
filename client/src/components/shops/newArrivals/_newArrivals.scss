@@ -1,5 +1,38 @@
 #new_arrivals{
 
-  padding: 50px 0px;
+  margin: 10% 5%;
+  padding: 0 50px;
+
+  #title{
+    text-align: center;
+    padding-bottom: 25px;
+  }
+
+  .slick-prev, .slick-next{
+    background-color: transparent !important;
+  }
+
+  .slick-prev {
+    left: -37px;
+  }
+
+  .slick-prev:before, .slick-next:before{
+    font-size: 30px !important;
+    color: black !important;
+    background-color: transparent !important;
+  }
+
+  #multi_card_container{
+    padding: 0 5px;
+    #multi_card_img{
+      img{
+        width: 100%;
+        height: auto;
+      }
+    }
+    #multi_card_body{
+      text-align: center;
+    }
+  }
 
 }
