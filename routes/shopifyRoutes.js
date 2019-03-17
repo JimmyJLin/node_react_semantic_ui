@@ -170,10 +170,12 @@ module.exports = app => {
   })
 
   // get one product
-  app.get('/api/shopify/product/:id', async (req, res) => {
-    const id = req.params.id
-    await shopify.product.get(id)
+  app.post('/api/shopify/product/id', async (req, res) => {
+    const productId = req.body.id
+    // console.log('productName', productId)
+    await shopify.product.get(productId)
       .then((data) => {
+        // console.log('data----', data)
         res.send(data);
       })
       .catch((err) => {

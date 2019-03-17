@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Sliders from 'react-slick';
 
 import { fetchNewArrivals } from '../../../actions';
-import { Container, Card, Image } from 'semantic-ui-react'
+import { Container, Image } from 'semantic-ui-react'
 
 import './_newArrivals.scss'
 
@@ -40,13 +40,22 @@ class NewArrivals extends Component {
     this.setState({
       newArrivals: this.props.newArrivals
     })
-    console.log('fetchNewArrivals', this.state.newArrivals)
+    // console.log('fetchNewArrivals', this.state.newArrivals)
   }
 
   renderCards() {
     return this.state.newArrivals.map(({ product_id, title, images, variants, handle }) => {
+      const productData = {
+        id: product_id,
+        handle: handle
+      }
       return (
-        <Container as={NavLink} to={'/products/' + handle} key={product_id} id="multi_card_container">
+        <Container
+          data={productData}
+          as={NavLink}
+          to={`/products/${handle}/${product_id}`} key={product_id}
+          id="multi_card_container"
+        >
           <Image className="square zoom" src={images[0].src} fluid/>
           <div id="multi_card_body">
             <h4>{title}</h4>

@@ -19,6 +19,7 @@ import Socks from './shops/Socks';
 import Sales from './shops/Sales';
 import New from './shops/New';
 import PuffStuff from './shops/PuffStuff';
+import Product from './shops/product/Product';
 
 // Checkout components
 import Cart from './checkout/Cart';
@@ -49,6 +50,9 @@ class App extends Component {
               <Route path="/shops/sales" component={Sales} />
               <Route path="/shops/new" component={New} />
               <Route path="/shops/puff_stuff" component={PuffStuff} />
+
+              {/* Product Routes */}
+              <Route path="/products/:name/:id" component={Product} />
 
               {/* Checkout Routes */}
               <Route path="/checkout/shopping_cart" component={Cart} />

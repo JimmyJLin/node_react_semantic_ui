@@ -2,7 +2,14 @@ import axios from 'axios';
 import { FETCH_NEW_ARRIVALS } from './types';
 import { FETCH_NEW_FEEDS } from './types';
 import { FETCH_WOMEN } from './types';
+import { FETCH_ONE_PRODUCT } from './types';
 
+
+export const fetchOneProduct = (productName) => async dispatch => {
+  const res = await axios.post('/api/shopify/product/id', productName);
+
+  dispatch({ type: FETCH_ONE_PRODUCT, payload: res.data });
+};
 
 export const fetchNewArrivals = () => async dispatch => {
   const res = await axios.get('/api/shopify/collection/new_arrivals');
