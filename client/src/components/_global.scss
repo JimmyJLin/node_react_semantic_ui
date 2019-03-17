@@ -3,7 +3,7 @@ $main-background-color: #e9e8e847;
 $main-font: 'Lato', sans-serif;
 $main-font-color: #4D566D;
 $main-header-font: 'Prata', serif;
-$main-header-color: #FF5B49;
+$main-header-color: #39ccc5;
 
 
 
@@ -17,6 +17,14 @@ body {
   h1, h2, h3, h4, h5, h6 {
     font-family: $main-header-font;
     color: $main-header-color;
+  }
+
+  a{
+    text-decoration: none;
+    color: $main-font-color;
+  }
+  a:hover{
+    color: rgba(0,0,0,0.4)
   }
   .mainButton{
     margin: 25px 0px !important;

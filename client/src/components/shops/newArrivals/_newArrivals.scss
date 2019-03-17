@@ -6,7 +6,7 @@
   #title{
     text-align: center;
   }
-  
+
   .slick-prev, .slick-next{
     background-color: transparent !important;
   }
@@ -28,10 +28,24 @@
       display: inline-block;
       width: 240px;
       height: 240px;
-      padding-bottom: 10px;
+      padding-bottom: 20px;
       background-position: center center;
       background-size: cover;
     }
+
+    .zoom {
+      transition: all .5s ease-in-out; /* Animation */
+      z-index: 999;
+    }
+
+    .zoom:hover {
+      transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    }
+
+    p{
+      text-decoration: none;
+    }
+
     #multi_card_body{
       text-align: center;
     }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Sliders from 'react-slick';
 
@@ -43,15 +44,15 @@ class NewArrivals extends Component {
   }
 
   renderCards() {
-    return this.state.newArrivals.map(({ product_id, title, images, variants }) => {
+    return this.state.newArrivals.map(({ product_id, title, images, variants, handle }) => {
       return (
-        <div key={product_id} id="multi_card_container">
-          <Image className="square" src={images[0].src} fluid/>
+        <Container as={NavLink} to={'/products/' + handle} key={product_id} id="multi_card_container">
+          <Image className="square zoom" src={images[0].src} fluid/>
           <div id="multi_card_body">
             <h4>{title}</h4>
             <p>$ {variants[0].price}</p>
           </div>
-        </div>
+        </Container>
       )
     })
   }
