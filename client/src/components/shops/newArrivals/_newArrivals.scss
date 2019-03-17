@@ -5,9 +5,8 @@
 
   #title{
     text-align: center;
-    padding-bottom: 25px;
   }
-
+  
   .slick-prev, .slick-next{
     background-color: transparent !important;
   }
@@ -24,15 +23,19 @@
 
   #multi_card_container{
     padding: 0 5px;
-    #multi_card_img{
-      img{
-        width: 100%;
-        height: auto;
-      }
+
+    .square {
+      display: inline-block;
+      width: 240px;
+      height: 240px;
+      padding-bottom: 10px;
+      background-position: center center;
+      background-size: cover;
     }
     #multi_card_body{
       text-align: center;
     }
+
   }
 
 }
