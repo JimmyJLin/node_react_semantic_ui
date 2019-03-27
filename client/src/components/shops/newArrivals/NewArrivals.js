@@ -58,7 +58,7 @@ class NewArrivals extends Component {
         >
           <Image className="square zoom" src={images[0].src} fluid/>
           <div id="multi_card_body">
-            <h4>{title}</h4>
+            <h5>{title}</h5>
             <p>$ {variants[0].price}</p>
           </div>
         </Container>

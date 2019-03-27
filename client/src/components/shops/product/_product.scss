@@ -3,4 +3,51 @@
   h1{
     text-align: center;
   }
+
+  #rightColumn{
+    ul{
+      list-style-type: none;
+      display: inline-flex;
+    }
+    .AddToCartButton{
+      margin-top: 20px;
+      min-height: 44px;
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 7.5px 8px;
+      border: 1px solid #222;
+      border-radius: 0;
+      font: 700 2rem/1.36 helvetica,arial,sans-serif;
+      letter-spacing: .05rem;
+      text-align: center;
+      color: #fff;
+      background-color: #222;
+      cursor: pointer;
+      -webkit-font-smoothing: antialiased;
+    }
+    .size{
+      border: 1px solid #aaa;
+      text-align: center;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      vertical-align: middle;
+      cursor: pointer;
+      min-width: 38px;
+      max-width: 100%;
+      margin: 0 5px 5px 0;
+      padding: 10px;
+      color: #767676;
+      line-height: 1.7;
+      background-color: #fff;
+    }
+    .size:hover{
+      color: #212121;
+      border: 1px solid #212121;
+    }
+    .active{
+      color: #212121;
+      border: 1px solid #212121;
+    }
+  }
 }
