@@ -47,7 +47,7 @@ class DesktopNavbar extends Component {
     return(
       <Container id="desktop">
         <Container id="sticky_top" text>
-          <Header as='h1'>Freer Shipping</Header>
+          <Header as='h1'>Free Shipping</Header>
           <p>
             on orders over $35 / Subscribe to our newsletter for 15% OFF
           </p>
