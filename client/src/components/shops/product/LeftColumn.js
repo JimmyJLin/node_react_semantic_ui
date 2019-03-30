@@ -2,9 +2,7 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Image, Icon } from 'semantic-ui-react'
-// import Sliders from 'react-slick';
 import ImageGallery from 'react-image-gallery'
-// import "react-image-gallery/styles/css/image-gallery.css"
 
 import './_leftColumn.scss'
 
@@ -54,26 +52,6 @@ class LeftColumn extends Component {
 
     return slideImages;
   }
-
-  // render() {
-  //   const settings ={
-  //     dots: true,
-  //     dotsClass: "slick-dots slick-thumb",
-  //     fade: true,
-  //     infinite: true,
-  //     speed: 500,
-  //     pauseOnHover: true,
-  //     autoplay: true,
-  //     slidesToShow: 1,
-  //     slidesToScroll: 1
-  //   }
-  //
-  //   return (
-  //     <Sliders {...settings}>
-  //       {this.renderingImages()}
-  //     </Sliders>
-  //   )
-  // }
 
   renderingImageGallery(){
     const { slideImages } = this.state
