@@ -1,3 +1,5 @@
+@import "node_modules/react-image-gallery/styles/scss/image-gallery.scss";
+
 #product{
   margin: 50px 0px;
   padding-top: 50px;
@@ -11,6 +13,7 @@
     margin-top: 26px;
     margin-bottom: 15px;
   }
+
 
   #rightColumn{
     .productTitle{

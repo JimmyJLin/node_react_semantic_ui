@@ -17,7 +17,7 @@ class Collection extends Component {
     await this.setState({
       collection: this.props.collection
     })
-    console.log('Collection -----', this.state.collection)
+    // console.log('Collection -----', this.state.collection)
   }
 
   renderingCollection(){

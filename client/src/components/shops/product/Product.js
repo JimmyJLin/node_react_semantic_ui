@@ -29,7 +29,7 @@ class Product extends Component {
     const { image } = this.state.product;
     if( _.isEmpty(image) === false ) {
       return(
-        <div id="leftColumn">
+        <div>
           <LeftColumn />
         </div>
       )
