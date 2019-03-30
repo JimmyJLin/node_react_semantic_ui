@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Card } from 'semantic-ui-react'
+import MediaQuery from 'react-responsive';
+
 import Carousel from './Carousel';
 
 import './_collection.scss'
@@ -32,10 +34,8 @@ class Collection extends Component {
           <Carousel data={images}/>
 
           <Card.Content>
-            <Card.Header>{ title }</Card.Header>
-            <Card.Meta>
-              <span> $ {variants[0].price}</span>
-            </Card.Meta>
+            <div id="title">{ title }</div>
+            <div id="price"> $ {variants[0].price} </div>
             {/* <Card.Description>Matthew is a musician living in Nashville.</Card.Description>  */}
           </Card.Content>
         </Card>
@@ -49,11 +49,19 @@ class Collection extends Component {
 
     return (
       <div id="collection">
-        <Card.Group itemsPerRow={4} stackable>
 
+      <MediaQuery query="(min-device-width: 1024px)">
+        <Card.Group itemsPerRow={4}>
           {this.renderingCollection()}
-
         </Card.Group>
+      </MediaQuery>
+
+      <MediaQuery query="(max-device-width: 1023px)">
+        <Card.Group itemsPerRow={2}>
+          {this.renderingCollection()}
+        </Card.Group>
+      </MediaQuery>
+
       </div>
     )
   }
