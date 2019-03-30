@@ -49,7 +49,7 @@ class Collection extends Component {
 
     return (
       <div id="collection">
-        <Card.Group itemsPerRow={4}>
+        <Card.Group itemsPerRow={4} stackable>
 
           {this.renderingCollection()}
 

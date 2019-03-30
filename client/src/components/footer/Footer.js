@@ -50,7 +50,7 @@ class Footer extends Component {
             </Grid.Row>
           </Grid>
 
-          <p id="copyright">© Copyright LiWei Beauty | All Rights Reserved</p>
+          <p id="copyright">© Copyright Allthingsfrenchie | All Rights Reserved</p>
         </Container>
       </Segment>
     )
