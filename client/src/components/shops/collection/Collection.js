@@ -34,7 +34,7 @@ class Collection extends Component {
           <Card.Content>
             <Card.Header>{ title }</Card.Header>
             <Card.Meta>
-              <span> {variants[0].price}</span>
+              <span> $ {variants[0].price}</span>
             </Card.Meta>
             {/* <Card.Description>Matthew is a musician living in Nashville.</Card.Description>  */}
           </Card.Content>
