@@ -3,7 +3,14 @@ import { FETCH_NEW_ARRIVALS } from './types';
 import { FETCH_NEW_FEEDS } from './types';
 import { FETCH_WOMEN } from './types';
 import { FETCH_ONE_PRODUCT } from './types';
+import { SET_SPINNER } from './types';
 
+
+export const setSpinner = (spinner) => async dispatch => {
+  const spinnerState = spinner
+
+  dispatch({ type: SET_SPINNER, payload: spinnerState });
+}
 
 export const fetchOneProduct = (productName) => async dispatch => {
   const res = await axios.post('/api/shopify/product/id', productName);

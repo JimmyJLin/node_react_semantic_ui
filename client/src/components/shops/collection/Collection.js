@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Card, Image } from 'semantic-ui-react'
 import MediaQuery from 'react-responsive';
-
 import Carousel from './Carousel';
 
 import './_collection.scss'
@@ -15,7 +14,7 @@ class Collection extends Component {
 
   async componentDidMount(){
     await this.setState({
-      collection: this.props.collection
+      collection: this.props.collection,
     })
     // console.log('Collection -----', this.state.collection)
   }
@@ -69,22 +68,23 @@ class Collection extends Component {
     return renderingCollection
   }
 
+
   render() {
 
     return (
       <div id="collection">
 
-      <MediaQuery query="(min-device-width: 1024px)">
-        <Card.Group itemsPerRow={4}>
-          {this.renderingCollection()}
-        </Card.Group>
-      </MediaQuery>
+        <MediaQuery query="(min-device-width: 1024px)">
+          <Card.Group itemsPerRow={4}>
+            {this.renderingCollection()}
+          </Card.Group>
+        </MediaQuery>
 
-      <MediaQuery query="(max-device-width: 1023px)">
-        <Card.Group itemsPerRow={2}>
-          {this.renderingMobileCollection()}
-        </Card.Group>
-      </MediaQuery>
+        <MediaQuery query="(max-device-width: 1023px)">
+          <Card.Group itemsPerRow={2}>
+            {this.renderingMobileCollection()}
+          </Card.Group>
+        </MediaQuery>
 
       </div>
     )

@@ -1,11 +1,12 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchOneProduct } from '../../../actions';
+import { fetchOneProduct, setSpinner } from '../../../actions';
 import { Container, Grid } from 'semantic-ui-react'
 
 import LeftColumn from './LeftColumn';
 import RightColumn from './RightColumn';
+import Spinner from '../../spinner/Spinner'
 
 import './_product.scss'
 
@@ -21,7 +22,13 @@ class Product extends Component {
     await this.setState({
       product: this.props.product
     })
-    console.log('One Product -----', this.state.product)
+
+    const spinner = {
+      isLoading: false
+    }
+    await this.props.setSpinner(spinner)
+
+    // console.log('One Product -----', this.state.product)
 
   }
 
@@ -50,6 +57,8 @@ class Product extends Component {
     return (
       <Container id="product">
 
+        <Spinner />
+
         <Grid stackable columns={2}>
           {/* Left Column */}
           <Grid.Column>
@@ -67,8 +76,8 @@ class Product extends Component {
   }
 }
 
-function mapStateToProps({ product }) {
-  return { product };
+function mapStateToProps({ product, spinner }) {
+  return { product, spinner };
 }
 
-export default connect(mapStateToProps, { fetchOneProduct })(Product);
+export default connect(mapStateToProps, { fetchOneProduct, setSpinner })(Product);

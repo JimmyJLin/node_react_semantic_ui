@@ -2,9 +2,10 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Container } from 'semantic-ui-react'
-import { fetchWomen } from '../../actions';
+import { fetchWomen, setSpinner } from '../../actions';
 
 import Collection from './collection/Collection';
+import Spinner from '../spinner/Spinner'
 
 import './_shops.scss'
 
@@ -21,14 +22,20 @@ class Women extends Component {
       collection: this.props.women
     })
 
+    const spinner = {
+      isLoading: false
+    }
+    await this.props.setSpinner(spinner)
+
   }
 
   renderingCollection(){
     const collection = this.state.collection;
     if( _.isEmpty(collection) === false ) {
-      console.log('YESSS')
+      // console.log('YESSS')
       return(
         <div>
+
           <Collection collection={ collection }/>
         </div>
       )
@@ -39,14 +46,16 @@ class Women extends Component {
     return (
       <Container id="women">
         <h1>Women</h1>
+        <Spinner />
+        
         {this.renderingCollection()}
       </Container>
     )
   }
 }
 
-function mapStateToProps({ women }) {
-  return { women };
+function mapStateToProps({ women, spinner }) {
+  return { women, spinner };
 }
 
-export default connect(mapStateToProps, { fetchWomen })(Women);
+export default connect(mapStateToProps, { fetchWomen, setSpinner })(Women);
