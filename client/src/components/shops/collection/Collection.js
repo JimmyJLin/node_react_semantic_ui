@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Card, Image } from 'semantic-ui-react'
@@ -22,23 +23,46 @@ class Collection extends Component {
   renderingCollection(){
 
     const { collection } = this.state
-
+    // console.log('collection', collection)
     const renderingCollection = collection.map((e) => {
-      const { id, title, variants, images, handle } = e
-      return(
-        <Card
-          key={id} as={NavLink}
-         to={`/products/${handle}/${id}`}
-        >
-          <Carousel data={images}/>
+      const { id, product_id, title, variants, images, handle } = e
+      if( _.isEmpty(id) === true && id == null ) {
+        // console.log("id-YESSSS")
+        return(
+          <Card
+            key={product_id} as={NavLink}
+            to={`/products/${handle}/${product_id}`}
+          >
+            <Carousel data={images}/>
 
-          <Card.Content>
-            <div id="title">{ title }</div>
-            <div id="price"> $ {variants[0].price} </div>
-            {/* <Card.Description>Matthew is a musician living in Nashville.</Card.Description>  */}
-          </Card.Content>
-        </Card>
-      )
+            <Card.Content>
+              <div id="title">{ title }</div>
+              <div id="price"> $ {variants[0].price} </div>
+              {/* <Card.Description>Matthew is a musician living in Nashville.</Card.Description>  */}
+            </Card.Content>
+          </Card>
+        )
+      }
+
+      if( _.isEmpty(product_id) === true && product_id == null ) {
+        // console.log("product_id-YESSSS")
+
+        return(
+          <Card
+            key={id} as={NavLink}
+            to={`/products/${handle}/${id}`}
+          >
+            <Carousel data={images}/>
+
+            <Card.Content>
+              <div id="title">{ title }</div>
+              <div id="price"> $ {variants[0].price} </div>
+              {/* <Card.Description>Matthew is a musician living in Nashville.</Card.Description>  */}
+            </Card.Content>
+          </Card>
+        )
+      }
+
     })
 
     return renderingCollection
@@ -49,20 +73,38 @@ class Collection extends Component {
     const { collection } = this.state
 
     const renderingCollection = collection.map((e) => {
-      const { id, title, variants, images, handle } = e
-      return(
-        <Card
-          key={id} as={NavLink}
-         to={`/products/${handle}/${id}`}
-        >
+      const { id, product_id, title, variants, images, handle } = e
+      if( _.isEmpty(id) === true && id == null ) {
+        return(
+          <Card
+          key={product_id} as={NavLink}
+          to={`/products/${handle}/${product_id}`}
+          >
           <Image src={images[0].src} />
           <Card.Content>
-            <div id="title">{ title }</div>
-            <div id="price"> $ {variants[0].price} </div>
-            {/* <Card.Description>Matthew is a musician living in Nashville.</Card.Description>  */}
+          <div id="title">{ title }</div>
+          <div id="price"> $ {variants[0].price} </div>
+          {/* <Card.Description>Matthew is a musician living in Nashville.</Card.Description>  */}
           </Card.Content>
-        </Card>
-      )
+          </Card>
+        )
+      }
+
+      if( _.isEmpty(product_id) === true && product_id == null ) {
+        return(
+          <Card
+          key={id} as={NavLink}
+          to={`/products/${handle}/${id}`}
+          >
+          <Image src={images[0].src} />
+          <Card.Content>
+          <div id="title">{ title }</div>
+          <div id="price"> $ {variants[0].price} </div>
+          {/* <Card.Description>Matthew is a musician living in Nashville.</Card.Description>  */}
+          </Card.Content>
+          </Card>
+        )
+      }
     })
 
     return renderingCollection
