@@ -70,7 +70,7 @@ class NewArrivals extends Component {
     const settings ={
       dots: true,
       infinite: true,
-      autoplay: true,
+      autoplay: false,
       speed: 1500,
       slidesToShow: 4,
       slidesToScroll: 4,
@@ -95,6 +95,7 @@ class NewArrivals extends Component {
         }, {
           breakpoint: 480,
           settings: {
+            dots: false,
             slidesToShow: 1,
             slidesToScroll: 1
           }
