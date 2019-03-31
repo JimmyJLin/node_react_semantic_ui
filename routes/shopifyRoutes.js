@@ -15,7 +15,10 @@ module.exports = app => {
     { id: '422638024', name: 'bag_accessories' },
     { id: '422637320', name: 'socks' },
     { id: '448677832', name: 'sale' },
-    { id: '422685448', name: 'new_arrivals'}
+    { id: '422685448', name: 'new_arrivals'},
+    { id: '83833815151', name: 'puff-stuff'},
+    { id: '78121730159', name: 'howloween'},
+    { id: '89295847535', name: 'holiday'}
   ];
 
   let smartCollection = [];
@@ -26,6 +29,9 @@ module.exports = app => {
   let socksCollection = [];
   let salesCollection = [];
   let newArrivalCollection = [];
+  let puffStuffCollection = [];
+  let howloweenCollection = [];
+  let holidayCollection = [];
 
   // get all collections not including New Arrivals
   app.get('/api/shopify/collections', async (req, res) => {
@@ -167,6 +173,59 @@ module.exports = app => {
       });
 
     res.send(newArrivalCollection);
+  })
+
+  // get puffstuff collection
+  app.get('/api/shopify/collection/puff_stuff', async (req, res) => {
+    await shopify.productListing.list({
+      collection_id: currentCollectons[7].id
+    })
+      .then((data) => {
+        puffStuffCollection = [];
+        data.forEach((collection) => {
+          puffStuffCollection.push(collection);
+        });
+      })
+      .catch((err) => {
+        console.log('err', err);
+      });
+
+    res.send(puffStuffCollection);
+  })
+  // get howloween collection
+  app.get('/api/shopify/collection/holoween', async (req, res) => {
+    await shopify.productListing.list({
+      collection_id: currentCollectons[8].id
+    })
+      .then((data) => {
+        howloweenCollection = [];
+        data.forEach((collection) => {
+          howloweenCollection.push(collection);
+        });
+      })
+      .catch((err) => {
+        console.log('err', err);
+      });
+
+    res.send(howloweenCollection);
+  })
+
+  // get holiday collection
+  app.get('/api/shopify/collection/holiday', async (req, res) => {
+    await shopify.productListing.list({
+      collection_id: currentCollectons[9].id
+    })
+      .then((data) => {
+        holidayCollection = [];
+        data.forEach((collection) => {
+          holidayCollection.push(collection);
+        });
+      })
+      .catch((err) => {
+        console.log('err', err);
+      });
+
+    res.send(holidayCollection);
   })
 
   // get one product
