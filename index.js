@@ -5,7 +5,8 @@ const app = express();
 
 app.use(bodyParser.json());
 
-require('./routes/shopifyRoutes')(app);
+require('./routes/shopifyCollectionRoutes')(app);
+require('./routes/shopifyCartRoutes')(app);
 require('./routes/instagramRoutes')(app);
 
 if (process.env.NODE_ENV === 'production') {
