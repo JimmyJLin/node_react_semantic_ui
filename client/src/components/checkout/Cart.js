@@ -1,12 +1,14 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 import './_checkout.scss'
 
 class Cart extends Component {
+
   render() {
+
     return (
-      <div id="checkout">
-        <h1>Shopping Cart</h1>
+      <div className="Cart">
+        <h3>Shopping Cart</h3>
       </div>
     )
   }
