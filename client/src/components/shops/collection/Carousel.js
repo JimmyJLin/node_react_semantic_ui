@@ -20,7 +20,7 @@ class Carousel extends Component {
       return(
         <div key={id} id="carousel_container">
           <div id="carousel_img">
-            <LazyLoad once>
+            <LazyLoad once offset={100}>
               <img src={src} alt=""/>
             </LazyLoad>
           </div>

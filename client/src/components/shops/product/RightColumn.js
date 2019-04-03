@@ -248,16 +248,17 @@ class RightColumn extends Component {
   handleAddCart(){
 
     let title = ""
+
     const size = this.state.selectedSize
     const color = this.state.color
     if(_.isEmpty(this.state.color) === true) {
       // console.log("YESS")
       title = this.state.selectedSize
-      console.log('title', title)
+      // console.log('title', title)
     } else {
       // console.log("NOOOO")
       title = this.state.color + ' / ' + this.state.selectedSize
-      console.log('title', title)
+      // console.log('title', title)
 
     }
 
