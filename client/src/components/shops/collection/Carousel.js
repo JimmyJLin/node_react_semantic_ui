@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Sliders from 'react-slick';
+import LazyLoad from 'react-lazyload';
 
 import './_carousel.scss'
 
@@ -19,7 +20,9 @@ class Carousel extends Component {
       return(
         <div key={id} id="carousel_container">
           <div id="carousel_img">
-            <img src={src} alt=""/>
+            <LazyLoad once>
+              <img src={src} alt=""/>
+            </LazyLoad>
           </div>
         </div>
       )
