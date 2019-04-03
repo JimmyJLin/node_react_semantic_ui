@@ -19,6 +19,16 @@ module.exports = app => {
       ]
     }
 
+  const shoppingCart = []
+  // ADD TO SHOPPING CART
+  app.post('/api/shopify/shopping_cart/new', async (req, res) => {
+    console.log('checkout----', req.body)
+    const line_items = req.body
+    shoppingCart.push(line_items)
+
+    res.send(shoppingCart)
+  })
+
   // CREATE NEW ORDER
   app.post('/api/shopify/order/new', async (req, res) => {
     console.log('order----', order)

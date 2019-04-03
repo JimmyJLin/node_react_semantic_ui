@@ -8,4 +8,5 @@ export const FETCH_JEWELRY = 'fetch_jewelry';
 export const FETCH_MEN = 'fetch_men';
 export const FETCH_SALE = 'fetch_sale';
 export const FETCH_SOCK = 'fetch_sock';
-export const FETCH_PUFF_STUFF = 'FETCH_PUFF_STUFF';
+export const FETCH_PUFF_STUFF = 'fetch_puff_stuff';
+export const FETCH_SHOPPING_CART = 'fetch_shopping_cart';

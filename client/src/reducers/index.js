@@ -10,6 +10,7 @@ import menReducer from './menReducer';
 import saleReducer from './saleReducer';
 import sockReducer from './sockReducer';
 import puffStuffReducer from './puffStuffReducer';
+import cartReducer from './cartReducer';
 
 export default combineReducers({
   newArrivals: newArrivalsReducer,
@@ -22,5 +23,6 @@ export default combineReducers({
   men: menReducer,
   sale: saleReducer,
   sock: sockReducer,
-  puffStuff: puffStuffReducer
+  puffStuff: puffStuffReducer,
+  cart: cartReducer
 });

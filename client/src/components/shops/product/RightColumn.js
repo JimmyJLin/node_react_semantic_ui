@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Grid, Select, Button, Icon, Divider, Rating, Accordion } from 'semantic-ui-react'
+import { fetchShoppingCart } from '../../../actions';
 
 import Shipping from '../../legal/Shipping'
 
@@ -28,7 +29,6 @@ class RightColumn extends Component {
   state = {
     product: {},
     activeIndex: "",
-    xsmallActive: false,
     smallActive: false,
     mediumActive: false,
     largeActive: false,
@@ -39,7 +39,7 @@ class RightColumn extends Component {
     color: "",
     colorOptions: [],
     sizesContainer: [],
-    qty: "",
+    qty: 1,
     variants: [],
     varians_id: ""
   }
@@ -72,26 +72,28 @@ class RightColumn extends Component {
     this.setState({qty: value})
   }
 
-  handleSetXSmallActive(e) {
-    const size = e.target.value
-    this.setState({ xsmallActive: !this.state.xsmallActive, smallActive: false, mediumActive: false, largeActive: false, xlargeActive: false, xxlargeActive: false })
-    this.handleSizeChange(size)
-  }
 
   handleSetSmallActive(e) {
     const size = e.target.value
+    console.log('PROBLEM ---handleSetSmallActive-0000', size)
     this.setState({ xsmallActive: false, smallActive: !this.state.smallActive, mediumActive: false, largeActive: false, xlargeActive: false, xxlargeActive: false })
+    console.log('handleSetSmallActive-state', !this.state.smallActive)
+
     this.handleSizeChange(size)
   }
 
   handleSetMediumActive(e) {
     const size = e.target.value
+    console.log('handleSetMediumActive-0000', size)
     this.setState({ xsmallActive: false, smallActive: false, mediumActive: !this.state.mediumActive, largeActive: false, xlargeActive: false, xxlargeActive: false })
+    console.log('handleSetSmallActive-state', !this.state.mediumActive)
+
     this.handleSizeChange(size)
   }
 
   handleSetLargeActive(e) {
     const size = e.target.value
+    console.log('handleSetLargeActive-0000', size)
     this.setState({ xsmallActive: false, smallActive: false, mediumActive: false, largeActive: !this.state.largeActive, xlargeActive: false, xxlargeActive: false })
     this.handleSizeChange(size)
   }
@@ -159,9 +161,6 @@ class RightColumn extends Component {
     // console.log('sizes----xxxxx', sizes)
     if( _.isEmpty(sizes) === false ) {
 
-      if(sizes[0].values.includes("XS") === true || sizes[0].values.includes("XSmall") === true){
-        sizeOptions.push({size: 0, name: "XS", type: "xsmallActive"})
-      }
       if(sizes[0].values.includes("S") === true || sizes[0].values.includes("Small") === true){
         sizeOptions.push({size: 1, name: "S", type: "smallActive"})
       }
@@ -180,22 +179,20 @@ class RightColumn extends Component {
     }
 
     this.setState({ sizesContainer: sizeOptions})
-    // console.log("sizesContainer----", this.state.sizesContainer)
+    console.log("sizesContainer----", this.state.sizesContainer)
   }
 
   handleSizeChange(size){
     switch(size) {
       case 0:
-        return this.setState({ selectedSize: "XS" });
-      case 1:
         return this.setState({ selectedSize: "S" });
-      case 2:
+      case 1:
           return this.setState({ selectedSize: "M" });
-      case 3:
+      case 2:
         return this.setState({ selectedSize: "L" });
-      case 4:
+      case 3:
         return this.setState({ selectedSize: "XL" });
-      case 5:
+      case 4:
         return this.setState({ selectedSize: "2XL" });
       default:
         return ""
@@ -203,19 +200,21 @@ class RightColumn extends Component {
   }
 
   renderingAvailableSize(){
-    const xsSize = this.state.sizesContainer.filter((arr) => {return arr.name === "XS"})
     const sSize = this.state.sizesContainer.filter((arr) => {return arr.name === "S"})
     const mSize = this.state.sizesContainer.filter((arr) => {return arr.name === "M"})
     const lSize = this.state.sizesContainer.filter((arr) => {return arr.name === "L"})
     const xlSize = this.state.sizesContainer.filter((arr) => {return arr.name === "XL"})
     const xxlSize = this.state.sizesContainer.filter((arr) => {return arr.name === "2xl"})
     // console.log('this.state.sizesContainer', this.state.sizesContainer)
+
+    console.log('sSize ====>', sSize)
     if(this.state.sizesContainer.length > 0) {
       return (
         <ul id="variants">
-          {_.isEmpty(xsSize) === false ? <li className={`size ${this.state.xsmallActive ? 'active' : ""}`} data-value="0" onClick={ (e)=> this.handleSetXSmallActive(e) }>XS</li> : "" }
-          { _.isEmpty(sSize) === false ? <li className={`size ${this.state.smallActive ? 'active' : ""}`} data-value="1" onClick={ (e)=> this.handleSetSmallActive(e) }>S</li> : ""}
-          { _.isEmpty(mSize) === false ? <li className={`size ${this.state.mediumActive ? 'active' : ""}`} value="2" onClick={ (e)=> this.handleSetMediumActive(e) }>M</li> : ""}
+          { _.isEmpty(sSize) === false ? <li className={`size ${this.state.smallActive ? 'active' : ""}`} data-value="1" onClick={ (e)=> this.handleSetSmallActive(e, console.log('e---xxxxxx', e.target.value)) }>S</li> : ""}
+
+          { _.isEmpty(mSize) === false ? <li className={`size ${this.state.mediumActive ? 'active' : ""}`} value="2" onClick={ (e)=> this.handleSetMediumActive(e, console.log('e', e.target.value) ) }>M</li> : ""}
+
           { _.isEmpty(lSize) === false ? <li className={`size ${this.state.largeActive ? 'active' : ""}`} value="3" onClick={ (e)=> this.handleSetLargeActive(e) }>L</li> : ""}
           { _.isEmpty(xlSize) === false ? <li className={`size ${this.state.xlargeActive ? 'active' : ""}`} value="4" onClick={ (e)=> this.handleSetXlargeActive(e) }>XL</li> : ""}
           { _.isEmpty(xxlSize) === false ? <li className={`size ${this.state.xxlargeActive ? 'active' : ""}`} value="5" onClick={ (e)=> this.handleSetXxlargeActive(e) }>2XL</li> : ""}
@@ -248,32 +247,27 @@ class RightColumn extends Component {
 
   handleAddCart(){
 
-    let title = ""
+    // let title = ""
 
     const size = this.state.selectedSize
     const color = this.state.color
-    if(_.isEmpty(this.state.color) === true) {
-      // console.log("YESS")
-      title = this.state.selectedSize
-      // console.log('title', title)
-    } else {
-      // console.log("NOOOO")
-      title = this.state.color + ' / ' + this.state.selectedSize
-      // console.log('title', title)
 
-    }
+    console.log('color: ___', color)
+    console.log('size: ___', size)
 
-    let variant_obj = this.state.variants.filter((arr) => {return arr.title.includes(size) && arr.title.includes(color)})
+    const title = _.isEmpty(this.state.color) === true ?  this.state.selectedSize : this.state.color + ' / ' + this.state.selectedSize;
+
+    const variant_obj = this.state.variants.filter((arr) => {return arr.title.includes(size) && arr.title.includes(color)})
 
     // console.log('variant_obj -----', variant_obj)
 
     const shoppingCartData = {
       varians_id: _.isEmpty(variant_obj) === true ? "" : variant_obj[0].id,
-      color: this.state.color,
-      qty: this.state.qty,
-      size: this.state.selectedSize
+      qty: this.state.qty
     }
     console.log('shoppingCartData', shoppingCartData)
+
+    this.props.fetchShoppingCart(shoppingCartData)
   }
 
   render() {
@@ -343,8 +337,8 @@ class RightColumn extends Component {
   }
 };
 
-function mapStateToProps({ product }) {
-  return { product };
+function mapStateToProps({ product, cart }) {
+  return { product, cart };
 }
 
-export default connect(mapStateToProps, {  })(RightColumn);
+export default connect(mapStateToProps, { fetchShoppingCart })(RightColumn);

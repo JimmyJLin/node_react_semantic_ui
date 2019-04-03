@@ -10,6 +10,18 @@ import { FETCH_MEN } from './types';
 import { FETCH_SALE } from './types';
 import { FETCH_SOCK } from './types';
 import { FETCH_PUFF_STUFF } from './types';
+import { FETCH_SHOPPING_CART } from './types';
+
+// ADD TO SHOPPING CART
+export const fetchShoppingCart = (shoppingCartData) => async dispatch => {
+  const cartData = []
+  cartData.push(shoppingCartData)
+  console.log('cartData', cartData)
+  const res = await axios.post('/api/shopify/shopping_cart/new', shoppingCartData)
+
+  dispatch({ type: FETCH_SHOPPING_CART, payload: res.data})
+}
+
 
 // PUFF STUFF
 export const fetchPuffStuff = () => async dispatch => {
