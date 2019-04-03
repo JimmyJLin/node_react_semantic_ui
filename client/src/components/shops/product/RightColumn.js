@@ -19,7 +19,6 @@ const QtyOptions = [
   {key: "10", text: "10", value: "10"},
 ]
 
-
 class RightColumn extends Component {
   constructor(props) {
     super(props);
@@ -111,20 +110,24 @@ class RightColumn extends Component {
   }
 
   renderingColorSection(){
+    // defaultValue={this.state.colorOptions[0]}
+
     // const colorExist = this.state.product.options[0].values
     const colors = this.state.product.options.filter((arr) => {return arr.name === "Color"});
-    // console.log('colorSection ======>', colors)
-    if(colors.length > 0) {
+    const colorOptions = this.state.colorOptions
+    // console.log('colorOptions ======>', colorOptions[0])
+    if( _.isEmpty(colors) === false ) {
       return (
         <div>
           <h5>Color:</h5>
           <Select
-            options={this.state.colorOptions}
+            options={colorOptions}
             onChange={this.getColor}
-            />
+          />
         </div>
       )
     } else {
+      console.log("NOOOOO")
       return (
         <div>
           <h5>Color:</h5>
@@ -135,9 +138,7 @@ class RightColumn extends Component {
   }
 
   renderColorOptions(){
-    // this.setState({ colorOptions: this.state.product.options[0].values })
-    // const color = this.state.product.options.filter((arr) => {return arr.name === "Color"})
-    // console.log('color----', color)
+
     const colors = this.state.product.options.filter((arr) => {return arr.name === "Color"});
 
     if( _.isEmpty(colors) === false ) {
@@ -179,7 +180,7 @@ class RightColumn extends Component {
     }
 
     this.setState({ sizesContainer: sizeOptions})
-    console.log("sizesContainer----", this.state.sizesContainer)
+    // console.log("sizesContainer----", this.state.sizesContainer)
   }
 
   handleSizeChange(size){
@@ -207,16 +208,17 @@ class RightColumn extends Component {
     const xxlSize = this.state.sizesContainer.filter((arr) => {return arr.name === "2xl"})
     // console.log('this.state.sizesContainer', this.state.sizesContainer)
 
-    console.log('sSize ====>', sSize)
     if(this.state.sizesContainer.length > 0) {
       return (
         <ul id="variants">
           { _.isEmpty(sSize) === false ? <li className={`size ${this.state.smallActive ? 'active' : ""}`} data-value="1" onClick={ (e)=> this.handleSetSmallActive(e, console.log('e---xxxxxx', e.target.value)) }>S</li> : ""}
 
-          { _.isEmpty(mSize) === false ? <li className={`size ${this.state.mediumActive ? 'active' : ""}`} value="2" onClick={ (e)=> this.handleSetMediumActive(e, console.log('e', e.target.value) ) }>M</li> : ""}
+          { _.isEmpty(mSize) === false ? <li className={`size ${this.state.mediumActive ? 'active' : ""}`} value="2" onClick={ (e)=> this.handleSetMediumActive(e) }>M</li> : ""}
 
           { _.isEmpty(lSize) === false ? <li className={`size ${this.state.largeActive ? 'active' : ""}`} value="3" onClick={ (e)=> this.handleSetLargeActive(e) }>L</li> : ""}
+
           { _.isEmpty(xlSize) === false ? <li className={`size ${this.state.xlargeActive ? 'active' : ""}`} value="4" onClick={ (e)=> this.handleSetXlargeActive(e) }>XL</li> : ""}
+
           { _.isEmpty(xxlSize) === false ? <li className={`size ${this.state.xxlargeActive ? 'active' : ""}`} value="5" onClick={ (e)=> this.handleSetXxlargeActive(e) }>2XL</li> : ""}
         </ul>
       )
@@ -252,9 +254,6 @@ class RightColumn extends Component {
     const size = this.state.selectedSize
     const color = this.state.color
 
-    console.log('color: ___', color)
-    console.log('size: ___', size)
-
     const title = _.isEmpty(this.state.color) === true ?  this.state.selectedSize : this.state.color + ' / ' + this.state.selectedSize;
 
     const variant_obj = this.state.variants.filter((arr) => {return arr.title.includes(size) && arr.title.includes(color)})
@@ -273,7 +272,7 @@ class RightColumn extends Component {
   render() {
     const { title, variants, body_html } = this.state.product;
     const { activeIndex } = this.state
-
+    console.log("QtyOption[0]", QtyOptions[0])
     return (
       <div>
         <h2 className="productTitle">{ title }</h2>
