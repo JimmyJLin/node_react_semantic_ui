@@ -18,7 +18,7 @@ class LeftColumn extends Component {
     await this.setState({
       product: this.props.product
     })
-    console.log('product images----', this.props.product.images)
+    // console.log('product images----', this.props.product.images)
     let ImgContainer =[]
     await this.props.product.images.map((e) => {
       const { src } = e
@@ -36,10 +36,10 @@ class LeftColumn extends Component {
 
   renderingImages(){
     const { images } = this.state.product
-    console.log('product', images)
+    // console.log('product', images)
 
     const slideImages = images.map((e) => {
-      console.log('e---', e)
+      // console.log('e---', e)
       const { id, src } = e
       return(
         <div key={id} id="carousel_container">
@@ -55,7 +55,7 @@ class LeftColumn extends Component {
 
   renderingImageGallery(){
     const { slideImages } = this.state
-    console.log('slidesToShow', slideImages)
+    // console.log('slidesToShow', slideImages)
     if( _.isEmpty(slideImages) === false ) {
       return(
         <ImageGallery

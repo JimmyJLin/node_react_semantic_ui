@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Grid, Select, Button, Icon, Divider, Rating, Accordion } from 'semantic-ui-react'
@@ -18,6 +19,11 @@ const QtyOptions = [
 ]
 
 class RightColumn extends Component {
+  constructor(props) {
+    super(props);
+    this.handleAddCart = this.handleAddCart.bind(this);
+    // this.passingImages = this.passingImages.bind(this);
+  }
 
   state = {
     product: {},
@@ -33,14 +39,17 @@ class RightColumn extends Component {
     color: "",
     colorOptions: [],
     sizesContainer: [],
-    qty: ""
+    qty: "",
+    variants: [],
+    varians_id: ""
   }
 
   async componentWillMount(){
     await this.setState({
-      product: this.props.product
+      product: this.props.product,
+      variants: this.props.product.variants
     })
-
+    console.log('One Item ======== ', this.props.product)
     await this.renderColorOptions()
     await this.renderSizeOptions()
   }
@@ -118,6 +127,10 @@ class RightColumn extends Component {
       default:
         return ""
     }
+  }
+
+  getColor = (e, {value}) => {
+    this.setState({color: value})
   }
 
   handleSetXSmallActive(e) {
@@ -199,6 +212,29 @@ class RightColumn extends Component {
     }
   }
 
+  handleAddCart(){
+    // console.log('All Shopping Cart Clicked')
+    // console.log('color', this.state.color)
+    console.log('qty', this.state.qty)
+    // console.log('size', this.state.selectedSize)
+    // console.log('variants', this.state.variants)
+
+    const title = this.state.color + ' / ' + this.state.selectedSize
+
+    // console.log('title', title)
+    let variant_obj = this.state.variants.filter((arr) => {return arr.title === title})
+    // console.log('variant_obj', variant_obj)
+    // this.setState({ varians_id: variant_obj[0].id})
+
+    const shoppingCartData = {
+      varians_id: _.isEmpty(variant_obj) === true ? "" : variant_obj[0].id,
+      color: this.state.color,
+      qty: this.state.qty,
+      size: this.state.selectedSize
+    }
+    console.log('shoppingCartData', shoppingCartData)
+  }
+
   render() {
     const { title, variants, body_html } = this.state.product;
     const { activeIndex } = this.state
@@ -226,7 +262,7 @@ class RightColumn extends Component {
         />
 
         <Grid.Row >
-          <Button className="AddToCartButton" animated="fade" fluid color="black">
+          <Button onClick={this.handleAddCart} className="AddToCartButton" animated="fade" fluid color="black">
             <Button.Content visible>Add to Cart</Button.Content>
             <Button.Content hidden>
               <Icon name='shop' />
