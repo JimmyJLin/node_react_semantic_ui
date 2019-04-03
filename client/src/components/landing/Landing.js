@@ -5,6 +5,7 @@ import './_landing.scss'
 import Contact from '../body/contact/Contact';
 import ImgSlides from '../body/imgslider/ImgSlides';
 import NewArrivals from '../shops/newArrivals/NewArrivals';
+import Cart from '../checkout/Cart';
 
 class Landing extends Component {
   render() {
@@ -14,6 +15,8 @@ class Landing extends Component {
         <ImgSlides />
 
         <NewArrivals />
+
+        <Cart />
 
         <Contact />
 
