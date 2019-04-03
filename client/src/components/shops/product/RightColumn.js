@@ -18,6 +18,7 @@ const QtyOptions = [
   {key: "10", text: "10", value: "10"},
 ]
 
+
 class RightColumn extends Component {
   constructor(props) {
     super(props);
@@ -299,6 +300,7 @@ class RightColumn extends Component {
         <Select
           options={QtyOptions}
           onChange={this.getQty}
+          defaultValue={QtyOptions[0].value}
         />
 
         <Grid.Row >
