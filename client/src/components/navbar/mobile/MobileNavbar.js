@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { fetchShoppingCart } from '../../../actions';
+
 import Cart from '../../checkout/Cart';
 
 import { Container, Visibility, Menu, Image, Icon, Label, Dropdown } from 'semantic-ui-react';
@@ -32,7 +35,20 @@ class MobileNavbar extends Component {
   }
 
   state = {
-    menuFixed: false
+    menuFixed: false,
+    shoppingCart: []
+  }
+
+  async componentWillMount(){
+    await this.setState({shoppingCart: this.props.cart})
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.cart) {
+      this.setState({
+        shoppingCart: nextProps.cart
+      })
+    }
   }
 
   stickTopMenu = () => this.setState({ menuFixed: true })
@@ -52,7 +68,7 @@ class MobileNavbar extends Component {
   }
 
   render() {
-    const { menuFixed } = this.state
+    const { menuFixed, shoppingCart } = this.state
 
     return (
       <Container id="mobile">
@@ -85,7 +101,7 @@ class MobileNavbar extends Component {
             </Menu.Item>
             <Menu.Item onClick={this.handleCartOpen}>
               <Icon name="shop" size='large' />
-              <Label color='teal' floating>1</Label>
+              <Label color='teal' floating> {shoppingCart.length} </Label>
             </Menu.Item>
           </Menu>
         </Visibility>
@@ -100,4 +116,8 @@ class MobileNavbar extends Component {
   }
 }
 
-export default MobileNavbar;
+function mapStateToProps({ cart }) {
+  return { cart };
+}
+
+export default connect(mapStateToProps, { fetchShoppingCart })(MobileNavbar);

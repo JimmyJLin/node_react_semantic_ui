@@ -268,7 +268,8 @@ class RightColumn extends Component {
     });
   }
 
-  handleAddCart(){
+  handleAddCart(e){
+    e.preventDefault()
     const size = this.state.selectedSize
     const color = this.state.color
     const name = this.state.product.title

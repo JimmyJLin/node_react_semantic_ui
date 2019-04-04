@@ -31,7 +31,12 @@
 
 .Cart__header {
   padding: 20px;
+  margin-bottom: 50px !important;
   border-bottom: 1px solid #e5e5e5;
   flex: 0 0 auto;
   display: inline-block;
+}
+
+.lineItems{
+  margin-top: 50px;
 }

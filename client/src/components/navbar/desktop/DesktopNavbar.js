@@ -1,6 +1,9 @@
 import _ from 'lodash'
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { fetchShoppingCart } from '../../../actions';
+
 import Cart from '../../checkout/Cart';
 
 import { Container, Header, Visibility, Menu, Image, Icon, Label, Grid } from 'semantic-ui-react';
@@ -35,7 +38,20 @@ class DesktopNavbar extends Component {
   state = {
     menuFixed: false,
     activeItem: 'home',
-    isCartOpen: false
+    isCartOpen: false,
+    shoppingCart: []
+  }
+
+  async componentWillMount(){
+    await this.setState({shoppingCart: this.props.cart})
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.cart) {
+      this.setState({
+        shoppingCart: nextProps.cart
+      })
+    }
   }
 
   handleOverlayRef = (c) => {
@@ -65,7 +81,7 @@ class DesktopNavbar extends Component {
   }
 
   render() {
-    const { menuFixed, activeItem } = this.state
+    const { menuFixed, activeItem, shoppingCart } = this.state
     return(
       <Container id="desktop">
         <Container id="sticky_top" text>
@@ -95,7 +111,7 @@ class DesktopNavbar extends Component {
                   <Menu text id="shopping_cart">
                     <Menu.Item onClick={this.handleCartOpen}>
                       <Icon name="shop" size='large' />
-                      <Label color='teal' floating>1</Label>
+                      <Label color='teal' floating>{shoppingCart.length}</Label>
                     </Menu.Item>
                   </Menu>
                 </Grid.Column>
@@ -172,4 +188,8 @@ class DesktopNavbar extends Component {
   }
 };
 
-export default DesktopNavbar
+function mapStateToProps({ cart }) {
+  return { cart };
+}
+
+export default connect(mapStateToProps, { fetchShoppingCart })(DesktopNavbar)

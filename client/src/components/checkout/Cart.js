@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { Header, Button, Container, Grid } from 'semantic-ui-react'
+import { Header, Button, Container, Grid, Image } from 'semantic-ui-react'
 import { fetchShoppingCart } from '../../actions';
 
 import './_checkout.scss'
@@ -12,9 +12,9 @@ class Cart extends Component {
   }
 
   async componentWillMount(){
-    await this.props.fetchShoppingCart()
+    // await this.props.fetchShoppingCart()
     await this.setState({shoppingCart: this.props.cart})
-    console.log('Cart componentWillMount', this.state.shoppingCart)
+    console.log('shoppingCart in componentWillMount', this.state.shoppingCart)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -23,7 +23,7 @@ class Cart extends Component {
         shoppingCart: nextProps.cart
       })
     }
-    console.log('shoppingCart', this.state.shoppingCart)
+    // console.log('shoppingCart', this.state.shoppingCart)
   }
 
   handleCartClose() {
@@ -31,18 +31,30 @@ class Cart extends Component {
     this.setState({
       isCartOpen: false,
     });
-    console.log('isCartOpen - handleCartClose', this.state.isCartOpen)
+    // console.log('isCartOpen - handleCartClose', this.state.isCartOpen)
   }
 
   renderLineItems(){
     const lineItems = this.state.shoppingCart
     if(_.isEmpty(lineItems) === false ){
-      console.log('YESSS')
-      return (
-        <Grid.Row>
-          <p>YESSSS</p>
-        </Grid.Row>
-      )
+      // console.log('lineItems', lineItems)
+      // console.log('YESSS')
+      return lineItems.map((e) => {
+        const { name, imgUrl, qty, varians_id} = e
+        return (
+          <Grid.Row key={varians_id}>
+            <Grid.Column>
+              <Image src={imgUrl} size='tiny'/>
+            </Grid.Column>
+            <Grid.Column>
+              <p>{name}</p>
+            </Grid.Column>
+            <Grid.Column>
+              <p>{qty}</p>
+            </Grid.Column>
+          </Grid.Row>
+        )
+      })
     } else {
       return (
         <Grid.Row>
@@ -57,18 +69,15 @@ class Cart extends Component {
 
     return (
       <div className={`Cart ${this.props.isCartOpen === true ? 'Cart--open' : ''}`}>
-        <Header size="medium" className="Cart__header">
-          <h3>Shopping Cart</h3>
-          <Button
-            className="Cart__close"
-            onClick={this.props.handleCartClose}
-          >
-            x
-          </Button>
-        </Header>
         <Container>
-          <Grid>
-            {this.renderLineItems()}
+          <Header size="medium" className="Cart__header">
+            <Button className="Cart__close" onClick={this.props.handleCartClose}> x </Button>
+          </Header>
+          <Grid columns={1} padded className="lineItems">
+            <Grid.Column>
+              <h3>Shopping Cart</h3>
+              {this.renderLineItems()}
+            </Grid.Column>
           </Grid>
         </Container>
       </div>
