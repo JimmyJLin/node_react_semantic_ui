@@ -1,6 +1,7 @@
 import _ from 'lodash'
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Cart from '../../checkout/Cart';
 
 import { Container, Header, Visibility, Menu, Image, Icon, Label, Grid } from 'semantic-ui-react';
 
@@ -23,9 +24,18 @@ const fixedMenuStyle = {
 }
 
 class DesktopNavbar extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.handleCartClose = this.handleCartClose.bind(this);
+    this.handleCartOpen = this.handleCartOpen.bind(this);
+  }
+
   state = {
     menuFixed: false,
-    activeItem: 'home'
+    activeItem: 'home',
+    isCartOpen: false
   }
 
   handleOverlayRef = (c) => {
@@ -41,6 +51,18 @@ class DesktopNavbar extends Component {
   unStickTopMenu = () => this.setState({ menuFixed: false })
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
+  handleCartOpen() {
+    this.setState({
+      isCartOpen: true,
+    });
+  }
+
+  handleCartClose() {
+    this.setState({
+      isCartOpen: false,
+    });
+  }
 
   render() {
     const { menuFixed, activeItem } = this.state
@@ -71,7 +93,7 @@ class DesktopNavbar extends Component {
                 </Grid.Column>
                 <Grid.Column>
                   <Menu text id="shopping_cart">
-                    <Menu.Item as={Link} to="/checkout/shopping_cart">
+                    <Menu.Item onClick={this.handleCartOpen}>
                       <Icon name="shop" size='large' />
                       <Label color='teal' floating>1</Label>
                     </Menu.Item>
@@ -137,6 +159,12 @@ class DesktopNavbar extends Component {
           </Menu>
 
         </Visibility>
+
+        {/* Shopping Cart  */}
+        <Cart
+          isCartOpen={this.state.isCartOpen}
+          handleCartClose={this.handleCartClose}
+        />
 
       </Container>
 

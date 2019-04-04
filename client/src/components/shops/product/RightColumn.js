@@ -2,9 +2,10 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Grid, Select, Button, Icon, Divider, Rating, Accordion } from 'semantic-ui-react'
-import { fetchShoppingCart } from '../../../actions';
+import { addShoppingCart } from '../../../actions';
 
 import Shipping from '../../legal/Shipping'
+import Cart from '../../checkout/Cart';
 
 const QtyOptions = [
   {key: "1", text: "1", value: "1"},
@@ -22,26 +23,32 @@ const QtyOptions = [
 class RightColumn extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      product: {},
+      activeIndex: "",
+      smallActive: false,
+      mediumActive: false,
+      largeActive: false,
+      xlargeActive: false,
+      xxlargeActive: false,
+      checked: false,
+      selectedSize: "",
+      color: "",
+      colorOptions: [],
+      sizesContainer: [],
+      qty: 1,
+      variants: [],
+      varians_id: "",
+      isCartOpen: false,
+    }
+
     this.handleAddCart = this.handleAddCart.bind(this);
+    this.handleCartClose = this.handleCartClose.bind(this);
+    this.handleCartOpen = this.handleCartOpen.bind(this);
   }
 
-  state = {
-    product: {},
-    activeIndex: "",
-    smallActive: false,
-    mediumActive: false,
-    largeActive: false,
-    xlargeActive: false,
-    xxlargeActive: false,
-    checked: false,
-    selectedSize: "",
-    color: "",
-    colorOptions: [],
-    sizesContainer: [],
-    qty: 1,
-    variants: [],
-    varians_id: ""
-  }
+
 
   async componentWillMount(){
     await this.setState({
@@ -83,16 +90,16 @@ class RightColumn extends Component {
 
   handleSetMediumActive(e) {
     const size = e.target.value
-    console.log('handleSetMediumActive-0000', size)
+    // console.log('handleSetMediumActive-0000', size)
     this.setState({ xsmallActive: false, smallActive: false, mediumActive: !this.state.mediumActive, largeActive: false, xlargeActive: false, xxlargeActive: false })
-    console.log('handleSetSmallActive-state', !this.state.mediumActive)
+    // console.log('handleSetSmallActive-state', !this.state.mediumActive)
 
     this.handleSizeChange(size)
   }
 
   handleSetLargeActive(e) {
     const size = e.target.value
-    console.log('handleSetLargeActive-0000', size)
+    // console.log('handleSetLargeActive-0000', size)
     this.setState({ xsmallActive: false, smallActive: false, mediumActive: false, largeActive: !this.state.largeActive, xlargeActive: false, xxlargeActive: false })
     this.handleSizeChange(size)
   }
@@ -127,7 +134,7 @@ class RightColumn extends Component {
         </div>
       )
     } else {
-      console.log("NOOOOO")
+      // console.log("NOOOOO")
       return (
         <div>
           <h5>Color:</h5>
@@ -247,12 +254,25 @@ class RightColumn extends Component {
 
   }
 
+  handleCartOpen() {
+    console.log('inside handleCartOpen')
+    this.setState({
+      isCartOpen: true,
+    });
+  }
+
+  handleCartClose() {
+    console.log('inside handleCartClose')
+    this.setState({
+      isCartOpen: false,
+    });
+  }
+
   handleAddCart(){
-
-    // let title = ""
-
     const size = this.state.selectedSize
     const color = this.state.color
+    const name = this.state.product.title
+    const imgUrl = this.state.product.image.src
 
     const title = _.isEmpty(this.state.color) === true ?  this.state.selectedSize : this.state.color + ' / ' + this.state.selectedSize;
 
@@ -261,18 +281,22 @@ class RightColumn extends Component {
     // console.log('variant_obj -----', variant_obj)
 
     const shoppingCartData = {
+      name: name,
+      imgUrl: imgUrl,
       varians_id: _.isEmpty(variant_obj) === true ? "" : variant_obj[0].id,
       qty: this.state.qty
     }
-    console.log('shoppingCartData', shoppingCartData)
+    // console.log('shoppingCartData', shoppingCartData)
 
-    this.props.fetchShoppingCart(shoppingCartData)
+    this.props.addShoppingCart(shoppingCartData)
+
+    this.handleCartOpen()
   }
 
   render() {
     const { title, variants, body_html } = this.state.product;
     const { activeIndex } = this.state
-    console.log("QtyOption[0]", QtyOptions[0])
+    // console.log("QtyOption[0]", QtyOptions[0])
     return (
       <div>
         <h2 className="productTitle">{ title }</h2>
@@ -331,6 +355,12 @@ class RightColumn extends Component {
           <Divider className="divider" />
         </div>
 
+        {/* Shopping Cart  */}
+        <Cart
+          isCartOpen={this.state.isCartOpen}
+          handleCartClose={this.handleCartClose}
+        />
+
       </div>
     )
   }
@@ -340,4 +370,4 @@ function mapStateToProps({ product, cart }) {
   return { product, cart };
 }
 
-export default connect(mapStateToProps, { fetchShoppingCart })(RightColumn);
+export default connect(mapStateToProps, { addShoppingCart })(RightColumn);

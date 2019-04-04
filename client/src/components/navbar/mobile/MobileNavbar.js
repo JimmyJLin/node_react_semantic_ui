@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Cart from '../../checkout/Cart';
+
 import { Container, Visibility, Menu, Image, Icon, Label, Dropdown } from 'semantic-ui-react';
 
 import './_mobileNavbar.scss';
@@ -21,6 +23,14 @@ const fixedMenuStyle = {
 }
 
 class MobileNavbar extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.handleCartClose = this.handleCartClose.bind(this);
+    this.handleCartOpen = this.handleCartOpen.bind(this);
+  }
+
   state = {
     menuFixed: false
   }
@@ -28,6 +38,18 @@ class MobileNavbar extends Component {
   stickTopMenu = () => this.setState({ menuFixed: true })
   unStickTopMenu = () => this.setState({ menuFixed: false })
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
+  handleCartOpen() {
+    this.setState({
+      isCartOpen: true,
+    });
+  }
+
+  handleCartClose() {
+    this.setState({
+      isCartOpen: false,
+    });
+  }
 
   render() {
     const { menuFixed } = this.state
@@ -61,12 +83,18 @@ class MobileNavbar extends Component {
             <Menu.Item>
               <Image as={Link} to="/" size='medium' src='/images/logo/logo_color.png' />
             </Menu.Item>
-            <Menu.Item as={Link} to="/checkout/shopping_cart">
+            <Menu.Item onClick={this.handleCartOpen}>
               <Icon name="shop" size='large' />
               <Label color='teal' floating>1</Label>
             </Menu.Item>
           </Menu>
         </Visibility>
+
+        {/* Shopping Cart  */}
+        <Cart
+          isCartOpen={this.state.isCartOpen}
+          handleCartClose={this.handleCartClose}
+        />
       </Container>
     )
   }
