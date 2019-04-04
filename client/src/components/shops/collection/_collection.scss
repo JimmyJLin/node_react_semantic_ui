@@ -3,5 +3,9 @@
     padding-top: 2em;
   }
 
+  .ui.card, .ui.cards>.card{
+    box-shadow: none;
+  }
+
 
 }
