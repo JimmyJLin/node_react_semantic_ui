@@ -29,6 +29,11 @@ module.exports = app => {
     res.send(shoppingCart)
   })
 
+  // GET ALL SHOPPING CART ITEMS
+  app.get('/api/shopify/shopping_cart/getall', async (req, res) => {
+    res.send(shoppingCart)
+  })
+
   // CREATE NEW ORDER
   app.post('/api/shopify/order/new', async (req, res) => {
     console.log('order----', order)
