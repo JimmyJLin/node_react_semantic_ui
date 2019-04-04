@@ -274,6 +274,7 @@ class RightColumn extends Component {
     const color = this.state.color
     const name = this.state.product.title
     const imgUrl = this.state.product.image.src
+    const price = this.state.product.variants[0].price
 
     const title = _.isEmpty(this.state.color) === true ?  this.state.selectedSize : this.state.color + ' / ' + this.state.selectedSize;
 
@@ -284,6 +285,7 @@ class RightColumn extends Component {
     const shoppingCartData = {
       name: name,
       imgUrl: imgUrl,
+      price: price,
       varians_id: _.isEmpty(variant_obj) === true ? "" : variant_obj[0].id,
       qty: this.state.qty
     }
