@@ -2,12 +2,16 @@
 
 #leftColumn{
   .image-gallery-custom-left-nav, .image-gallery-custom-right-nav{
-    color: #fff;
+    color: #cecece;
     cursor: pointer;
     z-index: 4;
     position: absolute;
     text-shadow: 0 1px 1px #1a1a1a;
     transition: color .2s ease-out;
+  }
+
+  .image-gallery-fullscreen-button{
+    color: #d3d3d3;
   }
 
   .image-gallery-custom-left-nav:hover, .image-gallery-custom-right-nav:hover{
@@ -17,13 +21,13 @@
   .image-gallery-custom-left-nav{
     left: 0;
     padding: 50px 15px;
-    top: 50%;
+    top: 35%;
   }
 
   .image-gallery-custom-right-nav{
     right: 0;
     padding: 50px 15px;
-    top: 50%;
+    top: 35%;
   }
 
   .image-gallery-image{
