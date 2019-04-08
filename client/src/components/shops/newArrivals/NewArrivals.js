@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Sliders from 'react-slick';
 
 import { fetchNewArrivals } from '../../../actions';
-import { Container, Image } from 'semantic-ui-react'
+import { Container, Image, Grid, Button } from 'semantic-ui-react'
 
 import './_newArrivals.scss'
 
@@ -71,6 +71,7 @@ class NewArrivals extends Component {
       dots: true,
       infinite: true,
       autoplay: false,
+      lazyLoad: true,
       speed: 1500,
       slidesToShow: 4,
       slidesToScroll: 4,
@@ -111,6 +112,15 @@ class NewArrivals extends Component {
           {this.renderCards()}
 
         </Sliders>
+
+        <Grid.Row className="buttonContainer">
+          <Button className="moreButton" as={NavLink} to="/shops/new" color="black">
+            <Button.Content visible>
+              & More ... >
+            </Button.Content>
+          </Button>
+        </Grid.Row>
+
       </Container>
     )
   }

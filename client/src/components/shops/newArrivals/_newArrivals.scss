@@ -7,6 +7,19 @@
     text-align: center;
   }
 
+  .buttonContainer{
+    border-style: none;
+    display: flex;
+    justify-content: center;
+  }
+
+  .moreButton{
+    width: 150px;
+    margin-top: 50px;
+    padding: 15px;
+    border-radius: 50px;
+  }
+
   .slick-prev, .slick-next{
     background-color: transparent !important;
   }
