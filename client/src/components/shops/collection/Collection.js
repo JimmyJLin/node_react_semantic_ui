@@ -1,16 +1,19 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Card, Image } from 'semantic-ui-react'
 import MediaQuery from 'react-responsive';
 import Carousel from './Carousel';
+import LazyLoad from 'react-lazy-load';
+
+import { Card, Image, } from 'semantic-ui-react'
 
 import './_collection.scss'
 
 class Collection extends Component {
 
   state={
-    collection: []
+    collection: [],
+    show: false
   }
 
   async componentDidMount(){
@@ -19,6 +22,12 @@ class Collection extends Component {
     })
     // console.log('Collection -----', this.state.collection)
   }
+
+  showImage = () => {
+       this.setState({
+           show: true,
+       })
+   }
 
   renderingCollection(){
 
@@ -80,12 +89,14 @@ class Collection extends Component {
           key={product_id} as={NavLink}
           to={`/products/${handle}/${product_id}`}
           >
-          <Image src={images[0].src} />
-          <Card.Content>
-          <div id="title">{ title }</div>
-          <div id="price"> $ {variants[0].price} </div>
-          {/* <Card.Description>Matthew is a musician living in Nashville.</Card.Description>  */}
-          </Card.Content>
+            <LazyLoad>
+              <Image src={images[0].src} />
+            </LazyLoad>
+            <Card.Content>
+              <div id="title">{ title }</div>
+              <div id="price"> $ {variants[0].price} </div>
+              {/* <Card.Description>Matthew is a musician living in Nashville.</Card.Description>  */}
+            </Card.Content>
           </Card>
         )
       }
@@ -96,12 +107,14 @@ class Collection extends Component {
           key={id} as={NavLink}
           to={`/products/${handle}/${id}`}
           >
-          <Image src={images[0].src} />
-          <Card.Content>
-          <div id="title">{ title }</div>
-          <div id="price"> $ {variants[0].price} </div>
-          {/* <Card.Description>Matthew is a musician living in Nashville.</Card.Description>  */}
-          </Card.Content>
+            <LazyLoad>
+              <Image src={images[0].src} />
+            </LazyLoad>
+            <Card.Content>
+              <div id="title">{ title }</div>
+              <div id="price"> $ {variants[0].price} </div>
+              {/* <Card.Description>Matthew is a musician living in Nashville.</Card.Description>  */}
+            </Card.Content>
           </Card>
         )
       }
