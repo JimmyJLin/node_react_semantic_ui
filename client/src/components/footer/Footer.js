@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Segment, Container, Grid, List, Image} from 'semantic-ui-react';
 
 import './_footer.scss'
-const logo = '/images/logo/logo_simple_white.png';
+import logo from './logo.png';
 
 class Footer extends Component {
   render() {
@@ -13,7 +13,7 @@ class Footer extends Component {
           <Grid inverted textAlign='center'>
             <Grid.Row>
               <Grid.Column>
-                <Image src={logo} size='large' centered/>
+                <Image src={logo} size='large' alt="logo" centered/>
                 <br/>
 
                 {/* contct info */}
