@@ -19,7 +19,6 @@ class Cart extends Component {
     // await this.props.fetchShoppingCart()
     await this.setState({shoppingCart: this.props.cart})
     await this.getSubtotal()
-    console.log('shoppingCart in componentWillMount', this.state.shoppingCart)
   }
 
   async componentWillReceiveProps(nextProps) {
@@ -74,7 +73,6 @@ class Cart extends Component {
   }
 
   getSubtotal(){
-    console.log('inside')
     const lineItems = this.state.shoppingCart
     const subtotal = []
     let returnedtotal
