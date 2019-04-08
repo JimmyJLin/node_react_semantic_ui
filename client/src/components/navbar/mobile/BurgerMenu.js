@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Input, Label, Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 
-import { Header, Button, Container } from 'semantic-ui-react'
+import { Header, Button, Container, Grid, Image, Menu, Divider } from 'semantic-ui-react'
 
 import './_burgerMenu.scss'
 
@@ -26,7 +25,18 @@ class BurgerMenu extends Component {
           <Header size="medium" className="Burger__header">
             <Button className="Burger__close" onClick={this.props.handleBurgerClose}> x </Button>
           </Header>
-          <h1>Menus</h1>
+
+          <Grid>
+            <Grid.Row columns="equal" id="logo_block">
+              <Grid.Column className="hidden" width={4}></Grid.Column>
+              <Grid.Column>
+                <Image as={Link} to="/" src='/images/logo/logo_color.png' fluid/>
+              </Grid.Column>
+              <Grid.Column className="hidden" width={4}></Grid.Column>
+            </Grid.Row>
+          </Grid>
+
+          <Divider />
 
           <Menu vertical fluid secondary>
 
