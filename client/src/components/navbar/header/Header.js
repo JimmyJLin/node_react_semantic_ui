@@ -37,11 +37,11 @@ class Header extends Component {
     return(
       <div id="Header">
 
-        <MediaQuery query="(min-device-width: 1024px)">
+        <MediaQuery query="(min-device-width: 768px)">
           <DesktopNavbar />
         </MediaQuery>
 
-        <MediaQuery query="(max-device-width: 1023px)">
+        <MediaQuery query="(max-device-width: 767px)">
           <MobileNavbar />
         </MediaQuery>
 
