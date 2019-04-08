@@ -19,6 +19,13 @@
     background: transparent;
     background-color: transparent;
   }
+  .hidden{
+    display: none;
+  }
+
+  .stickyMenu{
+    background-color: white;
+  }
 
   .ui.floating.label{
     z-index: 1;

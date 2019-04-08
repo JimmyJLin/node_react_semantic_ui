@@ -32,11 +32,9 @@ class Cart extends Component {
   }
 
   handleCartClose() {
-    console.log('inside handleCartClose')
     this.setState({
       isCartOpen: false,
     });
-    // console.log('isCartOpen - handleCartClose', this.state.isCartOpen)
   }
 
   renderLineItems(){
@@ -101,6 +99,7 @@ class Cart extends Component {
 
   render() {
     const { shoppingCart, subTotal, shippingFee, taxes } = this.state;
+    console.log('isCartOpen', this.props.isCartOpen)
 
     return (
       <div className={`Cart ${this.props.isCartOpen === true ? 'Cart--open' : ''}`}>

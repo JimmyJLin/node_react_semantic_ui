@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { fetchShoppingCart } from '../../../actions';
 
 import Cart from '../../checkout/Cart';
+import BurgerMenu from './BurgerMenu';
 
 import { Container, Visibility, Menu, Image, Icon, Label, Dropdown } from 'semantic-ui-react';
 
@@ -29,9 +30,10 @@ class MobileNavbar extends Component {
 
   constructor(props) {
     super(props);
-
     this.handleCartClose = this.handleCartClose.bind(this);
     this.handleCartOpen = this.handleCartOpen.bind(this);
+    this.handleBurgerClose = this.handleBurgerClose.bind(this);
+    this.handleBurgerOpen = this.handleBurgerOpen.bind(this);
   }
 
   state = {
@@ -67,6 +69,19 @@ class MobileNavbar extends Component {
     });
   }
 
+  handleBurgerOpen() {
+    console.log('isBurgerOpen', this.state.isBurgerOpen)
+    this.setState({
+      isBurgerOpen: true,
+    });
+  }
+
+  handleBurgerClose() {
+    this.setState({
+      isBurgerOpen: false,
+    });
+  }
+
   render() {
     const { menuFixed, shoppingCart } = this.state
 
@@ -83,19 +98,10 @@ class MobileNavbar extends Component {
             fixed={menuFixed ? 'top' : undefined}
             style={menuFixed ? fixedMenuStyle : menuStyle}
           >
-            <Dropdown id="menuTitle" item text='Shop'>
-              <Dropdown.Menu>
-                <Dropdown.Item as={Link} to="/shops/new">New Arrivals</Dropdown.Item>
-                <Dropdown.Item as={Link} to="/shops/puff_stuff">Puff Stuff</Dropdown.Item>
-                <Dropdown.Item as={Link} to="/shops/women">Women</Dropdown.Item>
-                <Dropdown.Item as={Link} to="/shops/men">Men</Dropdown.Item>
-                <Dropdown.Item as={Link} to="/shops/jewelry">Jewelry</Dropdown.Item>
-                <Dropdown.Item as={Link} to="/shops/bags_accessories">Bags & Accessories</Dropdown.Item>
-                <Dropdown.Item as={Link} to="/shops/socks">Socks</Dropdown.Item>
-                <Dropdown.Item as={Link} to="/shops/sales">Sales</Dropdown.Item>
+            <Menu.Item onClick={this.handleBurgerOpen}>
+              <Icon name="sidebar" size='large' />
+            </Menu.Item>
 
-              </Dropdown.Menu>
-            </Dropdown>
             <Menu.Item>
               <Image as={Link} to="/" size='medium' src='/images/logo/logo_color.png' />
             </Menu.Item>
@@ -105,6 +111,12 @@ class MobileNavbar extends Component {
             </Menu.Item>
           </Menu>
         </Visibility>
+
+        {/* Burger Menu  */}
+        <BurgerMenu
+          isBurgerOpen={this.state.isBurgerOpen}
+          handleBurgerClose={this.handleBurgerClose}
+        />
 
         {/* Shopping Cart  */}
         <Cart

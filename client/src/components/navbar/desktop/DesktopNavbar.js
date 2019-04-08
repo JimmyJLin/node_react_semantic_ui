@@ -117,58 +117,50 @@ class DesktopNavbar extends Component {
                 </Grid.Column>
               </Grid.Row>
 
-              <Grid.Row className="desktopMenu">
-                <Menu.Item/>
+              <Menu fluid widths={8} className="desktopMenu">
                 <Menu.Item
                   name='New Arrivals'
-                  active={activeItem === 'New'}
                   onClick={this.handleItemClick}
                   as={Link} to="/shops/new"
                 />
                 <Menu.Item
                   name='puff stuff'
-                  active={activeItem === 'puff stuff'}
                   onClick={this.handleItemClick}
                   as={Link} to="/shops/puff_stuff"
                 />
                 <Menu.Item
                   name='women'
-                  active={activeItem === 'women'}
                   onClick={this.handleItemClick}
                   as={Link} to="/shops/women"
                 />
                 <Menu.Item
                   name='men'
-                  active={activeItem === 'men'}
                   onClick={this.handleItemClick}
                   as={Link} to="/shops/men"
                 />
                 <Menu.Item
                   name='jewelry'
-                  active={activeItem === 'jewelry'}
                   onClick={this.handleItemClick}
                   as={Link} to="/shops/jewelry"
                 />
                 <Menu.Item
                   name='bags & accessories'
-                  active={activeItem === 'bags & accessories'}
                   onClick={this.handleItemClick}
                   as={Link} to="/shops/bags_accessories"
                 />
                 <Menu.Item
                   name='socks'
-                  active={activeItem === 'socks'}
                   onClick={this.handleItemClick}
                   as={Link} to="/shops/socks"
                 />
                 <Menu.Item
                   name='sales'
-                  active={activeItem === 'sales'}
                   onClick={this.handleItemClick}
                   as={Link} to="/shops/sales"
                 />
-                <Menu.Item/>
-              </Grid.Row>
+                <Menu.Item className="hidden"/>
+              </Menu>
+
             </Grid>
 
 
