@@ -22,7 +22,7 @@ import PuffStuff from './shops/PuffStuff';
 import Product from './shops/product/Product';
 
 // Checkout components
-// import Cart from './checkout/Cart';
+import CheckoutCart from './checkout/CheckoutCart';
 
 // legal components
 import Faq from './legal/Faq';
@@ -55,7 +55,7 @@ class App extends Component {
               <Route path="/products/:name/:id" component={Product} />
 
               {/* Checkout Routes */}
-            {/*  <Route path="/checkout/shopping_cart" component={Cart} />  */}
+            <Route path="/checkout/shopping_cart" component={CheckoutCart} />
 
               {/* Legal Routes */}
               <Route path="/legal/faq" component={Faq} />

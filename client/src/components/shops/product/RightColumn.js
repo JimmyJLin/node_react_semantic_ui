@@ -20,6 +20,8 @@ const QtyOptions = [
   {key: "10", text: "10", value: "10"},
 ]
 
+let cartData = []
+
 class RightColumn extends Component {
   constructor(props) {
     super(props);
@@ -83,14 +85,14 @@ class RightColumn extends Component {
     const size = e.target.value
     console.log('PROBLEM ---handleSetSmallActive-0000', size)
     this.setState({ xsmallActive: false, smallActive: !this.state.smallActive, mediumActive: false, largeActive: false, xlargeActive: false, xxlargeActive: false })
-    console.log('handleSetSmallActive-state', !this.state.smallActive)
+    // console.log('handleSetSmallActive-state', !this.state.smallActive)
 
     this.handleSizeChange(size)
   }
 
   handleSetMediumActive(e) {
     const size = e.target.value
-    // console.log('handleSetMediumActive-0000', size)
+    console.log('handleSetMediumActive-0000', size)
     this.setState({ xsmallActive: false, smallActive: false, mediumActive: !this.state.mediumActive, largeActive: false, xlargeActive: false, xxlargeActive: false })
     // console.log('handleSetSmallActive-state', !this.state.mediumActive)
 
@@ -99,19 +101,23 @@ class RightColumn extends Component {
 
   handleSetLargeActive(e) {
     const size = e.target.value
-    // console.log('handleSetLargeActive-0000', size)
+    console.log('handleSetLargeActive-0000', size)
     this.setState({ xsmallActive: false, smallActive: false, mediumActive: false, largeActive: !this.state.largeActive, xlargeActive: false, xxlargeActive: false })
     this.handleSizeChange(size)
   }
 
   handleSetXlargeActive(e) {
     const size = e.target.value
+    console.log('handleSetXlargeActive-0000', size)
+
     this.setState({ xsmallActive: false, smallActive: false, mediumActive: false, largeActive: false, xlargeActive: !this.state.xlargeActive, xxlargeActive: false })
     this.handleSizeChange(size)
   }
 
   handleSetXxlargeActive(e) {
     const size = e.target.value
+    console.log('handleSetXxlargeActive-0000', size)
+
     this.setState({ xsmallActive: false, smallActive: false, mediumActive: false, largeActive: false, xlargeActive: false, xxlargeActive: !this.state.xxlargeActive })
     this.handleSizeChange(size)
   }
@@ -218,15 +224,15 @@ class RightColumn extends Component {
     if(this.state.sizesContainer.length > 0) {
       return (
         <ul id="variants">
-          { _.isEmpty(sSize) === false ? <li className={`size ${this.state.smallActive ? 'active' : ""}`} data-value="1" onClick={ (e)=> this.handleSetSmallActive(e, console.log('e---xxxxxx', e.target.value)) }>S</li> : ""}
+          { _.isEmpty(sSize) === false ? <li className={`size ${this.state.smallActive ? 'active' : ""}`} value="0" onClick={ (e)=> this.handleSetSmallActive(e, console.log('e---xxxxxx', e.target.value)) }>S</li> : ""}
 
-          { _.isEmpty(mSize) === false ? <li className={`size ${this.state.mediumActive ? 'active' : ""}`} value="2" onClick={ (e)=> this.handleSetMediumActive(e) }>M</li> : ""}
+          { _.isEmpty(mSize) === false ? <li className={`size ${this.state.mediumActive ? 'active' : ""}`} value="1" onClick={ (e)=> this.handleSetMediumActive(e) }>M</li> : ""}
 
-          { _.isEmpty(lSize) === false ? <li className={`size ${this.state.largeActive ? 'active' : ""}`} value="3" onClick={ (e)=> this.handleSetLargeActive(e) }>L</li> : ""}
+          { _.isEmpty(lSize) === false ? <li className={`size ${this.state.largeActive ? 'active' : ""}`} value="2" onClick={ (e)=> this.handleSetLargeActive(e) }>L</li> : ""}
 
-          { _.isEmpty(xlSize) === false ? <li className={`size ${this.state.xlargeActive ? 'active' : ""}`} value="4" onClick={ (e)=> this.handleSetXlargeActive(e) }>XL</li> : ""}
+          { _.isEmpty(xlSize) === false ? <li className={`size ${this.state.xlargeActive ? 'active' : ""}`} value="3" onClick={ (e)=> this.handleSetXlargeActive(e) }>XL</li> : ""}
 
-          { _.isEmpty(xxlSize) === false ? <li className={`size ${this.state.xxlargeActive ? 'active' : ""}`} value="5" onClick={ (e)=> this.handleSetXxlargeActive(e) }>2XL</li> : ""}
+          { _.isEmpty(xxlSize) === false ? <li className={`size ${this.state.xxlargeActive ? 'active' : ""}`} value="4" onClick={ (e)=> this.handleSetXxlargeActive(e) }>2XL</li> : ""}
         </ul>
       )
     }
@@ -268,7 +274,7 @@ class RightColumn extends Component {
     });
   }
 
-  handleAddCart(e){
+  async handleAddCart(e){
     e.preventDefault()
     const size = this.state.selectedSize
     const color = this.state.color
@@ -285,13 +291,18 @@ class RightColumn extends Component {
     const shoppingCartData = {
       name: name,
       imgUrl: imgUrl,
+      color: color,
       price: price,
+      size: size,
       varians_id: _.isEmpty(variant_obj) === true ? "" : variant_obj[0].id,
       qty: this.state.qty
     }
     // console.log('shoppingCartData', shoppingCartData)
 
-    this.props.addShoppingCart(shoppingCartData)
+    await cartData.push(shoppingCartData)
+    console.log('cartData', cartData)
+    await localStorage.setItem('shoppingCartData', JSON.stringify(cartData))
+    await this.props.addShoppingCart(shoppingCartData)
 
     this.handleCartOpen()
   }

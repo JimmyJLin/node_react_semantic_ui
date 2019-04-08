@@ -1,11 +1,11 @@
 import _ from 'lodash';
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Header, Button, Container, Grid, Image, Divider, Icon } from 'semantic-ui-react'
 import { fetchShoppingCart } from '../../actions';
 
-import './_checkout.scss'
+import './_cart.scss'
 
 class Cart extends Component {
   state = {
@@ -16,7 +16,7 @@ class Cart extends Component {
   }
 
   async componentWillMount(){
-    // await this.props.fetchShoppingCart()
+    await this.props.fetchShoppingCart()
     await this.setState({shoppingCart: this.props.cart})
     await this.getSubtotal()
   }
@@ -40,17 +40,17 @@ class Cart extends Component {
   renderLineItems(){
     const lineItems = this.state.shoppingCart
     if(_.isEmpty(lineItems) === false ){
-      // console.log('lineItems', lineItems)
+      console.log('lineItems', lineItems)
       // console.log('YESSS')
       return lineItems.map((e) => {
-        const { name, imgUrl, qty, varians_id, price} = e
+        const { name, imgUrl, qty, varians_id, price, size, color } = e
         return (
-          <Grid.Row key={varians_id}>
+          <Grid.Row key={varians_id + color + size}>
             <Grid.Column className="line__item" floated="left" width={4}>
               <Image src={imgUrl} size='tiny'/>
             </Grid.Column>
             <Grid.Column className="line__item">
-              <p>{name}</p>
+              <p>{name} ( {color} / { _.isEmpty(size) === true ? "One Size" : size  } )</p>
             </Grid.Column>
             <Grid.Column className="line__item" width={2}>
               <p>{qty}</p>
@@ -99,7 +99,7 @@ class Cart extends Component {
 
   render() {
     const { shoppingCart, subTotal, shippingFee, taxes } = this.state;
-    console.log('isCartOpen', this.props.isCartOpen)
+    // console.log('isCartOpen', this.props.isCartOpen)
 
     return (
       <div className={`Cart ${this.props.isCartOpen === true ? 'Cart--open' : ''}`}>
@@ -144,7 +144,7 @@ class Cart extends Component {
 
             <Grid.Column className="proceed_to_checkout">
               <Grid.Row >
-                <Button className="ProceedToCartButton" animated="fade" fluid color="black" disabled={_.isEmpty(shoppingCart) === true ? true : false}>
+                <Button as={Link} to="/checkout/shopping_cart" className="ProceedToCartButton" animated="fade" fluid color="black" disabled={_.isEmpty(shoppingCart) === true ? true : false}>
                   <Button.Content visible>Proceed to Checkout</Button.Content>
                   <Button.Content hidden>
                     <Icon name='shop' />
