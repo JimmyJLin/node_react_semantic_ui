@@ -10,3 +10,4 @@ export const FETCH_SALE = 'fetch_sale';
 export const FETCH_SOCK = 'fetch_sock';
 export const FETCH_PUFF_STUFF = 'fetch_puff_stuff';
 export const FETCH_SHOPPING_CART = 'fetch_shopping_cart';
+export const REHYDRATE = 'persist/REHYDRATE';

@@ -1,4 +1,7 @@
 import { combineReducers } from 'redux';
+import { persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
+
 import newArrivalsReducer from './newArrivalReducer';
 import womenReducer from './womenReducer';
 import instagramReducer from './instagramReducer';
@@ -12,6 +15,11 @@ import sockReducer from './sockReducer';
 import puffStuffReducer from './puffStuffReducer';
 import cartReducer from './cartReducer';
 
+const shoppingCartPersistConfig = {
+  key: 'shoppingCart',
+  storage: storage
+}
+
 export default combineReducers({
   newArrivals: newArrivalsReducer,
   spinner: spinnerReducer,
@@ -24,5 +32,5 @@ export default combineReducers({
   sale: saleReducer,
   sock: sockReducer,
   puffStuff: puffStuffReducer,
-  cart: cartReducer
+  cart: persistReducer(shoppingCartPersistConfig, cartReducer)
 });

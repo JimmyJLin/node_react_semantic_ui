@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Header, Button, Container, Grid, Image, Divider, Icon } from 'semantic-ui-react'
+import { Header, Button, Container, Grid, Image, Divider } from 'semantic-ui-react'
 import { fetchShoppingCart } from '../../actions';
 
 import './_cart.scss'
@@ -144,11 +144,8 @@ class Cart extends Component {
 
             <Grid.Column className="proceed_to_checkout">
               <Grid.Row >
-                <Button as={Link} to="/checkout/shopping_cart" className="ProceedToCartButton" animated="fade" fluid color="black" disabled={_.isEmpty(shoppingCart) === true ? true : false}>
+                <Button as={Link} to="/checkout/shopping_cart" className="ProceedToCartButton" fluid color="black" disabled={_.isEmpty(shoppingCart) === true ? true : false}>
                   <Button.Content visible>Proceed to Checkout</Button.Content>
-                  <Button.Content hidden>
-                    <Icon name='shop' />
-                  </Button.Content>
                 </Button>
               </Grid.Row>
             </Grid.Column>

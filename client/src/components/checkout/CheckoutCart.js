@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Container, Table, Button, Image } from 'semantic-ui-react'
+import { fetchShoppingCart } from '../../actions';
 
 import './_checkoutcart.scss'
 
@@ -13,8 +14,9 @@ class CheckoutCart extends Component {
   }
 
   async componentWillMount(){
+    await this.props.fetchShoppingCart()
     await this.setState({shoppingCart: this.props.cart})
-    console.log('CheckoutCart - componentWillMount', this.state.shoppingCart)
+    // console.log('CheckoutCart - componentWillMount')
   }
 
   async componentWillReceiveProps(nextProps) {
@@ -22,15 +24,17 @@ class CheckoutCart extends Component {
       await this.setState({
         shoppingCart: nextProps.cart
       })
-      await this.getSubtotal()
+      // await this.getSubtotal()
     }
     // console.log('shoppingCart', this.state.shoppingCart)
   }
 
-  renderingCartList(shoppingCart){
+  renderingCartList(){
+    const { shoppingCart } = this.state
+    // console.log('shoppingCart', shoppingCart)
     const cartList = shoppingCart.map((e) => {
-      console.log('renderingCartList', e)
-      const { imgUrl, name, price, qty, varians_id } = e
+      // console.log('renderingCartList', e)
+      const { imgUrl, name, price, qty, varians_id, id } = e
       return(
         <Table.Row key={varians_id}>
           <Table.Cell>
@@ -39,7 +43,7 @@ class CheckoutCart extends Component {
           <Table.Cell>{name}</Table.Cell>
           <Table.Cell>{qty}</Table.Cell>
           <Table.Cell> { price * qty } </Table.Cell>
-          <Table.Cell> X </Table.Cell>
+          <Table.Cell className="cursorPointer" data={varians_id} onClick={(e) => this.removeCartItem(id)}> X </Table.Cell>
         </Table.Row>
       )
     })
@@ -47,16 +51,15 @@ class CheckoutCart extends Component {
     return cartList
   }
 
-  removeCartItem(){
-    console.log('Removing Cart Item')
+  removeCartItem(varians_id, e){
+    // console.log('e----', e.target.value)
+    console.log('Removing Cart Item', varians_id)
   }
 
   renderShoppingCart() {
     const { shoppingCart } = this.state
-
+    // console.log('shoppingCart', shoppingCart)
     if(_.isEmpty(shoppingCart) === false ) {
-      console.log('YESSS')
-
       return(
         <Table>
           <Table.Header>
@@ -65,18 +68,17 @@ class CheckoutCart extends Component {
               <Table.HeaderCell width={8}></Table.HeaderCell>
               <Table.HeaderCell width={2}>Quantity</Table.HeaderCell>
               <Table.HeaderCell width={2}>Total</Table.HeaderCell>
-              <Table.HeaderCell width={2} onClick={this.removeCartItem()} className="cursorPointer"></Table.HeaderCell>
+              <Table.HeaderCell width={2}></Table.HeaderCell>
             </Table.Row>
           </Table.Header>
 
           <Table.Body>
-            {this.renderingCartList(shoppingCart)}
+            {this.renderingCartList()}
           </Table.Body>
 
         </Table>
       )
     } else {
-      console.log('NOOOO')
       return(
         <div>
           <p>It appears that your cart is currently empty!</p>
@@ -103,4 +105,4 @@ function mapStateToProps({ cart }) {
   return { cart };
 }
 
-export default connect(mapStateToProps, { })(CheckoutCart);
+export default connect(mapStateToProps, { fetchShoppingCart })(CheckoutCart);

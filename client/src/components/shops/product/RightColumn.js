@@ -58,6 +58,7 @@ class RightColumn extends Component {
       variants: this.props.product.variants
     })
     console.log('One Item ======== ', this.props.product)
+    console.log("RightColumn componentWillMount --------", this.props)
     await this.renderColorOptions()
     await this.renderSizeOptions()
   }
@@ -289,6 +290,7 @@ class RightColumn extends Component {
     // console.log('variant_obj -----', variant_obj)
 
     const shoppingCartData = {
+      id: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
       name: name,
       imgUrl: imgUrl,
       color: color,
@@ -300,8 +302,8 @@ class RightColumn extends Component {
     // console.log('shoppingCartData', shoppingCartData)
 
     await cartData.push(shoppingCartData)
-    console.log('cartData', cartData)
-    await localStorage.setItem('shoppingCartData', JSON.stringify(cartData))
+    // console.log('cartData', cartData)
+    // await localStorage.setItem('shoppingCartData', JSON.stringify(cartData))
     await this.props.addShoppingCart(shoppingCartData)
 
     this.handleCartOpen()
