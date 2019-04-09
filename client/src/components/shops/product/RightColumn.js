@@ -84,7 +84,7 @@ class RightColumn extends Component {
 
   handleSetSmallActive(e) {
     const size = e.target.value
-    console.log('PROBLEM ---handleSetSmallActive-0000', size)
+    // console.log('PROBLEM ---handleSetSmallActive-0000', size)
     this.setState({ xsmallActive: false, smallActive: !this.state.smallActive, mediumActive: false, largeActive: false, xlargeActive: false, xxlargeActive: false })
     // console.log('handleSetSmallActive-state', !this.state.smallActive)
 
@@ -93,40 +93,29 @@ class RightColumn extends Component {
 
   handleSetMediumActive(e) {
     const size = e.target.value
-    console.log('handleSetMediumActive-0000', size)
     this.setState({ xsmallActive: false, smallActive: false, mediumActive: !this.state.mediumActive, largeActive: false, xlargeActive: false, xxlargeActive: false })
-    // console.log('handleSetSmallActive-state', !this.state.mediumActive)
-
     this.handleSizeChange(size)
   }
 
   handleSetLargeActive(e) {
     const size = e.target.value
-    console.log('handleSetLargeActive-0000', size)
     this.setState({ xsmallActive: false, smallActive: false, mediumActive: false, largeActive: !this.state.largeActive, xlargeActive: false, xxlargeActive: false })
     this.handleSizeChange(size)
   }
 
   handleSetXlargeActive(e) {
     const size = e.target.value
-    console.log('handleSetXlargeActive-0000', size)
-
     this.setState({ xsmallActive: false, smallActive: false, mediumActive: false, largeActive: false, xlargeActive: !this.state.xlargeActive, xxlargeActive: false })
     this.handleSizeChange(size)
   }
 
   handleSetXxlargeActive(e) {
     const size = e.target.value
-    console.log('handleSetXxlargeActive-0000', size)
-
     this.setState({ xsmallActive: false, smallActive: false, mediumActive: false, largeActive: false, xlargeActive: false, xxlargeActive: !this.state.xxlargeActive })
     this.handleSizeChange(size)
   }
 
   renderingColorSection(){
-    // defaultValue={this.state.colorOptions[0]}
-
-    // const colorExist = this.state.product.options[0].values
     const colors = this.state.product.options.filter((arr) => {return arr.name === "Color"});
     const colorOptions = this.state.colorOptions
     // console.log('colorOptions ======>', colorOptions[0])
@@ -141,7 +130,6 @@ class RightColumn extends Component {
         </div>
       )
     } else {
-      // console.log("NOOOOO")
       return (
         <div>
           <h5>Color:</h5>
@@ -152,9 +140,7 @@ class RightColumn extends Component {
   }
 
   renderColorOptions(){
-
     const colors = this.state.product.options.filter((arr) => {return arr.name === "Color"});
-
     if( _.isEmpty(colors) === false ) {
       colors[0].values.map((e) => {
         // console.log('e', e)
@@ -170,10 +156,7 @@ class RightColumn extends Component {
 
   renderSizeOptions(){
     let sizeOptions = []
-
     const sizes = this.state.product.options.filter((arr) => {return arr.name === "Size"});
-
-    // console.log('sizes----xxxxx', sizes)
     if( _.isEmpty(sizes) === false ) {
 
       if(sizes[0].values.includes("S") === true || sizes[0].values.includes("Small") === true){
@@ -194,7 +177,6 @@ class RightColumn extends Component {
     }
 
     this.setState({ sizesContainer: sizeOptions})
-    // console.log("sizesContainer----", this.state.sizesContainer)
   }
 
   handleSizeChange(size){
@@ -241,8 +223,6 @@ class RightColumn extends Component {
 
   renderingSizeSection(){
     const sizes = this.state.product.options.filter((arr) => {return arr.name === "Size"});
-    // console.log('sizes', sizes)
-
     if( _.isEmpty(sizes) === true ) {
       return (
         <div>
@@ -262,14 +242,12 @@ class RightColumn extends Component {
   }
 
   handleCartOpen() {
-    console.log('inside handleCartOpen')
     this.setState({
       isCartOpen: true,
     });
   }
 
   handleCartClose() {
-    console.log('inside handleCartClose')
     this.setState({
       isCartOpen: false,
     });
@@ -287,8 +265,6 @@ class RightColumn extends Component {
 
     const variant_obj = this.state.variants.filter((arr) => {return arr.title.includes(size) && arr.title.includes(color)})
 
-    // console.log('variant_obj -----', variant_obj)
-
     const shoppingCartData = {
       id: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
       name: name,
@@ -299,7 +275,6 @@ class RightColumn extends Component {
       varians_id: _.isEmpty(variant_obj) === true ? "" : variant_obj[0].id,
       qty: this.state.qty
     }
-    // console.log('shoppingCartData', shoppingCartData)
 
     await cartData.push(shoppingCartData)
     // console.log('cartData', cartData)

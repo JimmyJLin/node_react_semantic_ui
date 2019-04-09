@@ -40,7 +40,7 @@ class Cart extends Component {
   renderLineItems(){
     const lineItems = this.state.shoppingCart
     if(_.isEmpty(lineItems) === false ){
-      console.log('lineItems', lineItems)
+      // console.log('lineItems', lineItems)
       // console.log('YESSS')
       return lineItems.map((e) => {
         const { name, imgUrl, qty, varians_id, price, size, color } = e
