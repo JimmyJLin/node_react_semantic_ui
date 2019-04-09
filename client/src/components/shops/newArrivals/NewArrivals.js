@@ -114,7 +114,7 @@ class NewArrivals extends Component {
         </Sliders>
 
         <Grid.Row className="buttonContainer">
-          <Button className="moreButton" as={NavLink} to="/shops/new" color="black">
+          <Button as={Link} className="moreButton" to="/shops/new" color="black">
             <Button.Content visible>
               & More ... >
             </Button.Content>

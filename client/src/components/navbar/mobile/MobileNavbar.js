@@ -6,7 +6,7 @@ import { fetchShoppingCart } from '../../../actions';
 import Cart from '../../checkout/Cart';
 import BurgerMenu from './BurgerMenu';
 
-import { Container, Visibility, Menu, Image, Icon, Label, Dropdown } from 'semantic-ui-react';
+import { Container, Visibility, Menu, Image, Icon, Label } from 'semantic-ui-react';
 
 import './_mobileNavbar.scss';
 

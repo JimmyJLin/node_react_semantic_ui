@@ -71,10 +71,8 @@ class Collection extends Component {
           </Card>
         )
       }
-
+      return renderingCollection
     })
-
-    return renderingCollection
   }
 
   renderingMobileCollection(){
@@ -118,9 +116,8 @@ class Collection extends Component {
           </Card>
         )
       }
+      return renderingCollection
     })
-
-    return renderingCollection
   }
 
 

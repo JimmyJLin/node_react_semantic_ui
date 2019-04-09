@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React, {Component} from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Header, Button, Container, Grid, Image, Divider, Icon } from 'semantic-ui-react'
 import { fetchShoppingCart } from '../../actions';

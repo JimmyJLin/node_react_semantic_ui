@@ -282,7 +282,7 @@ class RightColumn extends Component {
     const imgUrl = this.state.product.image.src
     const price = this.state.product.variants[0].price
 
-    const title = _.isEmpty(this.state.color) === true ?  this.state.selectedSize : this.state.color + ' / ' + this.state.selectedSize;
+    // const title = _.isEmpty(this.state.color) === true ?  this.state.selectedSize : this.state.color + ' / ' + this.state.selectedSize;
 
     const variant_obj = this.state.variants.filter((arr) => {return arr.title.includes(size) && arr.title.includes(color)})
 

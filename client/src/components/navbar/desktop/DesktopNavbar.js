@@ -81,7 +81,7 @@ class DesktopNavbar extends Component {
   }
 
   render() {
-    const { menuFixed, activeItem, shoppingCart } = this.state
+    const { menuFixed, shoppingCart } = this.state
     return(
       <Container id="desktop">
         <Container id="sticky_top" text>
