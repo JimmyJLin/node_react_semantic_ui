@@ -3,5 +3,6 @@
 module.exports = {
   shopName: process.env.SHOP_NAME,
   apiKey: process.env.API_KEY,
-  password: process.env.PASSWORD
+  password: process.env.PASSWORD,
+  mongoURI: process.env.MONGODB_URI
 }

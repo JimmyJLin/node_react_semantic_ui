@@ -1,5 +1,7 @@
 const keys = require('../config/keys');
 const Shopify = require('shopify-api-node');
+const mongoose = require('mongoose');
+const ShoppingCart = mongoose.model('shoppingCart');
 
 module.exports = app => {
   const shopify = new Shopify({
@@ -31,7 +33,13 @@ module.exports = app => {
 
   // GET ALL SHOPPING CART ITEMS
   app.get('/api/shopify/shopping_cart/getall', async (req, res) => {
-    res.send(shoppingCart)
+    await ShoppingCart.find({})
+      .then((cart) => {
+        res.send(cart)
+      })
+      .catch((error) => {
+        console.log(error.message)
+      })
   })
 
   // CREATE NEW ORDER
