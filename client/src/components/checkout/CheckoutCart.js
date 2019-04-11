@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Container, Table, Button, Image, Icon } from 'semantic-ui-react'
+import { Container, Table, Button, Image, Icon, Grid } from 'semantic-ui-react'
 import { fetchShoppingCart, deleteOneCartItem, chgangeCartItemqty } from '../../actions';
 
 import './_checkoutcart.scss'
@@ -51,12 +51,20 @@ class CheckoutCart extends Component {
           </Table.Cell>
           <Table.Cell>{name} { _.isEmpty(color) === false  ? <span>({color})</span> : "" } { _.isEmpty(size) === false ? <span>( {size} )</span> : ""}</Table.Cell>
           <Table.Cell>
-            {qty}
-            <br/>
-            <Icon className="cursorPointer" name='add' onClick={(e) => this.incrementQuantity(_id, clientId, qty)}/>
-            <Icon className="cursorPointer" name='minus' onClick={(e)=>this.decrementQuantity(_id, clientId, qty)}/>
+            <Grid verticalAlign="middle" textAlign="center" columns={2}>
+              <Grid.Row>
+                <Grid.Column>
+                  <span className="centerAlign">{qty}</span>
+                </Grid.Column>
+                <Grid.Column id="qtyCloumn">
+                  <Icon className="cursorPointer" name='add' onClick={(e) => this.incrementQuantity(_id, clientId, qty)}/>
+                  <Icon className="cursorPointer" name='minus' onClick={(e)=>this.decrementQuantity(_id, clientId, qty)}/>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+
           </Table.Cell>
-          <Table.Cell> { price * qty } </Table.Cell>
+          <Table.Cell> $ { price * qty } </Table.Cell>
           <Table.Cell className="cursorPointer" onClick={(e) => this.removeCartItem(_id, clientId)}> X </Table.Cell>
         </Table.Row>
       )
