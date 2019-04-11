@@ -21,7 +21,25 @@ module.exports = app => {
       ]
     }
 
-  const shoppingCart = []
+  // DELTE ONE CART ITEM
+  app.post('/api/shopify/shopping_cart/deleteOne', async (req,res) => {
+    const { id, clientId } = req.body
+
+    const idQuery = { _id: id }
+    await ShoppingCarts.findOneAndDelete(idQuery)
+
+    const clientIdQuery = { clientId: clientId}
+
+    await ShoppingCarts.find(clientIdQuery)
+      .then((shoppingCart) => {
+        res.send(shoppingCart)
+      })
+      .catch((error) => {
+        console.log(error.message)
+      })
+  })
+
+
   // ADD TO SHOPPING CART
   app.post('/api/shopify/shopping_cart/new', async (req, res) => {
     // console.log('checkout----', req.body)

@@ -12,6 +12,14 @@ import { FETCH_SOCK } from './types';
 import { FETCH_PUFF_STUFF } from './types';
 import { FETCH_SHOPPING_CART } from './types';
 
+
+// DELETE ONE CART ITEM
+export const deleteOneCartItem = (cartId) => async dispatch => {
+  const res = await axios.post('/api/shopify/shopping_cart/deleteOne', cartId)
+
+  dispatch({ type: FETCH_SHOPPING_CART, payload: res.data})
+}
+
 // ADD TO SHOPPING CART
 export const addShoppingCart = (shoppingCartData) => async dispatch => {
   const res = await axios.post('/api/shopify/shopping_cart/new', shoppingCartData)
