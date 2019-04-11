@@ -1,7 +1,7 @@
 const keys = require('../config/keys');
 const Shopify = require('shopify-api-node');
 const mongoose = require('mongoose');
-const ShoppingCart = mongoose.model('shoppingCart');
+const ShoppingCarts = mongoose.model('shoppingCart');
 
 module.exports = app => {
   const shopify = new Shopify({
@@ -24,16 +24,43 @@ module.exports = app => {
   const shoppingCart = []
   // ADD TO SHOPPING CART
   app.post('/api/shopify/shopping_cart/new', async (req, res) => {
-    console.log('checkout----', req.body)
+    // console.log('checkout----', req.body)
+    const { clientId, varians_id, name, imgUrl, color, size, price, qty, compledtedCheckout } = req.body
     const line_items = req.body
-    shoppingCart.push(line_items)
 
-    res.send(shoppingCart)
+    const ShoppingCart = new ShoppingCarts({
+      clientId,
+      varians_id,
+      name,
+      imgUrl,
+      color,
+      size,
+      price,
+      qty,
+      compledtedCheckout
+    })
+
+    await ShoppingCart.save()
+
+    let clientShoppingCart
+    const query = { clientId: clientId}
+
+    await ShoppingCarts.find(query)
+      .then((shoppingCart) => {
+        res.send(shoppingCart)
+      })
+      .catch((error) => {
+        console.log(error.message)
+      })
+
   })
 
   // GET ALL SHOPPING CART ITEMS
-  app.get('/api/shopify/shopping_cart/getall', async (req, res) => {
-    await ShoppingCart.find({})
+  app.post('/api/shopify/shopping_cart/getall', async (req, res) => {
+    // console.log('getall shopping cart----', req.body)
+    const { clientId } = req.body
+    const query = { clientId: clientId }
+    await ShoppingCarts.find(query)
       .then((cart) => {
         res.send(cart)
       })

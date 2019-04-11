@@ -13,18 +13,15 @@ import { FETCH_PUFF_STUFF } from './types';
 import { FETCH_SHOPPING_CART } from './types';
 
 // ADD TO SHOPPING CART
-const cartData = []
 export const addShoppingCart = (shoppingCartData) => async dispatch => {
-  cartData.push(shoppingCartData)
-  console.log('cartData', shoppingCartData)
   const res = await axios.post('/api/shopify/shopping_cart/new', shoppingCartData)
 
   dispatch({ type: FETCH_SHOPPING_CART, payload: res.data})
 }
 
 // GET ALL IN SHOPPING CART
-export const fetchShoppingCart = () => async dispatch => {
-  const res = await axios.get('/api/shopify/shopping_cart/getall')
+export const fetchShoppingCart = (clientId) => async dispatch => {
+  const res = await axios.post('/api/shopify/shopping_cart/getall', clientId)
 
   dispatch({ type: FETCH_SHOPPING_CART, payload: res.data})
 }

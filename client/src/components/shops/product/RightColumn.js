@@ -20,8 +20,6 @@ const QtyOptions = [
   {key: "10", text: "10", value: "10"},
 ]
 
-let cartData = []
-
 class RightColumn extends Component {
   constructor(props) {
     super(props);
@@ -265,8 +263,18 @@ class RightColumn extends Component {
 
     const variant_obj = this.state.variants.filter((arr) => {return arr.title.includes(size) && arr.title.includes(color)})
 
+    const allthingsfrenchieId = {
+      clientId: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+    }
+
+    if(localStorage.getItem("allthingsfrenchieId") === null) {
+      await localStorage.setItem('allthingsfrenchieId', JSON.stringify(allthingsfrenchieId))
+    }
+
+    const clientId = JSON.parse(localStorage.getItem("allthingsfrenchieId"))
+
     const shoppingCartData = {
-      id: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
+      clientId: clientId.clientId,
       name: name,
       imgUrl: imgUrl,
       color: color,
@@ -276,7 +284,7 @@ class RightColumn extends Component {
       qty: this.state.qty
     }
 
-    await cartData.push(shoppingCartData)
+    // await cartData.push(shoppingCartData)
     // console.log('cartData', cartData)
     // await localStorage.setItem('shoppingCartData', JSON.stringify(cartData))
     await this.props.addShoppingCart(shoppingCartData)

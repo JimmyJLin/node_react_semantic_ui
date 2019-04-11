@@ -16,7 +16,16 @@ class Cart extends Component {
   }
 
   async componentWillMount(){
-    await this.props.fetchShoppingCart()
+    const allthingsfrenchieId = {
+      clientId: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+    }
+
+    if(localStorage.getItem("allthingsfrenchieId") === null) {
+      await localStorage.setItem('allthingsfrenchieId', JSON.stringify(allthingsfrenchieId))
+    }
+    const clientId = JSON.parse(localStorage.getItem("allthingsfrenchieId"))
+
+    await this.props.fetchShoppingCart(clientId)
     await this.setState({shoppingCart: this.props.cart})
     await this.getSubtotal()
   }
@@ -43,9 +52,9 @@ class Cart extends Component {
       // console.log('lineItems', lineItems)
       // console.log('YESSS')
       return lineItems.map((e) => {
-        const { name, imgUrl, qty, varians_id, price, size, color } = e
+        const { _id, name, imgUrl, qty, price, size, color } = e
         return (
-          <Grid.Row key={varians_id + color + size}>
+          <Grid.Row key={_id}>
             <Grid.Column className="line__item" floated="left" width={4}>
               <Image src={imgUrl} size='tiny'/>
             </Grid.Column>
