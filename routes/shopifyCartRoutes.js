@@ -21,6 +21,31 @@ module.exports = app => {
       ]
     }
 
+  // UPDATE ONE CART QTY
+  app.post('/api/shopify/shopping_cart/changeCartQty', async (req, res) => {
+    const { id, clientId, qty} = req.body
+
+    const query = { _id: id }
+    // console.log('qty---',  qty)
+
+    if(qty === 0) {
+      await ShoppingCarts.findOneAndDelete(query)
+    } else {
+      await ShoppingCarts.findOneAndUpdate(query, {qty: qty})
+    }
+
+    const clientIdQuery = { clientId: clientId}
+
+    await ShoppingCarts.find(clientIdQuery)
+      .then((shoppingCart) => {
+        res.send(shoppingCart)
+      })
+      .catch((error) => {
+        console.log(error.message)
+      })
+
+  })
+
   // DELTE ONE CART ITEM
   app.post('/api/shopify/shopping_cart/deleteOne', async (req,res) => {
     const { id, clientId } = req.body
@@ -60,7 +85,6 @@ module.exports = app => {
 
     await ShoppingCart.save()
 
-    let clientShoppingCart
     const query = { clientId: clientId}
 
     await ShoppingCarts.find(query)

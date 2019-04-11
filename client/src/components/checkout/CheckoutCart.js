@@ -2,8 +2,8 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Container, Table, Button, Image } from 'semantic-ui-react'
-import { fetchShoppingCart, deleteOneCartItem } from '../../actions';
+import { Container, Table, Button, Image, Icon } from 'semantic-ui-react'
+import { fetchShoppingCart, deleteOneCartItem, chgangeCartItemqty } from '../../actions';
 
 import './_checkoutcart.scss'
 
@@ -40,6 +40,7 @@ class CheckoutCart extends Component {
 
   renderingCartList(){
     const { shoppingCart } = this.state
+    console.log('shoppingCart', shoppingCart)
     const cartList = shoppingCart.map((e) => {
       const { _id, clientId, imgUrl, name, price, qty, color, size } = e
 
@@ -49,7 +50,12 @@ class CheckoutCart extends Component {
             <Image src={imgUrl} size="tiny"></Image>
           </Table.Cell>
           <Table.Cell>{name} { _.isEmpty(color) === false  ? <span>({color})</span> : "" } { _.isEmpty(size) === false ? <span>( {size} )</span> : ""}</Table.Cell>
-          <Table.Cell>{qty}</Table.Cell>
+          <Table.Cell>
+            {qty}
+            <br/>
+            <Icon className="cursorPointer" name='add' onClick={(e) => this.incrementQuantity(_id, clientId, qty)}/>
+            <Icon className="cursorPointer" name='minus' onClick={(e)=>this.decrementQuantity(_id, clientId, qty)}/>
+          </Table.Cell>
           <Table.Cell> { price * qty } </Table.Cell>
           <Table.Cell className="cursorPointer" onClick={(e) => this.removeCartItem(_id, clientId)}> X </Table.Cell>
         </Table.Row>
@@ -57,6 +63,28 @@ class CheckoutCart extends Component {
     })
 
     return cartList
+  }
+
+  incrementQuantity(_id, clientId, qty){
+    const qtyInt = parseInt(qty)
+    const QuantyChange = {
+      id: _id,
+      clientId: clientId,
+      qty: qtyInt + 1
+    }
+    // console.log("QuantyChange", QuantyChange)
+    this.props.chgangeCartItemqty(QuantyChange)
+  }
+
+  decrementQuantity(_id, clientId, qty){
+    const qtyInt = parseInt(qty)
+    const QuantyChange = {
+      id: _id,
+      clientId: clientId,
+      qty: qtyInt - 1
+    }
+    // console.log("QuantyChange", QuantyChange)
+    this.props.chgangeCartItemqty(QuantyChange)
   }
 
   removeCartItem(_id, clientId){
@@ -117,4 +145,4 @@ function mapStateToProps({ cart }) {
   return { cart };
 }
 
-export default connect(mapStateToProps, { fetchShoppingCart, deleteOneCartItem })(CheckoutCart);
+export default connect(mapStateToProps, { fetchShoppingCart, deleteOneCartItem, chgangeCartItemqty })(CheckoutCart);

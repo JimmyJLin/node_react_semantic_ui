@@ -12,6 +12,12 @@ import { FETCH_SOCK } from './types';
 import { FETCH_PUFF_STUFF } from './types';
 import { FETCH_SHOPPING_CART } from './types';
 
+// CHANGE CART QTY
+export const chgangeCartItemqty = (QuantyChange) => async dispatch => {
+  const res = await axios.post('/api/shopify/shopping_cart/changeCartQty', QuantyChange)
+
+  dispatch({ type: FETCH_SHOPPING_CART, payload: res.data})
+}
 
 // DELETE ONE CART ITEM
 export const deleteOneCartItem = (cartId) => async dispatch => {
