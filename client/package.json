@@ -12,6 +12,7 @@
     "react-animated-slider": "^1.1.4",
     "react-burger-menu": "^2.6.5",
     "react-dom": "^16.7.0",
+    "react-helmet": "^5.2.0",
     "react-image-gallery": "^0.8.14",
     "react-images": "^0.5.19",
     "react-lazy-load": "^3.0.13",

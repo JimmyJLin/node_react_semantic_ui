@@ -5,6 +5,8 @@ const shoppingCartSchema = new Schema({
   clientId: { type: String },
   varians_id: { type: String },
   name: { type: String },
+  productId: { type: String },
+  productHandle: { type: String },
   imgUrl: { type: String },
   color: { type: String },
   size: { type: String },

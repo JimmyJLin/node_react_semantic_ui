@@ -68,12 +68,14 @@ module.exports = app => {
   // ADD TO SHOPPING CART
   app.post('/api/shopify/shopping_cart/new', async (req, res) => {
     // console.log('checkout----', req.body)
-    const { clientId, varians_id, name, imgUrl, color, size, price, qty, compledtedCheckout } = req.body
+    const { clientId, varians_id, productId, productHandle, name, imgUrl, color, size, price, qty, compledtedCheckout } = req.body
     const line_items = req.body
 
     const ShoppingCart = new ShoppingCarts({
       clientId,
       varians_id,
+      productId,
+      productHandle,
       name,
       imgUrl,
       color,

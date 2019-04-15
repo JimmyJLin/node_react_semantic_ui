@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchOneProduct, setSpinner } from '../../../actions';
 import { Container, Grid } from 'semantic-ui-react'
+import { Helmet } from "react-helmet";
 
 import LeftColumn from './LeftColumn';
 import RightColumn from './RightColumn';
@@ -28,7 +29,7 @@ class Product extends Component {
     }
     await this.props.setSpinner(spinner)
 
-    // console.log('One Product -----', this.state.product)
+    console.log('One Product -----', this.state.product)
 
   }
 
@@ -53,10 +54,23 @@ class Product extends Component {
     }
   }
 
+  renderingHelmet(){
+    if( _.isEmpty(this.state.product) === false ) {
+      const { title, image } = this.state.product
+      return(
+        <Helmet>
+          <title>{title} || Allthingsfrenchie</title>
+          <meta property="og:title" content={title} />
+          <meta property="og:image" content={image.url} />
+        </Helmet>
+      )
+    }
+  }
+
   render() {
     return (
       <Container id="product">
-
+        {this.renderingHelmet()}
         <Spinner />
 
         <Grid stackable columns={2}>

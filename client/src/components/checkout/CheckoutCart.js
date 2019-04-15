@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import MediaQuery from 'react-responsive';
 import { Container, Table, Button, Image, Icon, Grid } from 'semantic-ui-react'
 import { fetchShoppingCart, deleteOneCartItem, chgangeCartItemqty } from '../../actions';
 
@@ -42,14 +43,20 @@ class CheckoutCart extends Component {
     const { shoppingCart } = this.state
     console.log('shoppingCart', shoppingCart)
     const cartList = shoppingCart.map((e) => {
-      const { _id, clientId, imgUrl, name, price, qty, color, size } = e
+      const { _id, clientId, imgUrl, name, price, qty, color, size, productId, productHandle } = e
 
       return(
         <Table.Row key={_id}>
           <Table.Cell>
-            <Image src={imgUrl} size="tiny"></Image>
+            <Image src={imgUrl} size="tiny" />
           </Table.Cell>
-          <Table.Cell>{name} { _.isEmpty(color) === false  ? <span>({color})</span> : "" } { _.isEmpty(size) === false ? <span>( {size} )</span> : ""}</Table.Cell>
+          <Table.Cell
+            id="productName"
+            as={Link}
+            to={`/products/${productHandle}/${productId}`}
+          >
+            {name} { _.isEmpty(color) === false  ? <span>({color})</span> : "" } { _.isEmpty(size) === false ? <span>( {size} )</span> : ""}
+          </Table.Cell>
           <Table.Cell>
             <Grid verticalAlign="middle" textAlign="center" columns={2}>
               <Grid.Row>
@@ -104,7 +111,39 @@ class CheckoutCart extends Component {
     this.props.deleteOneCartItem(cartId)
   }
 
-  renderShoppingCart() {
+  renderDesktopShoppingCart() {
+    const { shoppingCart } = this.state
+    // console.log('shoppingCart', shoppingCart)
+    if(_.isEmpty(shoppingCart) === false ) {
+      return(
+        <Table>
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell width={2}></Table.HeaderCell>
+              <Table.HeaderCell width={8}></Table.HeaderCell>
+              <Table.HeaderCell width={1}>Quantity</Table.HeaderCell>
+              <Table.HeaderCell width={1}>Total</Table.HeaderCell>
+              <Table.HeaderCell width={1}></Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+
+          <Table.Body>
+            {this.renderingCartList()}
+          </Table.Body>
+
+        </Table>
+      )
+    } else {
+      return(
+        <div>
+          <p>It appears that your cart is currently empty!</p>
+          <Button as={Link} to="/" secondary> Continue Shopping</Button>
+        </div>
+      )
+    }
+  }
+
+  renderingMobileShoppingCart(){
     const { shoppingCart } = this.state
     // console.log('shoppingCart', shoppingCart)
     if(_.isEmpty(shoppingCart) === false ) {
@@ -142,7 +181,13 @@ class CheckoutCart extends Component {
       <Container id="checkoutcart">
         <h2 className="contentTitle"> Your Cart </h2>
 
-        {this.renderShoppingCart()}
+        <MediaQuery query="(min-device-width: 1024px)">
+          {this.renderDesktopShoppingCart()}
+        </MediaQuery>
+
+        <MediaQuery query="(max-device-width: 1023px)">
+          {this.renderingMobileShoppingCart()}
+        </MediaQuery>
 
       </Container>
     )
