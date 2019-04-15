@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import MediaQuery from 'react-responsive';
-import { Container, Table, Button, Image, Icon, Grid } from 'semantic-ui-react'
+import { Container, Table, Button, Image, Icon, Grid, Divider } from 'semantic-ui-react'
 import { fetchShoppingCart, deleteOneCartItem, chgangeCartItemqty } from '../../actions';
 import CartSummary from './CartSummary';
 
@@ -42,7 +42,7 @@ class CheckoutCart extends Component {
 
   renderingCartList(){
     const { shoppingCart } = this.state
-    console.log('shoppingCart', shoppingCart)
+    // console.log('shoppingCart', shoppingCart)
     const cartList = shoppingCart.map((e) => {
       const { _id, clientId, imgUrl, name, price, qty, color, size, productId, productHandle } = e
 
@@ -146,7 +146,7 @@ class CheckoutCart extends Component {
 
   renderingMobileCartList(){
     const { shoppingCart } = this.state
-    console.log('shoppingCart', shoppingCart)
+    // console.log('shoppingCart', shoppingCart)
     const cartList = shoppingCart.map((e) => {
       const { _id, clientId, imgUrl, name, price, qty, color, size, productId, productHandle } = e
 
@@ -163,10 +163,10 @@ class CheckoutCart extends Component {
           <Grid.Row>
             <Grid columns='equal' stackable>
               <Grid.Column width={8}>
-                <Image src={imgUrl} fluid/>
+                <Image as={Link} to={`/products/${productHandle}/${productId}`} src={imgUrl} fluid/>
               </Grid.Column>
-              <Grid.Column>
 
+              <Grid.Column>
                 <Grid columns='equal'>
                   <Grid.Column>
                     <span>$ {price}</span>
@@ -187,10 +187,13 @@ class CheckoutCart extends Component {
                     <span onClick={(e) => this.removeCartItem(_id, clientId)}> Remove </span>
                   </Grid.Column>
                 </Grid>
-
               </Grid.Column>
+
             </Grid>
           </Grid.Row>
+
+          <Divider/>
+
         </Grid>
       )
     })
@@ -223,6 +226,7 @@ class CheckoutCart extends Component {
         <Grid stackable columns='equal'>
           <Grid.Column>
             <h2 className="contentTitle"> Shopping Bag </h2>
+            <Divider />
             <MediaQuery query="(min-device-width: 1024px)">
               {this.renderDesktopShoppingCart()}
             </MediaQuery>

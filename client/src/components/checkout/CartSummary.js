@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Header, Button, Container, Grid, Image, Divider } from 'semantic-ui-react'
+import { Button, Container, Grid, Divider } from 'semantic-ui-react'
 import { fetchShoppingCart } from '../../actions';
 
 import './_cart.scss'

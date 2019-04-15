@@ -55,8 +55,8 @@ class RightColumn extends Component {
       product: this.props.product,
       variants: this.props.product.variants
     })
-    console.log('One Item ======== ', this.props.product)
-    console.log("RightColumn componentWillMount --------", this.props)
+    // console.log('One Item ======== ', this.props.product)
+    // console.log("RightColumn componentWillMount --------", this.props)
     await this.renderColorOptions()
     await this.renderSizeOptions()
   }

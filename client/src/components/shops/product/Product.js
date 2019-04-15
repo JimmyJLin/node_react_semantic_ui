@@ -29,7 +29,7 @@ class Product extends Component {
     }
     await this.props.setSpinner(spinner)
 
-    console.log('One Product -----', this.state.product)
+    // console.log('One Product -----', this.state.product)
 
   }
 
