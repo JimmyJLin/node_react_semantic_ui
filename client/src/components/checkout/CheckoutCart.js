@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import MediaQuery from 'react-responsive';
 import { Container, Table, Button, Image, Icon, Grid } from 'semantic-ui-react'
 import { fetchShoppingCart, deleteOneCartItem, chgangeCartItemqty } from '../../actions';
+import CartSummary from './CartSummary';
 
 import './_checkoutcart.scss'
 
@@ -143,27 +144,67 @@ class CheckoutCart extends Component {
     }
   }
 
+  renderingMobileCartList(){
+    const { shoppingCart } = this.state
+    console.log('shoppingCart', shoppingCart)
+    const cartList = shoppingCart.map((e) => {
+      const { _id, clientId, imgUrl, name, price, qty, color, size, productId, productHandle } = e
+
+      return (
+        <Grid key={_id} as={Container} centered>
+          <Grid.Row>
+            <Grid.Column
+              as={Link}
+              to={`/products/${productHandle}/${productId}`}
+            >
+              {name} { _.isEmpty(color) === false  ? <span>({color})</span> : "" } { _.isEmpty(size) === false ? <span>( {size} )</span> : ""}
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid columns='equal' stackable>
+              <Grid.Column width={8}>
+                <Image src={imgUrl} fluid/>
+              </Grid.Column>
+              <Grid.Column>
+
+                <Grid columns='equal'>
+                  <Grid.Column>
+                    <span>$ {price}</span>
+                  </Grid.Column>
+                  <Grid.Column>
+                    <Grid.Row>
+                      <span id="qtyCloumn" className="centerAlign">{qty}</span>
+                    </Grid.Row>
+                    <Grid.Row>
+                      <Icon className="cursorPointer" name='add' onClick={(e) => this.incrementQuantity(_id, clientId, qty)}/>
+                      <Icon className="cursorPointer" name='minus' onClick={(e)=>this.decrementQuantity(_id, clientId, qty)}/>
+                    </Grid.Row>
+                  </Grid.Column>
+                  <Grid.Column>
+                    <span>$ {price * qty}</span>
+                  </Grid.Column>
+                  <Grid.Column>
+                    <span onClick={(e) => this.removeCartItem(_id, clientId)}> Remove </span>
+                  </Grid.Column>
+                </Grid>
+
+              </Grid.Column>
+            </Grid>
+          </Grid.Row>
+        </Grid>
+      )
+    })
+    return cartList
+  }
+
   renderingMobileShoppingCart(){
     const { shoppingCart } = this.state
     // console.log('shoppingCart', shoppingCart)
     if(_.isEmpty(shoppingCart) === false ) {
       return(
-        <Table>
-          <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell width={2}></Table.HeaderCell>
-              <Table.HeaderCell width={8}></Table.HeaderCell>
-              <Table.HeaderCell width={1}>Quantity</Table.HeaderCell>
-              <Table.HeaderCell width={1}>Total</Table.HeaderCell>
-              <Table.HeaderCell width={1}></Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
-
-          <Table.Body>
-            {this.renderingCartList()}
-          </Table.Body>
-
-        </Table>
+        <Grid columns={5}>
+          {this.renderingMobileCartList()}
+        </Grid>
       )
     } else {
       return(
@@ -179,15 +220,25 @@ class CheckoutCart extends Component {
 
     return(
       <Container id="checkoutcart">
-        <h2 className="contentTitle"> Your Cart </h2>
+        <Grid stackable columns='equal'>
+          <Grid.Column>
+            <h2 className="contentTitle"> Shopping Bag </h2>
+            <MediaQuery query="(min-device-width: 1024px)">
+              {this.renderDesktopShoppingCart()}
+            </MediaQuery>
+            <MediaQuery query="(max-device-width: 1023px)">
+              {this.renderingMobileShoppingCart()}
+            </MediaQuery>
+          </Grid.Column>
 
-        <MediaQuery query="(min-device-width: 1024px)">
-          {this.renderDesktopShoppingCart()}
-        </MediaQuery>
+          <Grid.Column width={4}>
+            <CartSummary/>
+          </Grid.Column>
+        </Grid>
 
-        <MediaQuery query="(max-device-width: 1023px)">
-          {this.renderingMobileShoppingCart()}
-        </MediaQuery>
+
+
+
 
       </Container>
     )
