@@ -40,7 +40,7 @@ class CheckoutCart extends Component {
     // console.log('shoppingCart', this.state.shoppingCart)
   }
 
-  renderingCartList(){
+  renderingDesktopCartList(){
     const { shoppingCart } = this.state
     // console.log('shoppingCart', shoppingCart)
     const cartList = shoppingCart.map((e) => {
@@ -49,14 +49,17 @@ class CheckoutCart extends Component {
       return(
         <Table.Row key={_id}>
           <Table.Cell>
-            <Image src={imgUrl} size="tiny" />
+            <Link to={`/products/${productHandle}/${productId}`}>
+              <Image src={imgUrl} size="tiny" />
+            </Link>
           </Table.Cell>
-          <Table.Cell
-            id="productName"
-            as={Link}
-            to={`/products/${productHandle}/${productId}`}
-          >
-            {name} { _.isEmpty(color) === false  ? <span>({color})</span> : "" } { _.isEmpty(size) === false ? <span>( {size} )</span> : ""}
+          <Table.Cell>
+            <Link
+              id="productName"
+              to={`/products/${productHandle}/${productId}`}
+            >
+              {name} { _.isEmpty(color) === false  ? <span>({color})</span> : "" } { _.isEmpty(size) === false ? <span>( {size} )</span> : ""}
+            </Link>
           </Table.Cell>
           <Table.Cell>
             <Grid verticalAlign="middle" textAlign="center" columns={2}>
@@ -117,7 +120,7 @@ class CheckoutCart extends Component {
     // console.log('shoppingCart', shoppingCart)
     if(_.isEmpty(shoppingCart) === false ) {
       return(
-        <Table>
+        <Table selectable>
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell width={2}></Table.HeaderCell>
@@ -129,7 +132,7 @@ class CheckoutCart extends Component {
           </Table.Header>
 
           <Table.Body>
-            {this.renderingCartList()}
+            {this.renderingDesktopCartList()}
           </Table.Body>
 
         </Table>
