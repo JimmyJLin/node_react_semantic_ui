@@ -44,7 +44,8 @@ class NewArrivals extends Component {
   }
 
   renderCards() {
-    return this.state.newArrivals.map(({ product_id, title, images, variants, handle }) => {
+
+    return this.state.newArrivals.sort(function(a, b){return 0.5 - Math.random()}).map(({ product_id, title, images, variants, handle }) => {
       const productData = {
         id: product_id,
         handle: handle
