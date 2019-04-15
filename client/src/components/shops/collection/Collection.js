@@ -29,12 +29,19 @@ class Collection extends Component {
        })
    }
 
-  renderingCollection(){
+  renderingDesktopCollection(){
 
     const { collection } = this.state
     // console.log('collection', collection)
     const renderingCollection = collection.map((e) => {
       const { id, product_id, title, variants, images, handle } = e
+      // console.log('onSale', variants[0].compare_at_price)
+      // if (_.isEmpty(variants[0].compare_at_price) === false && variants[0].compare_at_price !== null) {
+      //   console.log('YESSSS')
+      // } else {
+      //   console.log('NOOOO')
+      // }
+
       if( _.isEmpty(id) === true && id == null ) {
         // console.log("id-YESSSS")
         return(
@@ -46,7 +53,10 @@ class Collection extends Component {
 
             <Card.Content>
               <div id="title">{ title }</div>
-              <div id="price"> $ {variants[0].price} </div>
+              <div id="price">
+                $ {variants[0].price}
+                { _.isEmpty(variants[0].compare_at_price) === false && variants[0].compare_at_price !== null ? <span className="sale">$ {variants[0].compare_at_price}</span> : <span></span> }
+              </div>
               {/* <Card.Description>Matthew is a musician living in Nashville.</Card.Description>  */}
             </Card.Content>
           </Card>
@@ -65,7 +75,10 @@ class Collection extends Component {
 
             <Card.Content>
               <div id="title">{ title }</div>
-              <div id="price"> $ {variants[0].price} </div>
+              <div id="price">
+                $ {variants[0].price}
+                { _.isEmpty(variants[0].compare_at_price) === false && variants[0].compare_at_price !== null ? <span className="sale">$ {variants[0].compare_at_price}</span> : <span></span> }
+              </div>
               {/* <Card.Description>Matthew is a musician living in Nashville.</Card.Description>  */}
             </Card.Content>
           </Card>
@@ -128,7 +141,7 @@ class Collection extends Component {
 
         <MediaQuery query="(min-device-width: 1024px)">
           <Card.Group itemsPerRow={4}>
-            {this.renderingCollection()}
+            {this.renderingDesktopCollection()}
           </Card.Group>
         </MediaQuery>
 
