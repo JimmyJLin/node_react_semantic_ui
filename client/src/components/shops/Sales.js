@@ -44,7 +44,7 @@ class Sales extends Component {
   render() {
     return (
       <Container id="socks">
-        <h1>Sock</h1>
+        <h1>Sales</h1>
         <Spinner />
 
         {this.renderingCollection()}
