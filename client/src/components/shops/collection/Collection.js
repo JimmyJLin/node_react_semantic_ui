@@ -105,7 +105,10 @@ class Collection extends Component {
             </LazyLoad>
             <Card.Content>
               <div id="title">{ title }</div>
-              <div id="price"> $ {variants[0].price} </div>
+              <div id="price">
+                $ {variants[0].price}
+                { _.isEmpty(variants[0].compare_at_price) === false && variants[0].compare_at_price !== null ? <span className="sale">$ {variants[0].compare_at_price}</span> : <span></span> }
+              </div>
               {/* <Card.Description>Matthew is a musician living in Nashville.</Card.Description>  */}
             </Card.Content>
           </Card>
@@ -123,7 +126,10 @@ class Collection extends Component {
             </LazyLoad>
             <Card.Content>
               <div id="title">{ title }</div>
-              <div id="price"> $ {variants[0].price} </div>
+              <div id="price">
+                $ {variants[0].price}
+                { _.isEmpty(variants[0].compare_at_price) === false && variants[0].compare_at_price !== null ? <span className="sale">$ {variants[0].compare_at_price}</span> : <span></span> }
+              </div>
               {/* <Card.Description>Matthew is a musician living in Nashville.</Card.Description>  */}
             </Card.Content>
           </Card>
