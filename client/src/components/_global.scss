@@ -50,6 +50,31 @@ body {
     cursor: pointer;
   }
 
+  .onHoverItem {
+    position: relative;
+    color: #000;
+    text-decoration: none;
+  }
+  .onHoverItem:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #000;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.4s ease-in-out 0s;
+    transition: all 0.4s ease-in-out 0s;
+  }
+  .onHoverItem:hover:before{
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+  }
+
 }
 
 

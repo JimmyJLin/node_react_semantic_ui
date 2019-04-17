@@ -161,7 +161,7 @@ class Cart extends Component {
                   disabled={_.isEmpty(shoppingCart) === true ? true : false}
                   onClick={this.props.handleCartClose}
                 >
-                  <Button.Content visible>Proceed to Checkout</Button.Content>
+                  <Button.Content visible> Checkout</Button.Content>
                 </Button>
               </Grid.Row>
             </Grid.Column>

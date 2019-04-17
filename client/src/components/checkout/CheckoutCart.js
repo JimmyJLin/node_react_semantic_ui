@@ -58,7 +58,9 @@ class CheckoutCart extends Component {
               id="productName"
               to={`/products/${productHandle}/${productId}`}
             >
-              {name} { _.isEmpty(color) === false  ? <span>({color})</span> : "" } { _.isEmpty(size) === false ? <span>( {size} )</span> : ""}
+              <span className="onHoverItem">
+                {name} { _.isEmpty(color) === false  ? <span>({color})</span> : "" } { _.isEmpty(size) === false ? <span>( {size} )</span> : ""}
+              </span>
             </Link>
           </Table.Cell>
           <Table.Cell>
@@ -76,7 +78,9 @@ class CheckoutCart extends Component {
 
           </Table.Cell>
           <Table.Cell> $ { price * qty } </Table.Cell>
-          <Table.Cell className="cursorPointer" onClick={(e) => this.removeCartItem(_id, clientId)}> X </Table.Cell>
+          <Table.Cell className="cursorPointer" onClick={(e) => this.removeCartItem(_id, clientId)}>
+            <span className="onHoverItem"> Remove </span>
+          </Table.Cell>
         </Table.Row>
       )
     })
