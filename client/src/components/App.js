@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 // import SASS
 import './App.scss';
@@ -34,6 +34,10 @@ import Review from './checkout/Review';
 // import Shipping from './legal/Shipping';
 // import Terms_service from './legal/Terms_service';
 
+// NotFoundPage
+
+import NotFoundPage from './landing/NotFoundPage';
+
 class App extends Component {
   render() {
     return (
@@ -42,36 +46,39 @@ class App extends Component {
           <div>
             <ScrollToTop>
               <Header />
-              <Route exact path="/" component={Landing} />
+              <Switch>
+                <Route exact path="/" component={Landing} />
 
-              {/* Shop Routes */}
-              <Route path="/shops/women" component={Women} />
-              <Route path="/shops/men" component={Men} />
-              <Route path="/shops/jewelry" component={Jewelry} />
-              <Route path="/shops/bags_accessories" component={Bags_Accessories} />
-              <Route path="/shops/socks" component={Socks} />
-              <Route path="/shops/sales" component={Sales} />
-              <Route path="/shops/new" component={New} />
-              <Route path="/shops/puff_stuff" component={PuffStuff} />
+                {/* Shop Routes */}
+                <Route path="/shops/women" component={Women} />
+                <Route path="/shops/men" component={Men} />
+                <Route path="/shops/jewelry" component={Jewelry} />
+                <Route path="/shops/bags_accessories" component={Bags_Accessories} />
+                <Route path="/shops/socks" component={Socks} />
+                <Route path="/shops/sales" component={Sales} />
+                <Route path="/shops/new" component={New} />
+                <Route path="/shops/puff_stuff" component={PuffStuff} />
 
-              {/* Product Routes */}
-              <Route path="/products/:name/:id" component={Product} />
+                {/* Product Routes */}
+                <Route path="/products/:name/:id" component={Product} />
 
-              {/* Checkout Routes */}
-              <Route path="/checkout/shopping_cart" component={CheckoutCart} />
-              <Route path="/checkout/shipping" component={Shipping} />
-              <Route path="/checkout/payment" component={Payment} />
-              <Route path="/checkout/review" component={Review} />
+                {/* Checkout Routes */}
+                <Route path="/checkout/shopping_cart" component={CheckoutCart} />
+                <Route path="/checkout/shipping" component={Shipping} />
+                <Route path="/checkout/payment" component={Payment} />
+                <Route path="/checkout/review" component={Review} />
 
-              {/* Legal Routes */}
-            {/*
-              <Route path="/legal/faq" component={Faq} />
-              <Route path="/legal/privacy" component={Privacy} />
-              <Route path="/legal/returns_and_exchanges" component={Returns_exchanges} />
-              <Route path="/legal/shipping" component={Shipping} />
-              <Route path="/legal/terms_and_conditions" component={Terms_service} />
-            */}
+                {/* Legal Routes */}
+              {/*
+                <Route path="/legal/faq" component={Faq} />
+                <Route path="/legal/privacy" component={Privacy} />
+                <Route path="/legal/returns_and_exchanges" component={Returns_exchanges} />
+                <Route path="/legal/shipping" component={Shipping} />
+                <Route path="/legal/terms_and_conditions" component={Terms_service} />
+              */}
+                <Route path="/*" component={NotFoundPage} />
 
+              </Switch>
               <Footer />
             </ScrollToTop>
           </div>
