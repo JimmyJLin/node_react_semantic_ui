@@ -153,7 +153,14 @@ class Cart extends Component {
 
             <Grid.Column className="proceed_to_checkout">
               <Grid.Row >
-                <Button as={Link} to="/checkout/shopping_cart" className="ProceedToCartButton" fluid color="black" disabled={_.isEmpty(shoppingCart) === true ? true : false}>
+                <Button
+                  as={Link}
+                  to="/checkout/shopping_cart"
+                  className="ProceedToCartButton"
+                  fluid color="black"
+                  disabled={_.isEmpty(shoppingCart) === true ? true : false}
+                  onClick={this.props.handleCartClose}
+                >
                   <Button.Content visible>Proceed to Checkout</Button.Content>
                 </Button>
               </Grid.Row>
