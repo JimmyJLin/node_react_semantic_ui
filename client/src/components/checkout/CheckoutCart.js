@@ -229,7 +229,7 @@ class CheckoutCart extends Component {
   render(){
 
     return(
-      <Container id="checkoutcart">
+      <Container id="checkoutcart" className="TopAndBottomPadding">
         <Grid stackable columns='equal'>
           <Grid.Column>
             <h2 className="contentTitle"> Shopping Bag </h2>
@@ -246,11 +246,6 @@ class CheckoutCart extends Component {
             <CartSummary/>
           </Grid.Column>
         </Grid>
-
-
-
-
-
       </Container>
     )
   }

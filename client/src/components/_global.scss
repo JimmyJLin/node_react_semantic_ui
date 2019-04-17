@@ -33,8 +33,16 @@ body {
     letter-spacing: 2px !important;
   }
 
+  .mainFontColor{
+    color: $main-font-color
+  }
+
   .ui.header{
     color: $main-header-color;
+  }
+
+  .TopAndBottomPadding{
+    padding: 25px 0px;
   }
 
   .contentTitle{

@@ -143,7 +143,7 @@ class Collection extends Component {
   render() {
 
     return (
-      <div id="collection">
+      <div id="collection" className="TopAndBottomPadding">
 
         <MediaQuery query="(min-device-width: 1024px)">
           <Card.Group itemsPerRow={4}>

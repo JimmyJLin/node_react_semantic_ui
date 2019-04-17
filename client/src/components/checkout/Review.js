@@ -9,7 +9,7 @@ import CartSummary from './CartSummary';
 
 import './_shipping.scss'
 
-class Shipping extends Component{
+class Review extends Component{
 
   renderDesktopView(){
     return(
@@ -35,9 +35,9 @@ class Shipping extends Component{
             <List className="breadcrumb" horizontal link>
               <List.Item as={Link} to="/checkout/shipping" className="shipping onHoverItem not_disabled">Shipping</List.Item>
               <List.Item className="spacer"> / </List.Item>
-              <List.Item className="payment onHoverItem disabled">Payment</List.Item>
+              <List.Item as={Link} to="/checkout/payment" className="payment onHoverItem not_disabled">Payment</List.Item>
               <List.Item className="spacer"> / </List.Item>
-              <List.Item className="review onHoverItem disabled">Review</List.Item>
+              <List.Item as={Link} to="/checkout/payment" className="review onHoverItem not_disabled">Review</List.Item>
             </List>
 
             <Divider />
@@ -58,4 +58,4 @@ class Shipping extends Component{
   }
 }
 
-export default Shipping
+export default Review

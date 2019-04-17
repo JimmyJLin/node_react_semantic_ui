@@ -23,13 +23,16 @@ import Product from './shops/product/Product';
 
 // Checkout components
 import CheckoutCart from './checkout/CheckoutCart';
+import Shipping from './checkout/Shipping';
+import Payment from './checkout/Payment';
+import Review from './checkout/Review';
 
 // legal components
-import Faq from './legal/Faq';
-import Privacy from './legal/Privacy';
-import Returns_exchanges from './legal/Returns_exchanges';
-import Shipping from './legal/Shipping';
-import Terms_service from './legal/Terms_service';
+// import Faq from './legal/Faq';
+// import Privacy from './legal/Privacy';
+// import Returns_exchanges from './legal/Returns_exchanges';
+// import Shipping from './legal/Shipping';
+// import Terms_service from './legal/Terms_service';
 
 class App extends Component {
   render() {
@@ -55,15 +58,19 @@ class App extends Component {
               <Route path="/products/:name/:id" component={Product} />
 
               {/* Checkout Routes */}
-            <Route path="/checkout/shopping_cart" component={CheckoutCart} />
+              <Route path="/checkout/shopping_cart" component={CheckoutCart} />
+              <Route path="/checkout/shipping" component={Shipping} />
+              <Route path="/checkout/payment" component={Payment} />
+              <Route path="/checkout/review" component={Review} />
 
               {/* Legal Routes */}
+            {/*
               <Route path="/legal/faq" component={Faq} />
               <Route path="/legal/privacy" component={Privacy} />
               <Route path="/legal/returns_and_exchanges" component={Returns_exchanges} />
               <Route path="/legal/shipping" component={Shipping} />
               <Route path="/legal/terms_and_conditions" component={Terms_service} />
-
+            */}
 
               <Footer />
             </ScrollToTop>
