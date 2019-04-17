@@ -227,6 +227,10 @@ class CheckoutCart extends Component {
   }
 
   render(){
+    const checkOut={
+      btnLink: "/checkout/shipping",
+      btnName: "Proceed to Checkout"
+    }
 
     return(
       <Container id="checkoutcart" className="TopAndBottomPadding">
@@ -243,7 +247,7 @@ class CheckoutCart extends Component {
           </Grid.Column>
 
           <Grid.Column width={4}>
-            <CartSummary/>
+            <CartSummary checkOut={checkOut}/>
           </Grid.Column>
         </Grid>
       </Container>

@@ -28,6 +28,11 @@ class Shipping extends Component{
   }
 
   render() {
+    const checkOut={
+      btnLink: "/checkout/payment",
+      btnName: "Continue"
+    }
+
     return(
       <Container className="TopAndBottomPadding">
         <Grid stackable columns='equal'>
@@ -50,7 +55,7 @@ class Shipping extends Component{
           </Grid.Column>
 
           <Grid.Column width={4}>
-            <CartSummary/>
+            <CartSummary checkOut={checkOut}/>
           </Grid.Column>
         </Grid>
       </Container>

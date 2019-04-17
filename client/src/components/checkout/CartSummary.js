@@ -12,7 +12,9 @@ class CartSummary extends Component {
     shoppingCart: [],
     subTotal: 0,
     shippingFee: 0,
-    taxes: 0
+    taxes: 0,
+    btnName: "",
+    btnLink: ""
   }
 
   async componentWillMount(){
@@ -26,8 +28,14 @@ class CartSummary extends Component {
     const clientId = JSON.parse(localStorage.getItem("allthingsfrenchieId"))
 
     await this.props.fetchShoppingCart(clientId)
-    await this.setState({shoppingCart: this.props.cart})
+    await this.setState({
+      shoppingCart: this.props.cart,
+      btnName: this.props.checkOut.btnName,
+      btnLink: this.props.checkOut.btnLink
+    })
     await this.getSubtotal()
+    // console.log("cart-----", this.state)
+
   }
 
   async componentWillReceiveProps(nextProps) {
@@ -67,7 +75,7 @@ class CartSummary extends Component {
   }
 
   render() {
-    const { shoppingCart, subTotal, shippingFee, taxes } = this.state;
+    const { shoppingCart, subTotal, shippingFee, taxes, btnName, btnLink } = this.state;
     // console.log('isCartOpen', this.props.isCartOpen)
 
     return (
@@ -103,8 +111,8 @@ class CartSummary extends Component {
 
             <Grid.Column className="proceed_to_checkout">
               <Grid.Row >
-                <Button as={Link} to="/checkout/shipping" className="ProceedToCartButton" fluid color="black" disabled={_.isEmpty(shoppingCart) === true ? true : false}>
-                  <Button.Content visible>Proceed to Checkout</Button.Content>
+                <Button as={Link} to={ _.isEmpty(btnLink) === false ? btnLink : "/" } className="ProceedToCartButton" fluid color="black" disabled={_.isEmpty(shoppingCart) === true ? true : false}>
+                  <Button.Content visible> {  _.isEmpty(btnName) === false ? btnName : "Continue" } </Button.Content>
                 </Button>
               </Grid.Row>
             </Grid.Column>
