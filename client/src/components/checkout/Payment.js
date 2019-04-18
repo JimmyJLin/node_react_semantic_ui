@@ -27,9 +27,14 @@ class Payment extends Component{
     )
   }
 
+  handlePaymentInfo(){
+    console.log("handlePaymentInfo =======>")
+  }
+
   render() {
     const checkOut={
-      btnLink: "/checkout/payment",
+      type: "payment",
+      btnLink: "/checkout/review",
       btnName: "Continue"
     }
 
@@ -55,7 +60,10 @@ class Payment extends Component{
           </Grid.Column>
 
           <Grid.Column width={4}>
-            <CartSummary checkOut={checkOut}/>
+            <CartSummary
+              checkOut={checkOut}
+              handlePaymentInfo={this.handlePaymentInfo}
+            />
           </Grid.Column>
         </Grid>
       </Container>

@@ -14,7 +14,8 @@ class CartSummary extends Component {
     shippingFee: 0,
     taxes: 0,
     btnName: "",
-    btnLink: ""
+    btnLink: "",
+    type: ""
   }
 
   async componentWillMount(){
@@ -31,7 +32,8 @@ class CartSummary extends Component {
     await this.setState({
       shoppingCart: this.props.cart,
       btnName: this.props.checkOut.btnName,
-      btnLink: this.props.checkOut.btnLink
+      btnLink: this.props.checkOut.btnLink,
+      type: this.props.checkOut.type
     })
     await this.getSubtotal()
     // console.log("cart-----", this.state)
@@ -74,8 +76,32 @@ class CartSummary extends Component {
     return total.toFixed(2)
   }
 
+  async handleShippingInfoSaving(){
+    const shippingInfo = await this.props.handleShippingInfo()
+
+    console.log('shippingInfo', shippingInfo)
+  }
+
+  handleFinalCheckout(){
+    console.log('finalCheckout ======== ')
+  }
+
+  handleCheckoutOnClick(type){
+    // console.log('type----', type)
+    switch(type){
+      case "shipping":
+        return this.props.handleShippingInfo
+      case "payment":
+        return this.props.handlePaymentInfo
+      case "review":
+        return this.props.handleReviewInfo
+      default:
+        return this.handleFinalCheckout
+    }
+  }
+
   render() {
-    const { shoppingCart, subTotal, shippingFee, taxes, btnName, btnLink } = this.state;
+    const { shoppingCart, subTotal, shippingFee, taxes, btnName, btnLink, type } = this.state;
     // console.log('isCartOpen', this.props.isCartOpen)
 
     return (
@@ -111,7 +137,16 @@ class CartSummary extends Component {
 
             <Grid.Column className="proceed_to_checkout">
               <Grid.Row >
-                <Button as={Link} to={ _.isEmpty(btnLink) === false ? btnLink : "/" } className="ProceedToCartButton" fluid color="black" disabled={_.isEmpty(shoppingCart) === true ? true : false}>
+                <Button
+                  as={Link}
+                  to={ _.isEmpty(btnLink) === false ? btnLink : "/" }
+                  className="ProceedToCartButton"
+                  fluid color="black"
+                  disabled={_.isEmpty(shoppingCart) === true ? true : false}
+                  onClick={
+                    this.handleCheckoutOnClick(type)
+                  }
+                >
                   <Button.Content visible> {  _.isEmpty(btnName) === false ? btnName : "Continue" } </Button.Content>
                 </Button>
               </Grid.Row>

@@ -27,9 +27,14 @@ class Review extends Component{
     )
   }
 
+  handleReviewInfo(){
+    console.log("handleReviewInfo <=======")
+  }
+
   render() {
     const checkOut={
-      btnLink: "/checkout/payment",
+      type: "review",
+      btnLink: "/checkout/review",
       btnName: "Continue"
     }
 
@@ -55,7 +60,10 @@ class Review extends Component{
           </Grid.Column>
 
           <Grid.Column width={4}>
-            <CartSummary checkOut={checkOut}/>
+            <CartSummary
+              checkOut={checkOut}
+              handleReviewInfo={this.handleReviewInfo}
+            />
           </Grid.Column>
         </Grid>
       </Container>
