@@ -43,6 +43,7 @@ class BurgerMenu extends Component {
             <Menu.Item as={Link} to="/shops/new" onClick={this.props.handleBurgerClose}> New </Menu.Item>
             <Menu.Item as={Link} to="/shops/puff_stuff" onClick={this.props.handleBurgerClose}> Puff Stuff </Menu.Item>
             <Menu.Item as={Link} to="/shops/women" onClick={this.props.handleBurgerClose}> Women </Menu.Item>
+            <Menu.Item as={Link} to="/shops/men" onClick={this.props.handleBurgerClose}> Men </Menu.Item>
             <Menu.Item as={Link} to="/shops/jewelry" onClick={this.props.handleBurgerClose}> Jewelry </Menu.Item>
             <Menu.Item as={Link} to="/shops/bags_accessories" onClick={this.props.handleBurgerClose}> Bags & Accessories </Menu.Item>
             <Menu.Item as={Link} to="/shops/socks" onClick={this.props.handleBurgerClose}> Socks </Menu.Item>
