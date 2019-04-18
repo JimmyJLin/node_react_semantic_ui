@@ -45,14 +45,13 @@ class CartSummary extends Component {
       await this.setState({
         shoppingCart: nextProps.cart
       })
-      await this.getSubtotal()
     }
     // console.log('shoppingCart', this.state.shoppingCart)
   }
 
 
-  getSubtotal(){
-    const lineItems = this.state.shoppingCart
+  async getSubtotal(){
+    const lineItems = await this.state.shoppingCart
     const subtotal = []
     let returnedtotal
     if(_.isEmpty(lineItems) === false ){
