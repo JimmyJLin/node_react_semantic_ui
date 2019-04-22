@@ -61,10 +61,24 @@ body {
   .cursorPointer{
     cursor: pointer;
   }
+  .onHoverTransparent {
+    position: relative;
+    color: $main-font-color;
+    text-decoration: none;
+  }
+
+  .onHoverTransparent:before{
+    opacity: .8;
+    transition: all 0.4s ease-in-out 0s;
+  }
+
+  .onHoverTransparent:hover:before{
+
+  }
 
   .onHoverItem {
     position: relative;
-    color: #000;
+    color: $main-font-color;
     text-decoration: none;
   }
   .onHoverItem:before {
@@ -74,7 +88,7 @@ body {
     height: 2px;
     bottom: -5px;
     left: 0;
-    background-color: #000;
+    background-color: $main-font-color;
     visibility: hidden;
     -webkit-transform: scaleX(0);
     transform: scaleX(0);

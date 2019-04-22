@@ -13,8 +13,10 @@ class Shipping extends Component{
   constructor(props) {
     super(props);
     this.handleShippingInfo = this.handleShippingInfo.bind(this)
-    this.signIn = this.signIn.bind(this)
-    this.closePopup = this.closePopup.bind(this)
+    this.OpenSignInModal = this.OpenSignInModal.bind(this)
+    this.OpenSignUpModal = this.OpenSignUpModal.bind(this)
+    this.closeSignInModal = this.closeSignInModal.bind(this)
+    this.closeSignUpModal = this.closeSignUpModal.bind(this)
   }
 
   state = {
@@ -28,10 +30,12 @@ class Shipping extends Component{
     phone: "",
     email: "",
     emailCheckbox: true,
-    signInPopup: false
+    signInPopup: false,
+    signUpPopup: false
   }
 
   signInPopup = () => this.setState({ signInPopup: false })
+  signUpPopup = () => this.setState({ signUpPopup: false })
 
   async componentWillMount(){
 
@@ -79,17 +83,37 @@ class Shipping extends Component{
     console.log('shippingData ====>', shippingData)
   }
 
-  signIn(){
-    this.setState({signInPopup: true})
+  OpenSignInModal(){
+    this.setState({
+      signInPopup: true,
+      signUpPopup: false
+    })
   }
 
-  closePopup(){
-    this.setState({signInPopup: false})
+  closeSignInModal(){
+    this.setState({
+      signInPopup: false,
+      signUpPopup: false
+    })
+  }
+
+  OpenSignUpModal(){
+    this.setState({
+      signUpPopup: true,
+      signInPopup: false
+    })
+  }
+
+  closeSignUpModal(){
+    this.setState({
+      signUpPopup: false,
+      signInPopup: false
+    })
   }
 
 
   renderShipping(){
-    const { signInPopup } = this.state;
+    const { signInPopup, signUpPopup } = this.state;
 
     return(
       <Container>
@@ -123,12 +147,15 @@ class Shipping extends Component{
             <Button
               className="ProceedToCartButton"
               fluid color="black"
-              onClick={this.signIn}
+              onClick={this.OpenSignInModal}
             >
               <Button.Content> Sign In </Button.Content>
             </Button>
             <div className="TopAndBottomPadding centerAlign">
-              <span className="onHoverItem cursorPointer">Sign Up</span>
+              <span
+                className="onHoverItem cursorPointer"
+                onClick={this.OpenSignUpModal}
+              >Sign Up</span>
             </div>
 
             {/* Sign In Modal */}
@@ -136,7 +163,7 @@ class Shipping extends Component{
               <Grid centered verticalAlign='middle'>
                 <Grid.Column computer={8} tablet={8} mobile={16}>
                   <Segment>
-                    <Button className="Popup__close" onClick={this.closePopup}> x </Button>
+                    <Button className="Popup__close" onClick={this.closeSignInModal}> x </Button>
                     <h3 className="centerAlign TopAndBottomPadding">SIGN IN</h3>
                     <Form>
                       <Form.Field
@@ -160,7 +187,7 @@ class Shipping extends Component{
                       />
                       <Button
                         fluid color="black"
-                        onClick={this.signInPopup}
+                        onClick={this.closeSignInModal}
                       >
                         <Button.Content> Sign In </Button.Content>
                       </Button>
@@ -174,10 +201,9 @@ class Shipping extends Component{
                     <div className="smallTopAndBottomPadding">
                       <Button
                         fluid
-                        color="black"
-                        onClick={this.closePopup}
+                        onClick={this.OpenSignUpModal}
                       >
-                        <Button.Content> Create An Account </Button.Content>
+                        <Button.Content className="mainFontColor"> Create An Account </Button.Content>
                       </Button>
                     </div>
 
@@ -188,6 +214,58 @@ class Shipping extends Component{
             </Modal>
 
             {/* Sign Up Modal */}
+            <Modal dimmer='inverted' open={signUpPopup} basic seize='mini'>
+              <Grid centered verticalAlign='middle'>
+                <Grid.Column computer={8} tablet={8} mobile={16}>
+                  <Segment>
+                    <Button className="Popup__close" onClick={this.closeSignUpModal}> x </Button>
+                    <h3 className="centerAlign TopAndBottomPadding">CREATE AN ACCOUNT</h3>
+                    <p>Please enter your email address and password to create an account.</p>
+                    <Form>
+                      <Form.Field
+                        icon='user'
+                        iconPosition='left'
+                        control={Input}
+                        value={this.state.email}
+                        lable="Email"
+                        placeholder="Email"
+                        onChange={(e) => this.setState({email: e.target.value})}
+                      />
+                      <Form.Field
+                        icon='lock'
+                        iconPosition='left'
+                        control={Input}
+                        type='password'
+                        value={this.state.password}
+                        lable="Password"
+                        placeholder="Password"
+                        onChange={(e) => this.setState({password: e.target.value})}
+                      />
+                      <Button
+                        fluid color="black"
+                        onClick={this.closeSignUpModal}
+                      >
+                        <Button.Content> Create An Account </Button.Content>
+                      </Button>
+                    </Form>
+
+                    <Divider />
+
+                    <div className="smallTopAndBottomPadding">
+                      <Button
+                        fluid
+                        onClick={this.OpenSignInModal}
+                      >
+                        <Button.Content className="mainFontColor"> Sign In </Button.Content>
+                      </Button>
+                    </div>
+
+                  </Segment>
+                </Grid.Column>
+              </Grid>
+
+            </Modal>
+
 
           </Grid.Column>
         </Grid>
