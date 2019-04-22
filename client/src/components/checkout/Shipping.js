@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Grid, Divider, List, Form, Input, Segment } from 'semantic-ui-react'
+import { Container, Grid, Divider, List, Form, Input, Segment, Checkbox } from 'semantic-ui-react'
 
 
 import CartSummary from './CartSummary';
@@ -23,7 +23,9 @@ class Shipping extends Component{
     city: "",
     state: "",
     zipcode: "",
-    phone: ""
+    phone: "",
+    email: "",
+    emailCheckbox: true
   }
 
   async componentWillMount(){
@@ -32,8 +34,8 @@ class Shipping extends Component{
 
     if(_.isEmpty(atfShippingInfo) === false) {
       const shippingInfo = await JSON.parse(localStorage.getItem("atfShippingInfo"))
-
-      const { first_name, last_name, stree_address, address_2, city, state, zipcode, phone } = shippingInfo
+      console.log('shippingInfo', shippingInfo)
+      const { first_name, last_name, stree_address, address_2, city, state, zipcode, phone, email, emailCheckbox } = shippingInfo
 
       await this.setState({
         first_name: first_name,
@@ -43,15 +45,17 @@ class Shipping extends Component{
         city: city,
         state: state,
         zipcode:zipcode,
-        phone: phone
+        phone: phone,
+        email: email,
+        emailCheckbox: emailCheckbox
       })
     }
 
   }
 
   handleShippingInfo(){
-    const { first_name, last_name, stree_address, address_2, city, state, zipcode, phone} = this.state;
-
+    const { first_name, last_name, stree_address, address_2, city, state, zipcode, phone, email, emailCheckbox} = this.state;
+    console.log('emailCheckbox', emailCheckbox)
     const shippingData = {
       first_name: first_name,
       last_name: last_name,
@@ -60,12 +64,13 @@ class Shipping extends Component{
       city: city,
       state: state,
       zipcode: zipcode,
-      phone: phone
+      phone: phone,
+      email: email,
+      emailCheckbox: emailCheckbox
     }
 
-    if(localStorage.getItem("atfShippingInfo") === null) {
-      localStorage.setItem('atfShippingInfo', JSON.stringify(shippingData))
-    }
+    localStorage.setItem('atfShippingInfo', JSON.stringify(shippingData))
+
     console.log('shippingData ====>', shippingData)
   }
 
@@ -73,10 +78,33 @@ class Shipping extends Component{
   renderShipping(){
     return(
       <div>
-        <h2>Desktop View</h2>
         <Grid stackable columns='equal'>
-          <Grid.Column> <h3>Guess Checkout</h3> </Grid.Column>
-          <Grid.Column> <h3>SingIn or SingUp</h3> </Grid.Column>
+          <Grid.Column>
+            <h3>Check Out As A Guest</h3>
+            <p>Where Should we email your receipt?</p>
+            <Form>
+              <Form.Group widths='equal'>
+                <Form.Field
+                  control={Input}
+                  value={this.state.email}
+                  lable="Email"
+                  placeholder="Email"
+                  onChange={(e) => this.setState({email: e.target.value})}
+                />
+              </Form.Group>
+              <Form.Field
+                defaultChecked
+                control={Checkbox}
+                onChange={
+                  this.state.emailCheckbox === true ? (e) => this.setState({emailCheckbox: !true}) : (e) => this.setState({emailCheckbox: true})
+                }
+                label={{ children: 'Sign up to receive exclusive offers + promotions.' }}
+              />
+            </Form>
+          </Grid.Column>
+          <Grid.Column>
+            <h3>SingIn or SingUp</h3>
+          </Grid.Column>
         </Grid>
 
         <h3>Shipping Address</h3>
