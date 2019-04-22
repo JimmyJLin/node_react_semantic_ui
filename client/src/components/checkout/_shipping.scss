@@ -17,3 +17,19 @@
 .disabled{
   color: #ddd;
 }
+
+.Popup__close {
+  position: absolute;
+  right: 9px;
+  top: 8px;
+  font-size: 35px;
+  color: #999;
+  border: none;
+  background: transparent;
+  transition: transform 100ms ease;
+  cursor: pointer;
+}
+
+.modalContent{
+  color: black;
+}

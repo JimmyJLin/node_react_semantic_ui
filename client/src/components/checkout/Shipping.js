@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Grid, Divider, List, Form, Input, Segment, Checkbox } from 'semantic-ui-react'
+import { Container, Grid, Divider, List, Form, Input, Segment, Checkbox, Button, Modal, Header } from 'semantic-ui-react'
 
 
 import CartSummary from './CartSummary';
@@ -13,6 +13,8 @@ class Shipping extends Component{
   constructor(props) {
     super(props);
     this.handleShippingInfo = this.handleShippingInfo.bind(this)
+    this.signIn = this.signIn.bind(this)
+    this.closePopup = this.closePopup.bind(this)
   }
 
   state = {
@@ -25,8 +27,11 @@ class Shipping extends Component{
     zipcode: "",
     phone: "",
     email: "",
-    emailCheckbox: true
+    emailCheckbox: true,
+    signInPopup: false
   }
+
+  signInPopup = () => this.setState({ signInPopup: false })
 
   async componentWillMount(){
 
@@ -74,10 +79,20 @@ class Shipping extends Component{
     console.log('shippingData ====>', shippingData)
   }
 
+  signIn(){
+    this.setState({signInPopup: true})
+  }
+
+  closePopup(){
+    this.setState({signInPopup: false})
+  }
+
 
   renderShipping(){
+    const { signInPopup } = this.state;
+
     return(
-      <div>
+      <Container>
         <Grid stackable columns='equal'>
           <Grid.Column>
             <h3>Check Out As A Guest</h3>
@@ -103,7 +118,77 @@ class Shipping extends Component{
             </Form>
           </Grid.Column>
           <Grid.Column>
-            <h3>SingIn or SingUp</h3>
+            <h3>Sing In or Sign Up</h3>
+            <p>Sign in to check out faster</p>
+            <Button
+              className="ProceedToCartButton"
+              fluid color="black"
+              onClick={this.signIn}
+            >
+              <Button.Content> Sign In </Button.Content>
+            </Button>
+            <div className="TopAndBottomPadding centerAlign">
+              <span className="onHoverItem cursorPointer">Sign Up</span>
+            </div>
+
+            {/* Sign In Modal */}
+            <Modal dimmer='inverted' open={signInPopup} basic seize='mini'>
+              <Grid centered verticalAlign='middle'>
+                <Grid.Column computer={8} tablet={8} mobile={16}>
+                  <Segment>
+                    <Button className="Popup__close" onClick={this.closePopup}> x </Button>
+                    <h3 className="centerAlign TopAndBottomPadding">SIGN IN</h3>
+                    <Form>
+                      <Form.Field
+                        icon='user'
+                        iconPosition='left'
+                        control={Input}
+                        value={this.state.email}
+                        lable="Email"
+                        placeholder="Email"
+                        onChange={(e) => this.setState({email: e.target.value})}
+                      />
+                      <Form.Field
+                        icon='lock'
+                        iconPosition='left'
+                        control={Input}
+                        type='password'
+                        value={this.state.password}
+                        lable="Password"
+                        placeholder="Password"
+                        onChange={(e) => this.setState({password: e.target.value})}
+                      />
+                      <Button
+                        fluid color="black"
+                        onClick={this.signInPopup}
+                      >
+                        <Button.Content> Sign In </Button.Content>
+                      </Button>
+                    </Form>
+                    <div className="mainFontColor centerAlign smallTopAndBottomPadding">
+                      <span className="onHoverItem cursorPointer">Forgot Password</span>
+                    </div>
+
+                    <Divider />
+
+                    <div className="smallTopAndBottomPadding">
+                      <Button
+                        fluid
+                        color="black"
+                        onClick={this.closePopup}
+                      >
+                        <Button.Content> Create An Account </Button.Content>
+                      </Button>
+                    </div>
+
+                  </Segment>
+                </Grid.Column>
+              </Grid>
+
+            </Modal>
+
+            {/* Sign Up Modal */}
+
           </Grid.Column>
         </Grid>
 
@@ -182,7 +267,7 @@ class Shipping extends Component{
         </Segment>
 
 
-      </div>
+      </Container>
     )
   }
 
