@@ -130,7 +130,7 @@ class CheckoutCart extends Component {
               <Table.HeaderCell width={2}></Table.HeaderCell>
               <Table.HeaderCell width={8}></Table.HeaderCell>
               <Table.HeaderCell width={1}>Quantity</Table.HeaderCell>
-              <Table.HeaderCell width={1}>Total</Table.HeaderCell>
+              <Table.HeaderCell width={2}>Total</Table.HeaderCell>
               <Table.HeaderCell width={1}></Table.HeaderCell>
             </Table.Row>
           </Table.Header>

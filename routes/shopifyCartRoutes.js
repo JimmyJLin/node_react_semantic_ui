@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const keys = require('../config/keys');
 const Shopify = require('shopify-api-node');
 const mongoose = require('mongoose');
@@ -85,9 +86,25 @@ module.exports = app => {
       compledtedCheckout
     })
 
-    await ShoppingCart.save()
-
     const query = { clientId: clientId}
+    const cartItem = { clientId: clientId, varians_id: varians_id}
+
+    const existingCartItem = await ShoppingCarts.find(cartItem)
+
+    if(_.isEmpty(existingCartItem) === false) {
+      // console.log('item exist', existingCartItem)
+      // console.log('qty', qty)
+      ShoppingCarts.findOneAndUpdate(cartItem, {$inc: {qty: qty}})
+        .then(()=> {
+          // console.log("yayyy")
+        })
+        .catch((error) => {
+          // console.log(error.message)
+        })
+    } else {
+      // console.log('else case')
+      await ShoppingCart.save()
+    }
 
     await ShoppingCarts.find(query)
       .then((shoppingCart) => {
