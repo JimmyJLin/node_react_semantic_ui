@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Grid, Divider, List, Form, Input, Segment, Checkbox, Button, Modal, Header } from 'semantic-ui-react'
+import { Container, Grid, Divider, List, Form, Input, Segment, Checkbox, Button, Modal } from 'semantic-ui-react'
 
 
 import CartSummary from './CartSummary';

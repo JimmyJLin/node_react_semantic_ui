@@ -11,6 +11,7 @@ import { FETCH_SALE } from './types';
 import { FETCH_SOCK } from './types';
 import { FETCH_PUFF_STUFF } from './types';
 import { FETCH_SHOPPING_CART } from './types';
+import { FETCH_BLOG } from './types';
 
 // CHANGE CART QTY
 export const chgangeCartItemqty = (QuantyChange) => async dispatch => {
@@ -116,4 +117,11 @@ export const setSpinner = (spinner) => async dispatch => {
   const spinnerState = spinner
 
   dispatch({ type: SET_SPINNER, payload: spinnerState });
+}
+
+// BLOGS
+export const fetchPawsomePalBlogs = () => async dispatch => {
+  const res = await axios.get('/api/shopify/blogs/pawsome_pals');
+
+  dispatch({ type: FETCH_BLOG, payload: res.data})
 }

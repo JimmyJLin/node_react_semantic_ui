@@ -6,6 +6,7 @@ import Contact from '../body/contact/Contact';
 import ImgSlides from '../body/imgslider/ImgSlides';
 import NewArrivals from '../shops/newArrivals/NewArrivals';
 import Cart from '../checkout/Cart';
+import Blogs from '../blogs/Blogs';
 
 class Landing extends Component {
 
@@ -29,6 +30,8 @@ class Landing extends Component {
         <NewArrivals />
 
         <Cart />
+
+        <Blogs />
 
         <Contact />
 

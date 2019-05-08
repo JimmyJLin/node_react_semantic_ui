@@ -1,0 +1,39 @@
+#blogs {
+  margin: 10% 5%;
+  padding: 0 50px;
+
+  #title{
+    text-align: center;
+  }
+
+  // .square {
+  //   display: inline-block !important;
+  //   width: 260px !important;
+  //   height: 260px !important;
+  //   padding-bottom: 20px !important;
+  //   background-position: center center !important;
+  //   background-size: cover !important;
+  //   background-repeat: no-repeat !important;
+  //   overflow: hidden !important;
+  // }
+
+  .ui.card, .ui.cards>.card{
+    box-shadow: none;
+  }
+
+  .buttonContainer{
+    border-style: none;
+    display: flex;
+    justify-content: center;
+  }
+
+  .moreButton{
+    width: 150px;
+    margin-top: 50px;
+    padding: 15px;
+    border-radius: 50px;
+  }
+
+
+
+}
