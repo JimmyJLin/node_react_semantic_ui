@@ -14,6 +14,7 @@ import saleReducer from './saleReducer';
 import sockReducer from './sockReducer';
 import puffStuffReducer from './puffStuffReducer';
 import cartReducer from './cartReducer';
+import blogsReducer from './blogsReducer';
 import blogReducer from './blogReducer';
 
 const shoppingCartPersistConfig = {
@@ -34,5 +35,6 @@ export default combineReducers({
   sock: sockReducer,
   puffStuff: puffStuffReducer,
   cart: persistReducer(shoppingCartPersistConfig, cartReducer),
-  blogs: blogReducer
+  blogs: blogsReducer,
+  blog: blogReducer
 });

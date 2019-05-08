@@ -34,7 +34,10 @@ import Review from './checkout/Review';
 // import Shipping from './legal/Shipping';
 // import Terms_service from './legal/Terms_service';
 
-// NotFoundPage
+// Blogs
+import Blog from './blogs/Blog';
+import PawsomeBlogs from './blogs/PawsomeBlogs';
+
 
 import NotFoundPage from './landing/NotFoundPage';
 
@@ -67,6 +70,11 @@ class App extends Component {
                 <Route path="/checkout/shipping" component={Shipping} />
                 <Route path="/checkout/payment" component={Payment} />
                 <Route path="/checkout/review" component={Review} />
+
+                {/* Blogs */}
+                <Route path="/blog/pawsomeblogs/:id" component={Blog} />
+                <Route path="/blog/pawsomeblogs" component={PawsomeBlogs} />
+
 
                 {/* Legal Routes */}
               {/*

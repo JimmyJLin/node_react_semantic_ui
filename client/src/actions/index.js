@@ -11,6 +11,7 @@ import { FETCH_SALE } from './types';
 import { FETCH_SOCK } from './types';
 import { FETCH_PUFF_STUFF } from './types';
 import { FETCH_SHOPPING_CART } from './types';
+import { FETCH_BLOGS } from './types';
 import { FETCH_BLOG } from './types';
 
 // CHANGE CART QTY
@@ -122,6 +123,12 @@ export const setSpinner = (spinner) => async dispatch => {
 // BLOGS
 export const fetchPawsomePalBlogs = () => async dispatch => {
   const res = await axios.get('/api/shopify/blogs/pawsome_pals');
+
+  dispatch({ type: FETCH_BLOGS, payload: res.data})
+}
+
+export const fetchOneBlog = (blogId) => async dispatch => {
+  const res = await axios.post('/api/shopify/blogs/pawsome_pals/id', blogId);
 
   dispatch({ type: FETCH_BLOG, payload: res.data})
 }

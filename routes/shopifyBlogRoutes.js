@@ -34,7 +34,7 @@ module.exports = app => {
 
   // GET PAWSOME PALS BLOG
   app.get('/api/shopify/blogs/pawsome_pals', async (req, res) => {
-    console.log("inside get pawsome pal blogs")
+    // console.log("inside get pawsome pal blogs")
     await shopify.article.list('103573896')
       .then((data) => {
         pawsomePals = [];
@@ -49,5 +49,23 @@ module.exports = app => {
     res.send(pawsomePals);
   })
 
+  // GET ONE BLOG
+  app.post('/api/shopify/blogs/pawsome_pals/id', async (req, res) => {
+    console.log("inside get ONE pawsome pal blogs")
+
+    const id = req.body.id
+
+    console.log('blogId', id)
+
+    await shopify.article.get('103573896', id)
+      .then((blog) => {
+        // console.log('blog-----', blog)
+        res.send(blog);
+      })
+      .catch((err) => {
+        console.log('err', err);
+      });
+
+  })
 
 }

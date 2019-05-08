@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import MediaQuery from 'react-responsive';
 import { connect } from 'react-redux';
 import { fetchPawsomePalBlogs } from '../../actions';
 
@@ -17,7 +16,7 @@ class Blogs extends Component {
     await this.setState({
       pawsomeBlogs: this.props.blogs
     })
-    console.log('pawsomeBlogs', this.state.pawsomeBlogs)
+    // console.log('pawsomeBlogs', this.state.pawsomeBlogs)
   }
 
   renderLatestBlogs(){
@@ -25,8 +24,12 @@ class Blogs extends Component {
 
     const renderingPawsomeBlogs = pawsomeBlogs.slice(0, 3).map((e) => {
       const { id, title, image, body_html } = e
+      const blogData = {
+        id: id
+      }
       return (
         <Card
+          data={blogData}
           key={id}
           as={NavLink}
           to={`/blog/pawsomeblogs/${id}`}
