@@ -55,7 +55,7 @@ module.exports = app => {
 
     const id = req.body.blogId
 
-    console.log('blogId', req.body)
+    // console.log('blogId', req.body)
 
     await shopify.article.get('103573896', id)
       .then((blog) => {
