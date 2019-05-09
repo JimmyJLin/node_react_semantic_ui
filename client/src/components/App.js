@@ -36,7 +36,7 @@ import Review from './checkout/Review';
 
 // Blogs
 import Blog from './blogs/Blog';
-import PawsomeBlogs from './blogs/PawsomeBlogs';
+// import PawsomeBlogs from './blogs/PawsomeBlogs';
 
 
 import NotFoundPage from './landing/NotFoundPage';
@@ -73,7 +73,10 @@ class App extends Component {
 
                 {/* Blogs */}
                 <Route path="/blog/pawsomeblogs/:id" component={Blog} />
+                {/*
+
                 <Route path="/blog/pawsomeblogs" component={PawsomeBlogs} />
+                */}
 
 
                 {/* Legal Routes */}
