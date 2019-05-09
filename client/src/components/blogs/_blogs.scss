@@ -38,4 +38,14 @@
 
 #blog {
   padding: 50px 0px;
+
+  #social-share{
+    display: inline-flex;
+    justify-content: center;
+  }
+  .social-padding{
+    padding: 0px 5px;
+    cursor: pointer;
+
+  }
 }
