@@ -23,7 +23,7 @@ class Blogs extends Component {
     const { pawsomeBlogs } = this.state
 
     const renderingPawsomeBlogs = pawsomeBlogs.slice(0, 3).map((e) => {
-      const { id, title, image, body_html } = e
+      const { id, title, image, body_html, handle } = e
       const blogData = {
         id: id
       }
@@ -32,7 +32,12 @@ class Blogs extends Component {
           data={blogData}
           key={id}
           as={NavLink}
-          to={`/blog/pawsomeblogs/${id}`}
+          to={{
+            pathname: `/blog/pawsomeblogs/${handle}`,
+            state: {
+              blogId: id
+            }
+          }}
         >
           <Image src={image.src} fluid />
           <Card.Content>

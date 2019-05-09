@@ -53,9 +53,9 @@ module.exports = app => {
   app.post('/api/shopify/blogs/pawsome_pals/id', async (req, res) => {
     console.log("inside get ONE pawsome pal blogs")
 
-    const id = req.body.id
+    const id = req.body.blogId
 
-    console.log('blogId', id)
+    console.log('blogId', req.body)
 
     await shopify.article.get('103573896', id)
       .then((blog) => {
