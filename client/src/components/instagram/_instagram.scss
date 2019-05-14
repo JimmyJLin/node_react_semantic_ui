@@ -1,6 +1,5 @@
 #instagram{
   margin: 10% 5%;
-  padding: 0 50px;
 
   .ui.card, .ui.cards>.card{
     box-shadow: none;
@@ -8,8 +7,8 @@
 
   .square {
     display: inline-block;
-    width: 250px;
-    height: 250px;
+    width: 125%;
+    height: 125%;
     background-position: center center;
     background-size: cover;
   }
