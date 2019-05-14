@@ -36,7 +36,7 @@ import Review from './checkout/Review';
 
 // Blogs
 import Blog from './blogs/Blog';
-import PawsomeBlogs from './blogs/PawsomeBlogs';
+import PawsomeBlogs from './blogs/pawsomeBlogs';
 
 
 import NotFoundPage from './landing/NotFoundPage';
