@@ -54,7 +54,13 @@ class NewArrivals extends Component {
         <Container
           data={productData}
           as={NavLink}
-          to={`/products/${handle}/${product_id}`} key={product_id}
+          to={{
+            pathname: `/products/${handle}`,
+            state: {
+              product_id: product_id
+            }
+          }}
+          key={product_id}
           id="multi_card_container"
         >
           <Image className="square zoom" src={images[0].src} fluid/>
