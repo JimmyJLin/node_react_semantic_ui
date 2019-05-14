@@ -37,6 +37,10 @@ body {
     color: $main-font-color
   }
 
+  .secondaryColor{
+    color: $main-header-color !important;
+  }
+
   .ui.header{
     color: $main-header-color;
   }
@@ -77,6 +81,7 @@ body {
   }
 
   .onHoverItem {
+    cursor: pointer;
     position: relative;
     color: $main-font-color;
     text-decoration: none;

@@ -1,0 +1,26 @@
+#instagram{
+  margin: 10% 5%;
+  padding: 0 50px;
+
+  .ui.card, .ui.cards>.card{
+    box-shadow: none;
+  }
+
+  .square {
+    display: inline-block;
+    width: 250px;
+    height: 250px;
+    background-position: center center;
+    background-size: cover;
+  }
+
+  .zoom {
+    transition: all .5s ease-in-out; /* Animation */
+    z-index: 999;
+  }
+
+  .zoom:hover {
+    transform: scale(1.05); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+
+}
