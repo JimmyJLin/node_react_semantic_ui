@@ -30,13 +30,13 @@ class Landing extends Component {
 
         <NewArrivals />
 
-        <Cart />
-
         <Blogs />
 
         <Instagram />
 
         <Contact />
+
+        <Cart />
 
       </div>
     )

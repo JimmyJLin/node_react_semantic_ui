@@ -16,7 +16,7 @@
 
   .zoom {
     transition: all .5s ease-in-out; /* Animation */
-    z-index: 999;
+    z-index: 0;
   }
 
   .zoom:hover {
