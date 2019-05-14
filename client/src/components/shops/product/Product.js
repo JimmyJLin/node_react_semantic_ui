@@ -17,9 +17,11 @@ class Product extends Component {
   }
 
   async componentWillMount(){
-    const productName = this.props.match.params;
+    const productId = this.props.location.state;
 
-    await this.props.fetchOneProduct(productName)
+    // const productName = this.props.match.params;
+
+    await this.props.fetchOneProduct(productId)
     await this.setState({
       product: this.props.product
     })

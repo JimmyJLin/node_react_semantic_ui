@@ -36,7 +36,7 @@ import Review from './checkout/Review';
 
 // Blogs
 import Blog from './blogs/Blog';
-// import PawsomeBlogs from './blogs/PawsomeBlogs';
+import PawsomeBlogs from './blogs/PawsomeBlogs';
 
 
 import NotFoundPage from './landing/NotFoundPage';
@@ -63,7 +63,7 @@ class App extends Component {
                 <Route path="/shops/puff_stuff" component={PuffStuff} />
 
                 {/* Product Routes */}
-                <Route path="/products/:name/:id" component={Product} />
+                <Route path="/products/:name" component={Product} />
 
                 {/* Checkout Routes */}
                 <Route path="/checkout/shopping_cart" component={CheckoutCart} />
@@ -73,10 +73,7 @@ class App extends Component {
 
                 {/* Blogs */}
                 <Route path="/blog/pawsomeblogs/:id" component={Blog} />
-                {/*
-
                 <Route path="/blog/pawsomeblogs" component={PawsomeBlogs} />
-                */}
 
 
                 {/* Legal Routes */}

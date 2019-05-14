@@ -17,14 +17,14 @@ class Blog extends Component {
 
     const blogId = this.props.location.state;
 
-    console.log('inside componentWillMount', blogId)
+    // console.log('inside componentWillMount', blogId)
     await this.props.fetchOneBlog(blogId)
     // console.log('this.props', this.props)
     await this.setState({
       blog: this.props.blog
     })
 
-    console.log('blog', this.state.blog)
+    // console.log('blog', this.state.blog)
 
 
     const spinner = {
@@ -39,7 +39,7 @@ class Blog extends Component {
     const {handle, image, body_html} = this.state.blog;
     if( _.isEmpty(blog) === false ) {
       const shareUrl = allthingsfrenchieUrl + this.props.location.pathname
-      console.log('shareUrl', shareUrl)
+      // console.log('shareUrl', shareUrl)
       return(
         <div>
           <h2 className="centerAlign smallTopAndBottomPadding">{handle}</h2>

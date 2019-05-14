@@ -70,7 +70,7 @@ class MobileNavbar extends Component {
   }
 
   handleBurgerOpen() {
-    console.log('isBurgerOpen', this.state.isBurgerOpen)
+    // console.log('isBurgerOpen', this.state.isBurgerOpen)
     this.setState({
       isBurgerOpen: true,
     });

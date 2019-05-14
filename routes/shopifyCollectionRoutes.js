@@ -230,7 +230,8 @@ module.exports = app => {
 
   // get one product
   app.post('/api/shopify/product/id', async (req, res) => {
-    const productId = req.body.id
+    const productId = req.body.product_id
+    // console.log('req.body', req.body)
     // console.log('productName', productId)
     await shopify.product.get(productId)
       .then((data) => {

@@ -100,8 +100,8 @@ export const fetchWomen = () => async dispatch => {
 };
 
 // ONE PRODUCT
-export const fetchOneProduct = (productName) => async dispatch => {
-  const res = await axios.post('/api/shopify/product/id', productName);
+export const fetchOneProduct = (productId) => async dispatch => {
+  const res = await axios.post('/api/shopify/product/id', productId);
 
   dispatch({ type: FETCH_ONE_PRODUCT, payload: res.data });
 };

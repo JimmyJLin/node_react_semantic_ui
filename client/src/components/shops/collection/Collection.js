@@ -47,7 +47,12 @@ class Collection extends Component {
         return(
           <Card
             key={product_id} as={NavLink}
-            to={`/products/${handle}/${product_id}`}
+            to={{
+              pathname: `/products/${handle}`,
+              state: {
+                product_id: product_id
+              }
+            }}
           >
             <Carousel data={images}/>
 
@@ -69,7 +74,12 @@ class Collection extends Component {
         return(
           <Card
             key={id} as={NavLink}
-            to={`/products/${handle}/${id}`}
+            to={{
+              pathname: `/products/${handle}`,
+              state: {
+                product_id: id
+              }
+            }}
           >
             <Carousel data={images}/>
 
@@ -98,7 +108,12 @@ class Collection extends Component {
         return(
           <Card
           key={product_id} as={NavLink}
-          to={`/products/${handle}/${product_id}`}
+          to={{
+            pathname: `/products/${handle}`,
+            state: {
+              product_id: product_id
+            }
+          }}
           >
             <LazyLoad>
               <Image src={images[0].src} />
@@ -119,7 +134,12 @@ class Collection extends Component {
         return(
           <Card
           key={id} as={NavLink}
-          to={`/products/${handle}/${id}`}
+          to={{
+            pathname: `/products/${handle}`,
+            state: {
+              product_id: id
+            }
+          }}
           >
             <LazyLoad>
               <Image src={images[0].src} />
