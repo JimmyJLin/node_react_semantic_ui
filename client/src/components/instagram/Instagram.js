@@ -47,7 +47,7 @@ class Instagram extends Component {
 
   render() {
     return (
-      <div id="instagram">
+      <Container id="instagram">
         <h3 className="smallTopAndBottomPadding"> <span className="centerAlign">@ALLTHINGSFRENCHIE_SHOP </span></h3>
         <h3 className="centerAlign"> <span className="onHoverItem secondaryColor">Follow us on Instagram</span></h3>
 
@@ -55,7 +55,7 @@ class Instagram extends Component {
           {this.renderInstagram()}
         </Card.Group>
 
-      </div>
+      </Container>
     )
   }
 }
