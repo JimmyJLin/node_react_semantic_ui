@@ -48,9 +48,12 @@ class Instagram extends Component {
   render() {
     return (
       <Container id="instagram">
-        <h3 className="smallTopAndBottomPadding"> <span className="centerAlign">@ALLTHINGSFRENCHIE_SHOP </span></h3>
-        <h3 className="centerAlign"> <span className="onHoverItem secondaryColor">Follow us on Instagram</span></h3>
-
+        <h3 className="smallTopAndBottomPadding centerAlign">
+          <span>@ALLTHINGSFRENCHIE_SHOP </span>
+        </h3>
+        <h3 className="centerAlign">
+          <span className="onHoverItem secondaryColor">Follow us on Instagram</span>
+        </h3>
         <Card.Group itemsPerRow={4} stackable>
           {this.renderInstagram()}
         </Card.Group>
