@@ -13,6 +13,15 @@ import { FETCH_PUFF_STUFF } from './types';
 import { FETCH_SHOPPING_CART } from './types';
 import { FETCH_BLOGS } from './types';
 import { FETCH_BLOG } from './types';
+import { FETCH_SHIPPING_RATE } from './types';
+
+
+// GET SHIPPING RATE
+export const fetchShippingRate = (shippingInfo) => async dispatch => {
+  const res = await axios.post('/api/shopify/shipstation/getrate', shippingInfo)
+
+  dispatch({ type: FETCH_SHIPPING_RATE, payload: res.data})
+}
 
 // CHANGE CART QTY
 export const chgangeCartItemqty = (QuantyChange) => async dispatch => {

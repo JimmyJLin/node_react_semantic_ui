@@ -43,7 +43,7 @@ class Shipping extends Component{
 
     if(_.isEmpty(atfShippingInfo) === false) {
       const shippingInfo = await JSON.parse(localStorage.getItem("atfShippingInfo"))
-      console.log('shippingInfo', shippingInfo)
+      // console.log('shippingInfo', shippingInfo)
       const { first_name, last_name, stree_address, address_2, city, state, zipcode, phone, email, emailCheckbox } = shippingInfo
 
       await this.setState({
@@ -64,7 +64,7 @@ class Shipping extends Component{
 
   handleShippingInfo(){
     const { first_name, last_name, stree_address, address_2, city, state, zipcode, phone, email, emailCheckbox} = this.state;
-    console.log('emailCheckbox', emailCheckbox)
+    // console.log('emailCheckbox', emailCheckbox)
     const shippingData = {
       first_name: first_name,
       last_name: last_name,
@@ -80,7 +80,7 @@ class Shipping extends Component{
 
     localStorage.setItem('atfShippingInfo', JSON.stringify(shippingData))
 
-    console.log('shippingData ====>', shippingData)
+    // console.log('shippingData ====>', shippingData)
   }
 
   OpenSignInModal(){

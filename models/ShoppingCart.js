@@ -11,6 +11,8 @@ const shoppingCartSchema = new Schema({
   color: { type: String },
   size: { type: String },
   price: { type: Number },
+  weight: { type: Number },
+  weight_unit: { type: String },
   qty: { type: Number },
   compledtedCheckout: { type: Boolean, default: false },
   addToCartDate: { type: Date, default: Date.now }

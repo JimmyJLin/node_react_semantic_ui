@@ -15,7 +15,8 @@ class CartSummary extends Component {
     taxes: 0,
     btnName: "",
     btnLink: "",
-    type: ""
+    type: "",
+    shippingRate: []
   }
 
   async componentWillMount(){
@@ -29,6 +30,17 @@ class CartSummary extends Component {
     const clientId = JSON.parse(localStorage.getItem("allthingsfrenchieId"))
 
     await this.props.fetchShoppingCart(clientId)
+    // console.log('shippingFee', this.props.shippingFee)
+
+    // const shippingRate = localStorage.getItem("shippingRate")
+    //
+    // if(_.isEmpty(shippingRate) === false) {
+    //   const shippingRate = await JSON.parse(localStorage.getItem("shippingRate"))
+    //
+    //   await this.setState({ shippingFee: (shippingRate[0].shipmentCost).toFixed(2)})
+    //   console.log('shippingRate 00000', this.state.shippingFee)
+    // }
+
     await this.setState({
       shoppingCart: this.props.cart,
       btnName: this.props.checkOut.btnName,
@@ -45,6 +57,14 @@ class CartSummary extends Component {
       await this.setState({
         shoppingCart: nextProps.cart
       })
+    }
+
+    if (nextProps.shippingRate) {
+      await this.setState({
+        shippingFee: nextProps.shippingRate[2].shipmentCost
+      })
+
+      // console.log('shippingRate >>>>>>', this.state.shippingRate)
     }
     // console.log('shoppingCart', this.state.shoppingCart)
   }
@@ -70,8 +90,7 @@ class CartSummary extends Component {
 
   getTotal(){
     const { subTotal, shippingFee, taxes } = this.state;
-
-    const total = parseInt(subTotal) + parseInt(shippingFee) + parseInt(taxes)
+    const total = parseFloat(subTotal) + parseFloat(shippingFee) + parseFloat(taxes)
     return total.toFixed(2)
   }
 
@@ -158,8 +177,8 @@ class CartSummary extends Component {
   }
 }
 
-function mapStateToProps({ cart }) {
-  return { cart };
+function mapStateToProps({ cart, shippingRate }) {
+  return { cart, shippingRate };
 }
 
 export default connect(mapStateToProps, { fetchShoppingCart })(CartSummary);

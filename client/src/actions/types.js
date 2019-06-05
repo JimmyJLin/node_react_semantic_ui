@@ -13,3 +13,4 @@ export const FETCH_SHOPPING_CART = 'fetch_shopping_cart';
 export const REHYDRATE = 'persist/REHYDRATE';
 export const FETCH_BLOGS = 'fetch_blogs';
 export const FETCH_BLOG = 'fetch_blog';
+export const FETCH_SHIPPING_RATE = 'fetch_shipping_rate';

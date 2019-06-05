@@ -265,6 +265,8 @@ class RightColumn extends Component {
 
     const variant_obj = this.state.variants.filter((arr) => {return arr.title.includes(size) && arr.title.includes(color)})
 
+console.log('variant_obj', variant_obj)
+
     const allthingsfrenchieId = {
       clientId: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
     }
@@ -285,6 +287,8 @@ class RightColumn extends Component {
       price: price,
       size: size,
       varians_id: _.isEmpty(variant_obj) === true ? "" : variant_obj[0].id,
+      weight: _.isEmpty(variant_obj) === true ? "" : variant_obj[0].weight,
+      weight_unit: _.isEmpty(variant_obj) === true ? "" : variant_obj[0].weight_unit,
       qty: this.state.qty
     }
 

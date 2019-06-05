@@ -17,6 +17,7 @@ require('./routes/shopifyCollectionRoutes')(app);
 require('./routes/shopifyCartRoutes')(app);
 require('./routes/instagramRoutes')(app);
 require('./routes/shopifyBlogRoutes')(app);
+require('./routes/carrierServicesRoutes')(app);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
